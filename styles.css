@@ -321,12 +321,56 @@ body {
   html { scroll-behavior: auto; }
 }
 
+/* ---------- Capabilities ---------- */
+.cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 56px; }
+.cap-block {
+  background: var(--gray-bg); border-radius: 18px; padding: 32px 30px;
+}
+.cap-block h3 {
+  font-size: 21px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px;
+}
+.cap-block p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+.skills-wrap { text-align: center; margin-bottom: 56px; }
+.skills-wrap h3 {
+  font-size: 21px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.skill-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.skill-pills span {
+  font-size: 15px; font-weight: 500; color: var(--text);
+  background: var(--gray-bg); border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 999px;
+}
+
+.cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+.cred-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 18px; padding: 32px 30px;
+}
+.cred-card h3 {
+  font-size: 21px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.cred-card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+.cred-card ul { list-style: none; }
+.cred-card li {
+  font-size: 15px; color: var(--muted); line-height: 1.55;
+  padding: 6px 0 6px 22px; position: relative;
+}
+.cred-card li::before {
+  content: ""; position: absolute; left: 2px; top: 13px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+}
+
+.cap-links { display: flex; gap: 28px; justify-content: center; align-items: center; flex-wrap: wrap; }
+
 /* ---------- Mobile ---------- */
 @media (max-width: 860px) {
   .product { grid-template-columns: 1fr; gap: 40px; padding: 64px 22px; }
   .product-alt .product-inner { margin-left: 0; }
   .product-visual { min-height: 0; }
   .work-grid { grid-template-columns: 1fr; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .cred-grid { grid-template-columns: 1fr; }
   .process-list { grid-template-columns: 1fr 1fr; }
   .hero { padding: 72px 22px 80px; }
   .hero-sub { font-size: 19px; }
