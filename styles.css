@@ -183,8 +183,12 @@ body {
     radial-gradient(circle at 55% 25%, rgba(30,90,168,0.25) 0 12px, transparent 13px),
     linear-gradient(135deg, #d6e6fa 0%, #c2d9f5 100%);
 }
-.phone-row { height: 12px; border-radius: 6px; background: #d2d2d7; margin-bottom: 10px; }
-.phone-row.short { width: 60%; }
+.phone-event {
+  font-size: 16px; font-weight: 700; color: #0f1f38; margin-bottom: 4px;
+}
+.phone-place {
+  font-size: 13px; color: #86868b;
+}
 
 /* Browser mockup */
 .browser-mock {
@@ -201,19 +205,29 @@ body {
 .browser-bar span:nth-child(3) { background: #28c840; }
 .browser-body { padding: 22px; }
 .browser-hero {
-  height: 110px; border-radius: 10px; margin-bottom: 16px;
+  border-radius: 10px; margin-bottom: 16px; padding: 22px 20px;
   background: linear-gradient(135deg, #0f1f38 0%, #1e5aa8 100%);
+  display: flex; flex-direction: column; gap: 6px;
 }
-.browser-lines i {
-  display: block; height: 11px; border-radius: 6px; background: #e5e5ea; margin-bottom: 10px;
+.browser-headline {
+  font-size: 19px; font-weight: 700; color: #fff; letter-spacing: -0.01em;
 }
-.browser-lines i.w-short { width: 55%; }
+.browser-sub {
+  font-size: 13px; color: rgba(255,255,255,0.75);
+}
+.browser-text {
+  font-size: 14px; line-height: 1.5; color: #6e6e73;
+}
 
 /* Ledger mockup */
 .ledger-mock {
   width: 100%; max-width: 380px; background: #fff; border-radius: 18px;
   padding: 28px 26px;
   box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.12);
+}
+.ledger-month {
+  font-size: 13px; font-weight: 600; color: #86868b;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
 }
 .ledger-row {
   display: flex; justify-content: space-between; align-items: center;
