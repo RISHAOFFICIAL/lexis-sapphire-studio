@@ -1,6 +1,6 @@
-// Scroll reveal for cards and steps
+// Scroll reveal for .reveal elements
 document.addEventListener("DOMContentLoaded", function () {
-  var items = document.querySelectorAll(".card, .step");
+  var items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
     items.forEach(function (el) { el.classList.add("visible"); });
     return;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lexis Sapphire Studio | iOS App Development & Bookkeeping</title>
+<title>Lexis Sapphire Studio | iOS App Development &amp; Bookkeeping</title>
 <meta name="description" content="Lexis Sapphire Studio. iOS app development, web development, and bookkeeping services. Detroit-based, available for remote freelance work.">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,7 +11,10 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="logo">Lexis Sapphire Studio</a>
+    <a href="#" class="logo" aria-label="Lexis Sapphire Studio home">
+      <svg class="logo-mark" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12 12 1.5Z" stroke="#0f1f38" stroke-width="1.6"/><path d="M12 1.5 16.5 12 12 22.5 7.5 12 12 1.5Z" stroke="#c9a227" stroke-width="1.2"/><path d="M1.5 12h21" stroke="#0f1f38" stroke-width="1.2"/></svg>
+      <span>Lexis Sapphire Studio</span>
+    </a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#work">Work</a>
@@ -24,88 +27,139 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">Detroit based, working remotely worldwide</p>
-    <h1>Lexis Sapphire Studio</h1>
-    <p class="hero-sub">iOS app development and bookkeeping services. Clean code, thoughtful design, and financials you can trust, built for small businesses and founders.</p>
+    <p class="hero-eyebrow">Lexis Sapphire Studio</p>
+    <h1>Apps. Websites. Books.<br>Built right.</h1>
+    <p class="hero-sub">iOS development and bookkeeping for small businesses and founders. Detroit based, working remotely worldwide.</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary">Hire Me</a>
-      <a href="#work" class="btn btn-secondary">See My Work</a>
+      <a href="#work" class="link-arrow">See My Work</a>
     </div>
   </div>
 </header>
 
-<section id="services" class="section">
-  <div class="container">
+<section id="services" class="services">
+  <div class="section-head">
     <h2>Services</h2>
-    <p class="section-intro">Two practice areas, one standard of care. Every engagement gets a clear scope, honest timelines, and regular updates.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon">&#63743;</div>
-        <h3>iOS App Development</h3>
-        <p>Native iPhone apps built with Swift and SwiftUI, designed to Apple Human Interface Guidelines with Liquid Glass treatments. AI assisted building means faster delivery without cutting corners.</p>
-        <ul>
-          <li>Swift and SwiftUI development</li>
-          <li>Apple HIG compliant design</li>
-          <li>Supabase and SwiftData backends</li>
-          <li>TestFlight and App Store release support</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#9000;</div>
-        <h3>Web Development</h3>
-        <p>Fast, modern websites and web apps. From marketing sites to full Next.js applications with real backends, built to load quickly and look sharp on every device.</p>
-        <ul>
-          <li>Next.js web applications</li>
-          <li>Static marketing sites</li>
-          <li>Shopify store customization</li>
-          <li>Hosting and deployment setup</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#36;</div>
-        <h3>Bookkeeping Services</h3>
-        <p>Monthly bookkeeping in QuickBooks Online for small businesses. Clean books, reconciled accounts, and reports you can actually read, starting at $75 per month.</p>
-        <ul>
-          <li>Monthly plans from $75/mo</li>
-          <li>Cleanup and catch up packages</li>
-          <li>Bank and credit card reconciliation</li>
-          <li>Monthly financial reports</li>
-        </ul>
-        <a href="https://www.fiverr.com/lexissapphire/keep-your-small-business-books-clean-every-month-in-quickbooks-online" class="card-link" target="_blank" rel="noopener">Order on Fiverr &rarr;</a>
+    <p>Two practice areas. One standard of care.</p>
+  </div>
+
+  <article class="product product-alt">
+    <div class="product-inner">
+      <p class="product-eyebrow">iOS App Development</p>
+      <h3>Apps that feel native.<br>Because they are.</h3>
+      <p class="product-copy">Native iPhone apps built with Swift and SwiftUI, designed to Apple Human Interface Guidelines with Liquid Glass treatments. AI assisted building means faster delivery without cutting corners.</p>
+      <ul class="product-list">
+        <li>Swift and SwiftUI development</li>
+        <li>Apple HIG compliant design</li>
+        <li>Supabase and SwiftData backends</li>
+        <li>TestFlight and App Store release support</li>
+      </ul>
+      <a href="#contact" class="link-arrow">Start your app</a>
+    </div>
+    <div class="product-visual visual-app" aria-hidden="true">
+      <div class="phone-mock">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-title">Venture Map</div>
+          <div class="phone-map"></div>
+          <div class="phone-row"></div>
+          <div class="phone-row short"></div>
+        </div>
       </div>
     </div>
-  </div>
+  </article>
+
+  <article class="product">
+    <div class="product-inner">
+      <p class="product-eyebrow">Web Development</p>
+      <h3>Websites that load fast.<br>And look sharp.</h3>
+      <p class="product-copy">Fast, modern websites and web apps. From marketing sites to full Next.js applications with real backends, built to load quickly and look sharp on every device.</p>
+      <ul class="product-list">
+        <li>Next.js web applications</li>
+        <li>Static marketing sites</li>
+        <li>Shopify store customization</li>
+        <li>Hosting and deployment setup</li>
+      </ul>
+      <a href="#contact" class="link-arrow">Start your website</a>
+    </div>
+    <div class="product-visual visual-web" aria-hidden="true">
+      <div class="browser-mock">
+        <div class="browser-bar"><span></span><span></span><span></span></div>
+        <div class="browser-body">
+          <div class="browser-hero"></div>
+          <div class="browser-lines"><i></i><i></i><i class="w-short"></i></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="product product-alt">
+    <div class="product-inner">
+      <p class="product-eyebrow">Bookkeeping Services</p>
+      <h3>Books so clean,<br>tax season is boring.</h3>
+      <p class="product-copy">Monthly bookkeeping in QuickBooks Online for small businesses. Clean books, reconciled accounts, and reports you can actually read. Starting at $75 per month.</p>
+      <ul class="product-list">
+        <li>Monthly plans from $75/mo</li>
+        <li>Cleanup and catch up packages</li>
+        <li>Bank and credit card reconciliation</li>
+        <li>Monthly financial reports</li>
+      </ul>
+      <a href="https://www.fiverr.com/lexissapphire/keep-your-small-business-books-clean-every-month-in-quickbooks-online" class="link-arrow" target="_blank" rel="noopener">Order on Fiverr</a>
+    </div>
+    <div class="product-visual visual-books" aria-hidden="true">
+      <div class="ledger-mock">
+        <div class="ledger-row"><span>Revenue</span><b>$12,480</b></div>
+        <div class="ledger-row"><span>Expenses</span><b>$4,210</b></div>
+        <div class="ledger-row total"><span>Net</span><b>$8,270</b></div>
+        <div class="ledger-check">&#10003; Reconciled</div>
+      </div>
+    </div>
+  </article>
 </section>
 
-<section id="work" class="section section-alt">
+<section id="work" class="section section-gray">
   <div class="container">
-    <h2>Selected Work</h2>
-    <p class="section-intro">A few projects that show how I work. The full portfolio is at <a href="https://rishaofficial.github.io/portfolio/" target="_blank" rel="noopener">rishaofficial.github.io/portfolio</a>.</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Venture Map</h3>
-        <p class="card-tag">iOS, SwiftUI</p>
-        <p>An iOS app helping a Detroit community leader log the neighborhoods he has served and visualize his reach on a map to find expansion opportunities. Built with my Apple Developer Academy Foundations team.</p>
-        <a href="https://github.com/RISHAOFFICIAL/venture-map" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-      <div class="card">
-        <h3>Coffee Shop App</h3>
-        <p class="card-tag">iOS, SwiftUI, Supabase</p>
-        <p>A Detroit coffee shop directory plus personal visited log. Supabase backend for the shop directory, SwiftData on device first with offline support, Sign in with Apple, and MapKit discovery.</p>
-        <a href="https://github.com/RISHAOFFICIAL/coffee-shop-app" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-      <div class="card">
-        <h3>AlumniUp</h3>
-        <p class="card-tag">Next.js, Supabase, Stripe</p>
-        <p>Crowdfunding for Detroit school needs with a public money trail from donation to verified classroom use. Full stage based process with a written case study. Live at alumniupdetroit.org.</p>
-        <a href="https://alumniupdetroit.org" class="card-link" target="_blank" rel="noopener">Visit live site &rarr;</a>
-      </div>
-      <div class="card">
-        <h3>Pawche</h3>
-        <p class="card-tag">Shopify, Ecommerce</p>
-        <p>A high end pet supply store on Shopify. Custom theme, Zendrop fulfillment, Klaviyo email, and Loox reviews. Live and selling at pawche.store.</p>
-        <a href="https://pawche.store" class="card-link" target="_blank" rel="noopener">Visit live site &rarr;</a>
-      </div>
+    <div class="section-head">
+      <h2>Selected Work</h2>
+      <p>A few projects that show how the studio works.</p>
+    </div>
+    <div class="work-grid">
+      <article class="work-card reveal">
+        <div class="work-visual work-venture" aria-hidden="true"><span class="work-glyph">&#9670;</span></div>
+        <div class="work-body">
+          <p class="work-tag">iOS &middot; SwiftUI</p>
+          <h3>Venture Map</h3>
+          <p>An iOS app helping a Detroit community leader log the neighborhoods he has served and visualize his reach on a map to find expansion opportunities. Built with the Apple Developer Academy Foundations team.</p>
+          <a href="https://github.com/RISHAOFFICIAL/venture-map" class="link-arrow" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+      <article class="work-card reveal">
+        <div class="work-visual work-coffee" aria-hidden="true"><span class="work-glyph">&#9749;</span></div>
+        <div class="work-body">
+          <p class="work-tag">iOS &middot; SwiftUI &middot; Supabase</p>
+          <h3>Coffee Shop App</h3>
+          <p>A Detroit coffee shop directory plus personal visited log. Supabase backend for the shop directory, SwiftData on device first with offline support, Sign in with Apple, and MapKit discovery.</p>
+          <a href="https://github.com/RISHAOFFICIAL/coffee-shop-app" class="link-arrow" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+      <article class="work-card reveal">
+        <div class="work-visual work-alumni" aria-hidden="true"><span class="work-glyph">&#127891;</span></div>
+        <div class="work-body">
+          <p class="work-tag">Next.js &middot; Supabase &middot; Stripe</p>
+          <h3>AlumniUp</h3>
+          <p>Crowdfunding for Detroit school needs with a public money trail from donation to verified classroom use. Full stage based process with a written case study. Live at alumniupdetroit.org.</p>
+          <a href="https://alumniupdetroit.org" class="link-arrow" target="_blank" rel="noopener">Visit live site</a>
+        </div>
+      </article>
+      <article class="work-card reveal">
+        <div class="work-visual work-pawche" aria-hidden="true"><span class="work-glyph">&#128062;</span></div>
+        <div class="work-body">
+          <p class="work-tag">Shopify &middot; Ecommerce</p>
+          <h3>Pawche</h3>
+          <p>A high end pet supply store on Shopify. Custom theme, Zendrop fulfillment, Klaviyo email, and Loox reviews. Live and selling at pawche.store.</p>
+          <a href="https://pawche.store" class="link-arrow" target="_blank" rel="noopener">Visit live site</a>
+        </div>
+      </article>
     </div>
     <div class="center">
       <a href="https://rishaofficial.github.io/portfolio/" class="btn btn-secondary" target="_blank" rel="noopener">View Full Portfolio</a>
@@ -115,56 +169,58 @@
 
 <section id="process" class="section">
   <div class="container">
-    <h2>How I Work</h2>
-    <p class="section-intro">Every app project follows a stage based process. You approve each stage before we move to the next, so there are no surprises.</p>
-    <div class="steps">
-      <div class="step"><span class="step-num">1</span><h4>Persona</h4><p>Who the app is for and what they need.</p></div>
-      <div class="step"><span class="step-num">2</span><h4>User Stories</h4><p>What users do, in their own words.</p></div>
-      <div class="step"><span class="step-num">3</span><h4>User Flow</h4><p>How screens connect, end to end.</p></div>
-      <div class="step"><span class="step-num">4</span><h4>Lo Fi</h4><p>Rough wireframes to test the structure.</p></div>
-      <div class="step"><span class="step-num">5</span><h4>Hi Fi</h4><p>Polished designs with Apple HIG and Liquid Glass.</p></div>
-      <div class="step"><span class="step-num">6</span><h4>Build</h4><p>Development in sprints with regular check ins.</p></div>
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>Every app project follows a stage based process. You approve each stage before we move to the next, so there are no surprises.</p>
+    </div>
+    <ol class="process-list">
+      <li class="reveal"><span class="process-num">01</span><h3>Persona</h3><p>Who the app is for and what they need.</p></li>
+      <li class="reveal"><span class="process-num">02</span><h3>User Stories</h3><p>What users do, in their own words.</p></li>
+      <li class="reveal"><span class="process-num">03</span><h3>User Flow</h3><p>How screens connect, end to end.</p></li>
+      <li class="reveal"><span class="process-num">04</span><h3>Lo Fi</h3><p>Rough wireframes to test the structure.</p></li>
+      <li class="reveal"><span class="process-num">05</span><h3>Hi Fi</h3><p>Polished designs with Apple HIG and Liquid Glass.</p></li>
+      <li class="reveal"><span class="process-num">06</span><h3>Build</h3><p>Development in sprints with regular check ins.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="about" class="section section-gray">
+  <div class="container container-narrow">
+    <div class="section-head">
+      <h2>About the studio</h2>
+    </div>
+    <div class="about-copy reveal">
+      <p>Lexis Sapphire Studio is an iOS development studio in Detroit building apps with Swift and SwiftUI. The studio graduated from the Apple Developer Academy Foundations Program and holds a Mobile Application Certificate from Wayne County Community College District. The engineering background includes a BS in Industrial Engineering and an MS in Engineering Management from Kettering University.</p>
+      <p>Lexis Sapphire Studio exists to do focused, high quality work for clients who need apps built right or books kept clean. AI is used as a pair programmer to ship faster, and Apple Human Interface Guidelines are followed on every Apple project.</p>
+    </div>
+    <div class="facts">
+      <div class="fact reveal"><strong>Based in</strong><span>Detroit, MI</span></div>
+      <div class="fact reveal"><strong>Availability</strong><span>Remote freelance</span></div>
+      <div class="fact reveal"><strong>Certifications</strong><span>Apple Foundations, WCCCD Mobile App, Networking+</span></div>
+      <div class="fact reveal"><strong>Stack</strong><span>Swift, SwiftUI, Next.js, Supabase, QuickBooks</span></div>
     </div>
   </div>
 </section>
 
-<section id="about" class="section section-alt">
-  <div class="container about-grid">
-    <div>
-      <h2>About</h2>
-      <p>Lexis Sapphire Studio is an iOS development studio in Detroit building apps with Swift and SwiftUI. I graduated from the Apple Developer Academy Foundations Program and hold a Mobile Application Certificate from Wayne County Community College District. My engineering background includes a BS in Industrial Engineering and an MS in Engineering Management from Kettering University.</p>
-      <p>I started Lexis Sapphire Studio to do focused, high quality work for clients who need apps built right or books kept clean. I use AI as a pair programmer to ship faster, and I follow Apple Human Interface Guidelines on every Apple project.</p>
-      <p>I am available for remote freelance work.</p>
-    </div>
-    <div class="about-facts">
-      <div class="fact"><strong>Based in</strong><span>Detroit, MI</span></div>
-      <div class="fact"><strong>Availability</strong><span>Remote freelance</span></div>
-      <div class="fact"><strong>Certifications</strong><span>Apple Foundations, WCCCD Mobile App, Networking+</span></div>
-      <div class="fact"><strong>Stack</strong><span>Swift, SwiftUI, Next.js, Supabase, QuickBooks</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="section">
-  <div class="container contact-box">
-    <h2>Hire Me</h2>
-    <p class="section-intro">Tell me about your project. I reply to every serious inquiry.</p>
-    <div class="contact-links">
+<section id="contact" class="cta">
+  <div class="container">
+    <h2 class="reveal">Have a project in mind?</h2>
+    <p class="reveal">Tell the studio about it. Every serious inquiry gets a reply.</p>
+    <div class="cta-links reveal">
       <a href="mailto:lexissapphire@gmail.com" class="btn btn-primary">lexissapphire@gmail.com</a>
     </div>
-    <div class="contact-alt">
+    <div class="cta-alt reveal">
       <a href="https://www.fiverr.com/lexissapphire/keep-your-small-business-books-clean-every-month-in-quickbooks-online" target="_blank" rel="noopener">Bookkeeping on Fiverr</a>
-      <span class="dot">&middot;</span>
       <a href="https://www.linkedin.com/in/erishasmith" target="_blank" rel="noopener">LinkedIn</a>
-      <span class="dot">&middot;</span>
       <a href="https://github.com/RISHAOFFICIAL" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 </section>
 
-<footer>
+<footer class="footer">
   <div class="container">
-    <p>&copy; 2026 Lexis Sapphire Studio. Built with care in Detroit.</p>
+    <p>Copyright &copy; 2026 Lexis Sapphire Studio. Built with care in Detroit.</p>
+    <p class="footer-links"><a href="#services">Services</a> <a href="#work">Work</a> <a href="#process">Process</a> <a href="#about">About</a> <a href="#contact">Hire Me</a></p>
   </div>
 </footer>
 
