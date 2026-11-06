@@ -243,6 +243,7 @@ body {
 .work-pawche { background: linear-gradient(135deg, #c9a227, #e8d5a0); }
 .work-financial { background: linear-gradient(135deg, #0f1f38, #c9a227); }
 .work-tax { background: linear-gradient(135deg, #1e5aa8, #0f1f38); }
+.work-ticket { background: linear-gradient(135deg, #1e4d2b, #4a7c59); }
 .work-body { padding: 28px 28px 32px; }
 .work-tag {
   font-size: 13px; font-weight: 600; color: var(--sapphire);
