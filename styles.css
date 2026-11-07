@@ -157,6 +157,16 @@ body {
   width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
 }
 
+.product-price {
+  font-size: 24px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.product-price span {
+  display: block; font-size: 13px; font-weight: 600;
+  color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
 /* Product visuals (CSS mockups) - bright product shots pop against dark */
 .product-visual { display: flex; justify-content: center; align-items: center; min-height: 340px; }
 
