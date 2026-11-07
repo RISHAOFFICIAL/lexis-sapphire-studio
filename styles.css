@@ -199,6 +199,59 @@ body {
 .phone-place {
   font-size: 13px; color: #86868b;
 }
+/* Social plan options */
+.social-plans {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 24px;
+}
+.social-plan {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px; padding: 18px 16px;
+}
+.social-plan-name {
+  font-size: 12px; font-weight: 600; color: var(--gold-light);
+  text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;
+}
+.social-plan-price {
+  font-size: 21px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.social-plan-price span { font-size: 13px; font-weight: 400; color: var(--muted); }
+.social-plan ul { list-style: none; }
+.social-plan li {
+  font-size: 13px; line-height: 1.45; color: var(--muted);
+  padding: 3px 0 3px 16px; position: relative;
+}
+.social-plan li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+}
+
+/* Social feed mockup (inside the phone mockup) */
+.social-screen { background: #fff; padding: 14px 12px; }
+.social-profile {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.social-avatar {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, #c9a227, #8b5a2b);
+}
+.social-id { display: flex; flex-direction: column; line-height: 1.25; flex: 1; min-width: 0; }
+.social-id b { font-size: 12px; color: #1d1d1f; white-space: nowrap; }
+.social-id i { font-size: 11px; color: #86868b; font-style: normal; }
+.social-post {
+  height: 108px; border-radius: 10px; margin-bottom: 8px;
+  background: linear-gradient(135deg, #8b5a2b 0%, #c9a227 55%, #e8d5a0 100%);
+}
+.social-post-small {
+  height: 54px; margin-top: 10px;
+  background: linear-gradient(135deg, #0f1f38 0%, #1e5aa8 100%);
+}
+.social-actions { font-size: 16px; color: #1d1d1f; letter-spacing: 6px; margin-bottom: 4px; }
+.social-likes { font-size: 12px; font-weight: 700; color: #1d1d1f; margin-bottom: 4px; }
+.social-caption { font-size: 12px; line-height: 1.4; color: #3a3a3c; }
+.social-caption b { color: #1d1d1f; }
 
 /* Browser mockup */
 .browser-mock {
@@ -368,4 +421,5 @@ body {
   .facts { grid-template-columns: 1fr; }
   .hero-ctas { flex-direction: column; gap: 16px; }
   .phone-mock { width: 190px; height: 380px; }
+  .social-plans { grid-template-columns: 1fr; }
 }
