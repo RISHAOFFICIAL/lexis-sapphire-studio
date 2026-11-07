@@ -297,6 +297,15 @@ body {
 }
 .work-body p { font-size: 15px; color: var(--muted); line-height: 1.55; margin-bottom: 18px; }
 .work-body .link-arrow { font-size: 15px; }
+.work-body .work-price {
+  font-size: 19px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.02em; margin-bottom: 18px;
+}
+.work-body .work-price span {
+  font-size: 13px; font-weight: 400; color: var(--muted);
+  letter-spacing: 0; margin-left: 2px;
+}
+.work-note { font-size: 14px; color: var(--muted); margin-top: 8px; }
 
 /* ---------- Process ---------- */
 .process-list {
