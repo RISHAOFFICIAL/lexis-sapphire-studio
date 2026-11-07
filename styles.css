@@ -256,36 +256,6 @@ body {
 .work-pawche { background: linear-gradient(135deg, #c9a227, #e8d5a0); }
 .work-financial { background: linear-gradient(135deg, #0f1f38, #c9a227); }
 .work-tax { background: linear-gradient(135deg, #1e5aa8, #0f1f38); }
-.work-ticket { background: linear-gradient(135deg, #1e4d2b, #4a7c59); }
-
-/* Mini phone mockup for the Parking Ticket Fighter card */
-.ticket-phone {
-  width: 126px; height: 204px; border-radius: 24px;
-  background: #111; padding: 6px; flex-shrink: 0;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 0 2px #3a3a3c;
-}
-.ticket-screen {
-  width: 100%; height: 100%; border-radius: 19px; overflow: hidden;
-  background: #faf6ee; padding: 10px 9px; text-align: left;
-}
-.ticket-notch {
-  width: 44px; height: 11px; background: #111; border-radius: 6px;
-  margin: 0 auto 10px;
-}
-.ticket-num { font-size: 11px; font-weight: 700; color: #1e4d2b; }
-.ticket-meta { font-size: 9px; color: #86868b; margin: 2px 0 8px; }
-.ticket-verdict {
-  display: inline-block; font-size: 9px; font-weight: 700; color: #1d7a3d;
-  background: #e6f4ea; padding: 3px 8px; border-radius: 999px; margin-bottom: 8px;
-}
-.ticket-deadline {
-  font-size: 9px; font-weight: 700; color: #8a6d1b;
-  background: #f7ecd0; padding: 5px 7px; border-radius: 8px; margin-bottom: 8px;
-}
-.ticket-check {
-  font-size: 9px; color: #1d1d1f; padding: 4px 0; border-top: 1px solid #ece5d8;
-}
-.ticket-check span { color: #1d7a3d; font-weight: 700; margin-right: 4px; }
 .work-body { padding: 28px 28px 32px; }
 .work-tag {
   font-size: 13px; font-weight: 600; color: var(--gold-light);
@@ -383,7 +353,6 @@ body {
   .work-grid { grid-template-columns: 1fr; }
   .work-visual { height: auto; aspect-ratio: 2 / 1; }
   .work-visual img { object-position: center top; }
-  .work-visual.work-ticket { height: 220px; aspect-ratio: auto; }
   .process-list { grid-template-columns: 1fr 1fr; }
   .hero { padding: 72px 22px 80px; }
   .hero-sub { font-size: 19px; }
