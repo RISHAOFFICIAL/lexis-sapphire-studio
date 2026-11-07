@@ -276,6 +276,10 @@ body {
   letter-spacing: 0; margin-left: 2px;
 }
 .work-note { font-size: 14px; color: var(--muted); margin-top: 8px; }
+.payment-note {
+  text-align: center; font-size: 15px; color: var(--muted);
+  max-width: 700px; margin: 0 auto; padding: 0 22px 80px;
+}
 
 /* ---------- Process ---------- */
 .process-list {
