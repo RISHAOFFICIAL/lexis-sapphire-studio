@@ -81,7 +81,7 @@
     },
     {
       id: "easter",
-      emoji: "\u1F423",
+      emoji: "\uD83D\uDC23",
       falling: ["\uD83C\uDF38", "\uD83C\uDF37", "\uD83D\uDC23"],
       banner: "Happy Easter from Lexis Sapphire Studio! Fresh ideas, fresh starts, fresh websites.",
       footer: "Happy Easter! Wishing you a bright and hopeful spring.",
@@ -94,7 +94,7 @@
     },
     {
       id: "mothers-day",
-      emoji: "\u1F490",
+      emoji: "\uD83D\uDC90",
       falling: ["\uD83C\uDF38", "\uD83D\uDC90", "\uD83C\uDF37"],
       banner: "Happy Mother's Day from Lexis Sapphire Studio! To every mom building a business and a family at the same time.",
       footer: "Happy Mother's Day! Honoring the moms who make it all happen.",
@@ -107,7 +107,7 @@
     },
     {
       id: "memorial-day",
-      emoji: "\u1F1FA\u1F1F8",
+      emoji: "\uD83C\uDDFA\uD83C\uDDF8",
       falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC99"],
       banner: "This Memorial Day, Lexis Sapphire Studio honors those who served and gave everything.",
       footer: "Remembering and honoring our fallen heroes this Memorial Day.",
@@ -120,7 +120,7 @@
     },
     {
       id: "fathers-day",
-      emoji: "\u1F4AA",
+      emoji: "\uD83D\uDCAA",
       falling: ["\uD83D\uDC99", "\u2B50", "\uD83D\uDCAA"],
       banner: "Happy Father's Day from Lexis Sapphire Studio! To every dad building a legacy for his family.",
       footer: "Happy Father's Day! Honoring the dads who build, provide, and inspire.",
@@ -145,7 +145,7 @@
     },
     {
       id: "july-4th",
-      emoji: "\u1F386",
+      emoji: "\uD83C\uDF86",
       falling: ["\uD83C\uDF86", "\u2B50", "\uD83C\uDF1F"],
       banner: "Happy Independence Day from Lexis Sapphire Studio! Built free, built bold, built in Detroit.",
       footer: "Happy 4th of July! Celebrating freedom and the American dream.",
@@ -157,7 +157,7 @@
     },
     {
       id: "labor-day",
-      emoji: "\u1F4AA",
+      emoji: "\uD83D\uDCAA",
       falling: ["\u2B50", "\uD83D\uDCAA", "\uD83D\uDC4F"],
       banner: "Happy Labor Day from Lexis Sapphire Studio! Honoring every worker, builder, and dreamer.",
       footer: "Happy Labor Day! Rest well, you earned it.",
@@ -170,7 +170,7 @@
     },
     {
       id: "halloween",
-      emoji: "\u1F383",
+      emoji: "\uD83C\uDF83",
       falling: ["\uD83C\uDF83", "\uD83D\uDC7B", "\uD83E\uDD87"],
       banner: "Happy Halloween from Lexis Sapphire Studio! No tricks, just treats. A website so good it is scary.",
       footer: "Happy Halloween! Have a spooky, safe, and sweet night.",
@@ -182,7 +182,7 @@
     },
     {
       id: "veterans-day",
-      emoji: "\u1F396\uFE0F",
+      emoji: "\uD83C\uDF96\uFE0F",
       falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC99"],
       banner: "Happy Veterans Day from Lexis Sapphire Studio! Thank you to every veteran who served.",
       footer: "Thank you, veterans, for your service and sacrifice.",
@@ -194,7 +194,7 @@
     },
     {
       id: "thanksgiving",
-      emoji: "\u1F342",
+      emoji: "\uD83C\uDF42",
       falling: ["\uD83C\uDF42", "\uD83C\uDF41", "\uD83C\uDF43"],
       banner: "Happy Thanksgiving from Lexis Sapphire Studio! We are grateful for every Detroit business we get to build for.",
       footer: "Happy Thanksgiving! Grateful for our clients, our community, and the city we call home.",
@@ -207,7 +207,7 @@
     },
     {
       id: "christmas",
-      emoji: "\u1F384",
+      emoji: "\uD83C\uDF84",
       falling: ["\u2744\uFE0F", "\u26C4", "\uD83C\uDF84"],
       banner: "Merry Christmas from Lexis Sapphire Studio! Wishing you joy, peace, and a brand new website under the tree.",
       footer: "Merry Christmas! Wishing you warmth, joy, and a wonderful new year.",
