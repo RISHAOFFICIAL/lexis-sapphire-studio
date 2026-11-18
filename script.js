@@ -326,4 +326,28 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // Lightbox: tap a work image to see it full size
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxClose = document.getElementById("lightbox-close");
+  if (lightbox && lightboxImg) {
+    document.querySelectorAll(".work-visual img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+    });
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    lightbox.addEventListener("click", closeLightbox);
+    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+  }
 });
