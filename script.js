@@ -46,6 +46,7 @@
     {
       id: "new-year",
       emoji: "\u2728",
+      falling: ["\u2728", "\u2B50", "\uD83C\uDF89"],
       banner: "Happy New Year from Lexis Sapphire Studio! New year, new app, new website. Let us build yours.",
       footer: "Happy New Year! Here is to bold ideas and bigger launches in the year ahead.",
       gradient: "linear-gradient(90deg, #0a0a2e 0%, #1a1a4e 25%, #2d1b69 50%, #1a1a4e 75%, #0a0a2e 100%)",
@@ -57,6 +58,7 @@
     {
       id: "valentines",
       emoji: "\u2764\uFE0F",
+      falling: ["\u2764\uFE0F", "\uD83D\uDC95", "\uD83D\uDC97"],
       banner: "Happy Valentine's Day from Lexis Sapphire Studio! Fall in love with a website your customers adore.",
       footer: "Happy Valentine's Day! Built with love in Detroit.",
       gradient: "linear-gradient(90deg, #5c0e1e 0%, #8b1a2b 25%, #c2183b 50%, #8b1a2b 75%, #5c0e1e 100%)",
@@ -68,6 +70,7 @@
     {
       id: "st-patricks",
       emoji: "\u2618\uFE0F",
+      falling: ["\u2618\uFE0F", "\uD83C\uDF40"],
       banner: "Happy St. Patrick's Day from Lexis Sapphire Studio! A little luck, a lot of hard work, and a website that shines.",
       footer: "Happy St. Patrick's Day! Wishing you luck in business and beyond.",
       gradient: "linear-gradient(90deg, #0b3d1e 0%, #145a32 25%, #1e8449 50%, #145a32 75%, #0b3d1e 100%)",
@@ -79,6 +82,7 @@
     {
       id: "easter",
       emoji: "\u1F423",
+      falling: ["\uD83C\uDF38", "\uD83C\uDF37", "\uD83D\uDC23"],
       banner: "Happy Easter from Lexis Sapphire Studio! Fresh ideas, fresh starts, fresh websites.",
       footer: "Happy Easter! Wishing you a bright and hopeful spring.",
       gradient: "linear-gradient(90deg, #6b4c8a 0%, #9b7bb8 25%, #c9a0dc 50%, #9b7bb8 75%, #6b4c8a 100%)",
@@ -91,6 +95,7 @@
     {
       id: "mothers-day",
       emoji: "\u1F490",
+      falling: ["\uD83C\uDF38", "\uD83D\uDC90", "\uD83C\uDF37"],
       banner: "Happy Mother's Day from Lexis Sapphire Studio! To every mom building a business and a family at the same time.",
       footer: "Happy Mother's Day! Honoring the moms who make it all happen.",
       gradient: "linear-gradient(90deg, #6b2d4a 0%, #9b4a72 25%, #d4789e 50%, #9b4a72 75%, #6b2d4a 100%)",
@@ -103,6 +108,7 @@
     {
       id: "memorial-day",
       emoji: "\u1F1FA\u1F1F8",
+      falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC99"],
       banner: "This Memorial Day, Lexis Sapphire Studio honors those who served and gave everything.",
       footer: "Remembering and honoring our fallen heroes this Memorial Day.",
       gradient: "linear-gradient(90deg, #1a1a3e 0%, #2c3e6b 25%, #4a6fa5 50%, #2c3e6b 75%, #1a1a3e 100%)",
@@ -115,6 +121,7 @@
     {
       id: "fathers-day",
       emoji: "\u1F4AA",
+      falling: ["\uD83D\uDC99", "\u2B50", "\uD83D\uDCAA"],
       banner: "Happy Father's Day from Lexis Sapphire Studio! To every dad building a legacy for his family.",
       footer: "Happy Father's Day! Honoring the dads who build, provide, and inspire.",
       gradient: "linear-gradient(90deg, #1a2f4a 0%, #2c4a6b 25%, #4a7a9b 50%, #2c4a6b 75%, #1a2f4a 100%)",
@@ -127,6 +134,7 @@
     {
       id: "juneteenth",
       emoji: "\u270A\uFE0F",
+      falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC9A"],
       banner: "Happy Juneteenth from Lexis Sapphire Studio! Celebrating freedom, resilience, and Black excellence in Detroit and beyond.",
       footer: "Happy Juneteenth! Freedom, pride, and progress.",
       gradient: "linear-gradient(90deg, #5c0e0e 0%, #8b1a1a 25%, #1a5c1a 50%, #1a1a8b 75%, #5c0e0e 100%)",
@@ -138,6 +146,7 @@
     {
       id: "july-4th",
       emoji: "\u1F386",
+      falling: ["\uD83C\uDF86", "\u2B50", "\uD83C\uDF1F"],
       banner: "Happy Independence Day from Lexis Sapphire Studio! Built free, built bold, built in Detroit.",
       footer: "Happy 4th of July! Celebrating freedom and the American dream.",
       gradient: "linear-gradient(90deg, #0e2a5c 0%, #1a4a8b 25%, #c2183b 50%, #1a4a8b 75%, #0e2a5c 100%)",
@@ -149,6 +158,7 @@
     {
       id: "labor-day",
       emoji: "\u1F4AA",
+      falling: ["\u2B50", "\uD83D\uDCAA", "\uD83D\uDC4F"],
       banner: "Happy Labor Day from Lexis Sapphire Studio! Honoring every worker, builder, and dreamer.",
       footer: "Happy Labor Day! Rest well, you earned it.",
       gradient: "linear-gradient(90deg, #2e4a1e 0%, #4a6b2e 25%, #6b8e3e 50%, #4a6b2e 75%, #2e4a1e 100%)",
@@ -161,6 +171,7 @@
     {
       id: "halloween",
       emoji: "\u1F383",
+      falling: ["\uD83C\uDF83", "\uD83D\uDC7B", "\uD83E\uDD87"],
       banner: "Happy Halloween from Lexis Sapphire Studio! No tricks, just treats. A website so good it is scary.",
       footer: "Happy Halloween! Have a spooky, safe, and sweet night.",
       gradient: "linear-gradient(90deg, #1a0a2e 0%, #2e1a4a 25%, #e65100 50%, #2e1a4a 75%, #1a0a2e 100%)",
@@ -172,6 +183,7 @@
     {
       id: "veterans-day",
       emoji: "\u1F396\uFE0F",
+      falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC99"],
       banner: "Happy Veterans Day from Lexis Sapphire Studio! Thank you to every veteran who served.",
       footer: "Thank you, veterans, for your service and sacrifice.",
       gradient: "linear-gradient(90deg, #1a1a3e 0%, #2c3e6b 25%, #8b1a1a 50%, #2c3e6b 75%, #1a1a3e 100%)",
@@ -183,6 +195,7 @@
     {
       id: "thanksgiving",
       emoji: "\u1F342",
+      falling: ["\uD83C\uDF42", "\uD83C\uDF41", "\uD83C\uDF43"],
       banner: "Happy Thanksgiving from Lexis Sapphire Studio! We are grateful for every Detroit business we get to build for.",
       footer: "Happy Thanksgiving! Grateful for our clients, our community, and the city we call home.",
       gradient: "linear-gradient(90deg, #5c2e0e 0%, #8b4513 25%, #b5651d 50%, #8b4513 75%, #5c2e0e 100%)",
@@ -195,6 +208,7 @@
     {
       id: "christmas",
       emoji: "\u1F384",
+      falling: ["\u2744\uFE0F", "\u26C4", "\uD83C\uDF84"],
       banner: "Merry Christmas from Lexis Sapphire Studio! Wishing you joy, peace, and a brand new website under the tree.",
       footer: "Merry Christmas! Wishing you warmth, joy, and a wonderful new year.",
       gradient: "linear-gradient(90deg, #0b3d1e 0%, #145a32 25%, #8b1a1a 50%, #145a32 75%, #0b3d1e 100%)",
@@ -217,6 +231,36 @@
       }
     }
     return null;
+  }
+
+  // --- Falling seasonal elements (leaves, snow, etc.) ---
+  // Pure CSS animation on emoji characters: zero image downloads,
+  // GPU-accelerated transforms only, so page speed is unaffected.
+  // Respects prefers-reduced-motion and pauses when tab is hidden.
+  function startFalling(h) {
+    if (!h || !h.falling || !h.falling.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Fewer pieces on small screens for performance
+    var isMobile = window.innerWidth < 700;
+    var count = isMobile ? 10 : 16;
+    var container = document.createElement("div");
+    container.className = "falling-layer";
+    container.setAttribute("aria-hidden", "true");
+    for (var i = 0; i < count; i++) {
+      var el = document.createElement("span");
+      el.className = "falling-piece";
+      el.textContent = h.falling[i % h.falling.length];
+      // Randomize position, size, speed, and phase
+      el.style.left = (Math.random() * 96 + 2) + "%";
+      el.style.fontSize = (Math.random() * 10 + 14) + "px";
+      el.style.opacity = (Math.random() * 0.4 + 0.5).toFixed(2);
+      var duration = (Math.random() * 8 + 10).toFixed(1);
+      el.style.animationDuration = duration + "s";
+      // Negative delay spreads pieces across the screen on load
+      el.style.animationDelay = (-Math.random() * parseFloat(duration)).toFixed(1) + "s";
+      container.appendChild(el);
+    }
+    document.body.appendChild(container);
   }
 
   function applySeason() {
@@ -249,6 +293,8 @@
         "radial-gradient(ellipse 50% 40% at 50% 100%, " + h.glow + " 0%, transparent 70%)," +
         "var(--bg)";
     }
+    // Falling seasonal pieces (leaves for Thanksgiving, snow for Christmas, etc.)
+    startFalling(h);
   }
 
   document.addEventListener("DOMContentLoaded", applySeason);

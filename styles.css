@@ -544,6 +544,33 @@ h1, h2, h3, .founder-name {
 .footer-links a { color: var(--muted); text-decoration: none; }
 .footer-links a:hover { text-decoration: underline; color: var(--text); }
 
+/* ---------- Falling seasonal pieces ---------- */
+/* Emoji leaves/snow/etc. falling across the whole page.
+   Transform-only animation (GPU-accelerated), pointer-events none
+   so they never block clicks. Below the nav (z-index 100). */
+.falling-layer {
+  position: fixed; inset: 0; z-index: 90;
+  pointer-events: none; overflow: hidden;
+}
+.falling-piece {
+  position: absolute; top: -8%;
+  display: inline-block;
+  animation-name: seasonal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+@keyframes seasonal-fall {
+  0%   { transform: translateY(-5vh) translateX(0) rotate(0deg); }
+  25%  { transform: translateY(30vh) translateX(22px) rotate(100deg); }
+  50%  { transform: translateY(60vh) translateX(-18px) rotate(200deg); }
+  75%  { transform: translateY(90vh) translateX(14px) rotate(300deg); }
+  100% { transform: translateY(115vh) translateX(0) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .falling-layer { display: none; }
+}
+
 /* ---------- Scroll reveal ---------- */
 .reveal {
   opacity: 0; transform: translateY(24px);
