@@ -72,14 +72,23 @@ h1, h2, h3, .founder-name {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 110px 22px 120px;
-  text-align: center;
+  padding: 80px 22px 60px;
   background:
     radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201, 162, 39, 0.12) 0%, transparent 70%),
     radial-gradient(ellipse 50% 40% at 50% 100%, rgba(41, 151, 255, 0.08) 0%, transparent 70%),
     var(--bg);
 }
-.hero-inner { max-width: 900px; margin: 0 auto; }
+.hero-inner {
+  max-width: 1024px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px;
+  align-items: center;
+}
+.hero-copy { text-align: left; }
+.hero-visual { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.hero-video-caption {
+  font-size: 14px; color: var(--muted); text-align: center;
+}
+.hero-video-caption b { color: var(--gold-light); font-weight: 600; }
 .hero-eyebrow {
   font-size: 17px; font-weight: 600; color: var(--gold-light);
   margin-bottom: 12px; letter-spacing: -0.01em;
@@ -98,13 +107,13 @@ h1, h2, h3, .founder-name {
 }
 .hero-sub {
   font-size: 21px; line-height: 1.4; color: var(--muted);
-  max-width: 640px; margin: 0 auto 32px;
+  max-width: 560px; margin: 0 0 32px;
   letter-spacing: -0.01em;
 }
-.hero-ctas { display: flex; gap: 28px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.hero-ctas { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
 .hero-stats {
   display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
-  margin-top: 56px; padding-top: 32px;
+  max-width: 1024px; margin: 56px auto 0; padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 .hero-stat { text-align: center; }
@@ -463,6 +472,10 @@ h1, h2, h3, .founder-name {
 
 /* ---------- Mobile ---------- */
 @media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .hero-copy { text-align: center; }
+  .hero-sub { margin: 0 auto 32px; }
+  .hero-ctas { justify-content: center; }
   .product { grid-template-columns: 1fr; gap: 40px; padding: 64px 22px; }
   .product-alt .product-inner { margin-left: 0; }
   .product-visual { min-height: 0; }
