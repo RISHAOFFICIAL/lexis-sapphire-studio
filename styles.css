@@ -161,7 +161,38 @@ h1, h2, h3, .founder-name {
 .section-head p { font-size: 19px; color: var(--muted); letter-spacing: -0.01em; }
 
 /* ---------- Services: Apple product showcase ---------- */
-.services { padding: 40px 0 0; background: var(--bg); }
+.services { padding: 64px 22px 48px; background: var(--bg); }
+/* Compact services grid */
+.services-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  max-width: 1024px; margin: 0 auto;
+}
+.service-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.service-card:hover {
+  border-color: rgba(201, 162, 39, 0.5);
+  transform: translateY(-2px);
+}
+.service-eyebrow {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gold-light);
+}
+.service-card h3 {
+  font-size: 24px; line-height: 1.2; letter-spacing: -0.01em;
+}
+.service-card p:not(.service-eyebrow):not(.service-price) {
+  font-size: 16px; line-height: 1.55; color: var(--muted); flex: 1;
+}
+.service-price {
+  font-size: 17px; font-weight: 600; color: var(--text);
+  padding-top: 12px; border-top: 1px solid var(--border);
+}
+.service-links { display: flex; gap: 24px; flex-wrap: wrap; }
+/* Product sections (legacy, unused after grid redesign) */
 .product {
   display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
   max-width: 1024px; margin: 0 auto; padding: 80px 22px;
@@ -500,6 +531,7 @@ h1, h2, h3, .founder-name {
   .hero-copy { text-align: center; }
   .hero-sub { margin: 0 auto 32px; }
   .hero-ctas { justify-content: center; }
+  .services-grid { grid-template-columns: 1fr; }
   .product { grid-template-columns: 1fr; gap: 40px; padding: 64px 22px; }
   .product-alt .product-inner { margin-left: 0; }
   .product-visual { min-height: 0; }
