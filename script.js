@@ -350,4 +350,28 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.key === "Escape") closeLightbox();
     });
   }
+
+  // PopOut demo video: show a play button if autoplay fails, tap to play/pause
+  var demoVideo = document.getElementById("popout-demo");
+  var playBtn = document.getElementById("popout-play-btn");
+  if (demoVideo && playBtn) {
+    function syncPlayButton() {
+      playBtn.hidden = !demoVideo.paused;
+    }
+    // Autoplay may be blocked; check after a short delay
+    setTimeout(syncPlayButton, 500);
+    demoVideo.addEventListener("play", syncPlayButton);
+    demoVideo.addEventListener("pause", syncPlayButton);
+    playBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      demoVideo.play();
+    });
+    demoVideo.addEventListener("click", function () {
+      if (demoVideo.paused) {
+        demoVideo.play();
+      } else {
+        demoVideo.pause();
+      }
+    });
+  }
 });
