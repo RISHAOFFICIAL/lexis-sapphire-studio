@@ -248,6 +248,12 @@ body {
   height: 54px; margin-top: 10px;
   background: linear-gradient(135deg, #0f1f38 0%, #1e5aa8 100%);
 }
+.popout-post {
+  height: 128px;
+  background: linear-gradient(135deg, #5b3a1a 0%, #8b5a2b 40%, #c9a227 75%, #e8d5a0 100%);
+  box-shadow: 0 8px 24px rgba(139, 90, 43, 0.45);
+  transform: scale(1.04);
+}
 .social-actions { font-size: 16px; color: #1d1d1f; letter-spacing: 6px; margin-bottom: 4px; }
 .social-likes { font-size: 12px; font-weight: 700; color: #1d1d1f; margin-bottom: 4px; }
 .social-caption { font-size: 12px; line-height: 1.4; color: #3a3a3c; }
