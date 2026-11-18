@@ -281,7 +281,7 @@ h1, h2, h3, .founder-name {
   height: 54px; margin-top: 10px;
   background: linear-gradient(135deg, #0f1f38 0%, #1e5aa8 100%);
 }
-.poppet-post {
+.popout-post {
   height: 128px;
   background: linear-gradient(135deg, #5b3a1a 0%, #8b5a2b 40%, #c9a227 75%, #e8d5a0 100%);
   box-shadow: 0 8px 24px rgba(139, 90, 43, 0.45);
