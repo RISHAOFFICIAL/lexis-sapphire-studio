@@ -293,6 +293,8 @@
         "radial-gradient(ellipse 50% 40% at 50% 100%, " + h.glow + " 0%, transparent 70%)," +
         "var(--bg)";
     }
+    // Falling seasonal pieces (leaves for Thanksgiving, snow for Christmas, etc.)
+    startFalling(h);
   }
 
   document.addEventListener("DOMContentLoaded", applySeason);
