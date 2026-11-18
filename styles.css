@@ -39,6 +39,29 @@ h1, h2, h3, .founder-name {
 .center { text-align: center; margin-top: 44px; }
 
 /* ---------- Nav (Apple style: 44px, translucent dark, small text) ---------- */
+/* Thanksgiving seasonal decor */
+.seasonal-banner {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  padding: 10px 22px;
+  background: linear-gradient(90deg, #5c2e0e 0%, #8b4513 25%, #b5651d 50%, #8b4513 75%, #5c2e0e 100%);
+  color: #fff7e6; text-align: center;
+  position: relative; z-index: 101;
+}
+.seasonal-banner p {
+  font-size: 14px; line-height: 1.4; margin: 0;
+  font-weight: 500; letter-spacing: 0.01em;
+}
+.seasonal-leaf { font-size: 18px; flex-shrink: 0; animation: leaf-sway 3s ease-in-out infinite; }
+.seasonal-leaf:last-child { animation-delay: 1.5s; }
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-8deg) translateY(0); }
+  50% { transform: rotate(8deg) translateY(-2px); }
+}
+.seasonal-footer {
+  text-align: center; font-size: 14px; color: var(--gold-light);
+  margin-top: 16px;
+}
+
 .nav {
   position: sticky; top: 0; z-index: 100;
   height: 44px;
@@ -75,7 +98,8 @@ h1, h2, h3, .founder-name {
   padding: 80px 22px 60px;
   background:
     radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201, 162, 39, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(41, 151, 255, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(181, 101, 29, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 85% 20%, rgba(139, 69, 19, 0.12) 0%, transparent 70%),
     var(--bg);
 }
 .hero-inner {
