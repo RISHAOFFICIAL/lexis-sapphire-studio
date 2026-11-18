@@ -361,7 +361,7 @@ body {
   margin-top: 16px;
 }
 .founder-photo {
-  width: 180px; height: 180px; object-fit: cover; object-position: top;
+  width: 180px; height: 180px; object-fit: cover; object-position: center;
   border-radius: 50%; border: 3px solid var(--gold, #C9A227);
   flex-shrink: 0;
 }
