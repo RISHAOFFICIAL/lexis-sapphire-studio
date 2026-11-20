@@ -597,6 +597,65 @@ h1, h2, h3, .founder-name {
 }
 .fact span { font-size: 15px; color: var(--text); }
 
+/* ---------- Referral Program ---------- */
+.refer {
+  background: linear-gradient(180deg, var(--bg) 0%, #0a1628 50%, var(--bg) 100%);
+  border-top: 1px solid rgba(201, 162, 39, 0.25);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+}
+.refer-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  max-width: 900px; margin: 0 auto 56px;
+}
+.refer-step { text-align: center; padding: 0 12px; }
+.refer-step-num {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 1.5px solid var(--gold); color: var(--gold-light);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 22px; font-weight: 600;
+  margin: 0 auto 16px;
+}
+.refer-step h3 {
+  font-size: 20px; margin-bottom: 8px; color: var(--text);
+}
+.refer-step p { font-size: 15px; color: var(--muted); line-height: 1.55; }
+.refer-rewards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 900px; margin: 0 auto 40px;
+}
+.refer-reward {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 16px; padding: 28px 24px; text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.refer-reward:hover {
+  border-color: rgba(201, 162, 39, 0.6);
+  transform: translateY(-2px);
+}
+.refer-reward-type {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--gold-light); margin-bottom: 10px;
+}
+.refer-reward-amount {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 36px; font-weight: 600; color: var(--text);
+  margin-bottom: 8px; line-height: 1.1;
+}
+.refer-reward-detail { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.refer-bonus {
+  max-width: 700px; margin: 0 auto 36px; text-align: center;
+  background: rgba(201, 162, 39, 0.08);
+  border-radius: 14px; padding: 24px 28px;
+}
+.refer-bonus p { font-size: 16px; color: var(--text); line-height: 1.55; margin-bottom: 8px; }
+.refer-bonus p:last-child { margin-bottom: 0; }
+.refer-bonus strong { color: var(--gold-light); }
+@media (max-width: 860px) {
+  .refer-steps, .refer-rewards { grid-template-columns: 1fr; max-width: 420px; }
+}
+
 /* ---------- CTA ---------- */
 .cta { padding: 110px 22px; text-align: center; background: var(--bg); }
 .cta h2 {
