@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:," />
+<title>DealDesk — Detroit Deal Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e100e;
+    --bg2:#141714;
+    --panel:#1a1e1a;
+    --panel2:#20251f;
+    --panel3:#262b25;
+    --line:#2e332e;
+    --line2:#3a403a;
+    --ink:#f0f2e9;
+    --muted:#9aa392;
+    --muted2:#6f776b;
+    --lime:#c6ff00;
+    --lime-dim:#9bcc00;
+    --lime-ink:#111400;
+    --amber:#ffb000;
+    --red:#ff4d2e;
+    --cyan:#3ee6c4;
+    --radius:6px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  button,input,select,textarea{font:inherit}
+  button,[role="button"],select,input:not([type="checkbox"]){min-height:38px}
+  a{color:var(--lime)}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  .anton{font-family:"Anton",sans-serif;letter-spacing:.02em}
+
+  /* TICKER */
+  .ticker{background:var(--lime);color:#0c0f00;overflow:hidden;white-space:nowrap;border-bottom:3px solid #000}
+  .ticker-track{display:inline-flex;gap:0;animation:tick 38s linear infinite;padding:7px 0;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .ticker-track span{padding:0 18px;border-right:1px solid rgba(0,0,0,.25)}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:40;background:rgba(14,16,14,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .head-in{max-width:1440px;margin:0 auto;padding:14px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .mark{width:46px;height:46px;background:var(--lime);color:#000;display:grid;place-items:center;font-family:"Anton";font-size:22px;line-height:1;box-shadow:4px 4px 0 #000;flex:none}
+  .brand h1{margin:0;font-family:"Anton";font-size:30px;line-height:.9;letter-spacing:.03em;text-transform:uppercase}
+  .brand h1 em{font-style:normal;color:var(--lime)}
+  .brand p{margin:3px 0 0;font-family:"IBM Plex Mono";font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .head-actions{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .clock{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted);border:1px solid var(--line);padding:8px 10px;background:var(--panel)}
+  .clock b{color:var(--ink)}
+  .btn{border:1px solid var(--line2);background:var(--panel2);color:var(--ink);padding:9px 14px;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+  .btn:hover{border-color:var(--lime);color:var(--lime)}
+  .btn-lime{background:var(--lime);color:#0a0d00;border-color:var(--lime);box-shadow:3px 3px 0 #000}
+  .btn-lime:hover{background:#d8ff4d;color:#000}
+  .btn-sm{padding:6px 10px;font-size:11px;min-height:36px}
+
+  .wrap{max-width:1440px;margin:0 auto;padding:20px}
+
+  /* HERO STRIP */
+  .hero{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-bottom:16px}
+  .hero-main{background:var(--panel);border:1px solid var(--line);padding:20px 22px;position:relative;overflow:hidden}
+  .hero-main::after{content:"313";position:absolute;right:6px;top:-18px;font-family:"Anton";font-size:120px;color:rgba(198,255,0,.07);line-height:1;pointer-events:none}
+  .hero-main h2{margin:0;font-size:28px;line-height:1.05;font-weight:900;letter-spacing:-.02em;max-width:640px}
+  .hero-main h2 span{color:var(--lime);background:#000;padding:0 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .hero-main p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.6;max-width:620px}
+  .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .tag{font-family:"IBM Plex Mono";font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line2);padding:6px 9px;color:var(--muted)}
+  .tag b{color:var(--lime)}
+  .hero-side{background:#000;border:1px solid var(--line);padding:18px}
+  .hero-side h3{margin:0 0 10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .rule-box{font-family:"IBM Plex Mono";font-size:13px;line-height:1.7;color:#d7dbc9}
+  .rule-box b{color:var(--lime);font-size:15px}
+  .rule-box .dim{color:var(--muted2)}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px}
+  .stat{background:var(--panel);border:1px solid var(--line);padding:14px 14px 12px;position:relative}
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--line2)}
+  .stat.lime::before{background:var(--lime)}
+  .stat.amber::before{background:var(--amber)}
+  .stat.cyan::before{background:var(--cyan)}
+  .stat label{display:block;font-family:"IBM Plex Mono";font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .stat .num{font-family:"Anton";font-size:32px;line-height:1;letter-spacing:.01em}
+  .stat .sub{margin-top:6px;font-size:12px;color:var(--muted);font-family:"IBM Plex Mono"}
+  .stat .sub b{color:var(--lime)}
+  .stat .sub .down{color:var(--red)}
+
+  /* CONTROLS */
+  .controls{background:var(--panel);border:1px solid var(--line);padding:14px;margin-bottom:14px}
+  .controls-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .search{flex:1 1 260px;display:flex;align-items:center;background:#0a0c0a;border:1px solid var(--line2);padding:0 12px;gap:8px}
+  .search span{color:var(--lime);font-weight:900}
+  .search input{flex:1;background:transparent;border:0;outline:0;color:var(--ink);height:42px;font-size:14px;min-width:0}
+  .search input::placeholder{color:var(--muted2)}
+  select{background:#0a0c0a;color:var(--ink);border:1px solid var(--line2);padding:9px 10px;font-size:13px;font-weight:600;min-height:42px}
+  .view-toggle{display:flex;border:1px solid var(--line2)}
+  .view-toggle button{background:#0a0c0a;color:var(--muted);border:0;border-right:1px solid var(--line2);padding:9px 13px;font-weight:800;font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;min-height:42px}
+  .view-toggle button:last-child{border-right:0}
+  .view-toggle button.active{background:var(--lime);color:#000}
+
+  .stage-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .pill{border:1px solid var(--line2);background:#0f120f;color:var(--muted);padding:8px 12px;cursor:pointer;font-weight:800;font-size:12px;letter-spacing:.03em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center;min-height:38px}
+  .pill .cnt{font-family:"IBM Plex Mono";background:var(--panel3);color:var(--ink);padding:1px 6px;font-size:11px}
+  .pill.active{background:var(--ink);color:#000;border-color:var(--ink)}
+  .pill.active .cnt{background:#000;color:var(--lime)}
+  .pill[data-stage="Lead"].active{background:#fff;border-color:#fff}
+  .pill[data-stage="Closed"].active{background:var(--lime);border-color:var(--lime)}
+
+  .result-line{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin:4px 0 12px;font-family:"IBM Plex Mono";font-size:12px;color:var(--muted)}
+  .result-line b{color:var(--ink)}
+
+  /* BOARD */
+  .board{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:start}
+  .col{background:#101210;border:1px solid var(--line);min-height:120px}
+  .col-head{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;position:sticky;top:0;background:#101210}
+  .col-head h3{margin:0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:900}
+  .col-head .val{font-family:"IBM Plex Mono";font-size:11px;color:var(--lime)}
+  .col-body{padding:8px;display:grid;gap:8px}
+  .dot{width:8px;height:8px;display:inline-block;flex:none}
+  .dot.lead{background:#e8e8e8}.dot.analyzing{background:var(--cyan)}.dot.offer{background:var(--amber)}.dot.contract{background:#ff7ad9}.dot.closed{background:var(--lime)}
+
+  /* DEAL CARD */
+  .deal{background:var(--panel);border:1px solid var(--line);cursor:pointer;position:relative}
+  .deal:hover{border-color:var(--lime-dim)}
+  .deal.hot{border-color:#4a5500}
+  .deal.hot::before{content:"HOT DEAL";position:absolute;top:-9px;right:10px;background:var(--lime);color:#000;font-family:"IBM Plex Mono";font-size:9px;font-weight:800;letter-spacing:.08em;padding:2px 6px;z-index:2}
+  .deal-top{padding:12px 12px 10px;border-bottom:1px dashed var(--line2)}
+  .deal-addr{font-weight:900;font-size:15px;line-height:1.25;letter-spacing:-.01em}
+  .deal-meta{margin-top:4px;font-family:"IBM Plex Mono";font-size:11px;color:var(--muted);line-height:1.5}
+  .deal-meta b{color:var(--ink)}
+  .specs{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .spec{font-family:"IBM Plex Mono";font-size:10.5px;border:1px solid var(--line);padding:3px 6px;color:var(--muted)}
+  .spec b{color:var(--ink)}
+  .nums{padding:10px 12px;display:grid;gap:5px;font-family:"IBM Plex Mono";font-size:12px}
+  .nums .row{display:flex;justify-content:space-between;gap:10px}
+  .nums .row span{color:var(--muted)}
+  .nums .row b{font-weight:600}
+  .profit-box{margin:0 12px 12px;background:#0a0c0a;border:1px solid var(--line);padding:10px;display:flex;justify-content:space-between;align-items:end;gap:10px}
+  .profit-box label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:"IBM Plex Mono";font-weight:700;display:block;margin-bottom:3px}
+  .profit-val{font-family:"Anton";font-size:24px;line-height:1;color:var(--lime)}
+  .profit-val.neg{color:var(--red)}
+  .margin{text-align:right;font-family:"IBM Plex Mono";font-size:11px;color:var(--muted);line-height:1.5}
+  .margin b{color:var(--ink);font-size:13px}
+  .bar{height:6px;background:#0a0c0a;border:1px solid var(--line);margin:0 12px 12px;display:flex;overflow:hidden}
+  .bar i{display:block;height:100%}
+  .bar .b-ask{background:#5a635a}.bar .b-rep{background:var(--amber)}.bar .b-prof{background:var(--lime)}
+  .deal-foot{padding:0 12px 12px;display:flex;gap:8px}
+  .deal-foot .btn{flex:1}
+
+  /* GRID VIEW */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .grid .deal-top{padding:16px 16px 12px}
+  .grid .deal-addr{font-size:17px}
+  .grid .nums{padding:12px 16px;font-size:13px}
+  .grid .profit-box{margin:0 16px 14px}
+  .grid .deal-foot{padding:0 16px 16px}
+  .grid .bar{margin:0 16px 14px}
+
+  /* TABLE VIEW */
+  .table-wrap{background:var(--panel);border:1px solid var(--line);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);background:#0f120f;white-space:nowrap}
+  td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  tbody tr{cursor:pointer}
+  tbody tr:hover td{background:#1f241f}
+  td .addr{font-weight:800}
+  td .sub2{font-family:"IBM Plex Mono";font-size:11px;color:var(--muted);margin-top:2px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono";font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line2);padding:4px 7px;white-space:nowrap}
+  .profit-cell{font-family:"IBM Plex Mono";font-weight:700;color:var(--lime)}
+  .profit-cell.neg{color:var(--red)}
+
+  .empty{background:var(--panel);border:1px dashed var(--line2);padding:36px 20px;text-align:center}
+  .empty h3{margin:0 0 6px;font-family:"Anton";font-size:22px;letter-spacing:.03em;text-transform:uppercase}
+  .empty p{margin:0;color:var(--muted);font-size:14px}
+
+  /* ANALYZER + PIPELINE SUMMARY */
+  .bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .panel{background:var(--panel);border:1px solid var(--line);padding:18px}
+  .panel h3{margin:0 0 4px;font-family:"Anton";font-size:19px;letter-spacing:.03em;text-transform:uppercase}
+  .panel h3 span{color:var(--lime)}
+  .panel .lede{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.6}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .field label{display:block;font-family:"IBM Plex Mono";font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .field input,.field select,.field textarea{width:100%;background:#0a0c0a;border:1px solid var(--line2);color:var(--ink);padding:10px;font-size:14px;outline:0}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--lime)}
+  .calc-out{margin-top:14px;background:#000;border:1px solid #2c3300;padding:14px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:end}
+  .calc-out label{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+  .calc-out .big{font-family:"Anton";font-size:30px;color:var(--lime);line-height:1}
+  .calc-out .small{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted);line-height:1.6;text-align:right}
+  .calc-out .small b{color:var(--ink)}
+  .stage-bars{display:grid;gap:10px}
+  .sbar-row{display:grid;grid-template-columns:118px 1fr 86px;gap:10px;align-items:center;font-size:12px}
+  .sbar-row .nm{font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:11px;display:flex;gap:7px;align-items:center}
+  .sbar-track{height:14px;background:#0a0c0a;border:1px solid var(--line)}
+  .sbar-fill{height:100%;background:var(--lime)}
+  .sbar-row .amt{font-family:"IBM Plex Mono";text-align:right;color:var(--muted)}
+  .sbar-row .amt b{color:var(--ink)}
+
+  footer{max-width:1440px;margin:0 auto;padding:6px 20px 28px;color:var(--muted2);font-family:"IBM Plex Mono";font-size:11px;line-height:1.7;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  /* DRAWER / MODAL */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:60;display:none}
+  .overlay.open{display:block}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);background:#151815;border-left:2px solid var(--lime);z-index:70;transform:translateX(105%);transition:transform .22s ease,visibility 0s linear .22s;overflow-y:auto;visibility:hidden;pointer-events:none}
+  .drawer.open{transform:translateX(0);visibility:visible;pointer-events:auto;transition:transform .22s ease}
+  @media (prefers-reduced-motion:reduce){.drawer{transition:none}}
+  .drawer-head{padding:20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#151815;z-index:2}
+  .drawer-head .close{position:absolute;top:14px;right:14px}
+  .drawer-body{padding:20px;display:grid;gap:16px}
+  .icon-btn{width:38px;height:38px;display:grid;place-items:center;background:var(--panel2);border:1px solid var(--line2);color:var(--ink);cursor:pointer;font-size:18px}
+  .detail-addr{font-size:24px;font-weight:900;line-height:1.15;padding-right:44px}
+  .breakdown{border:1px solid var(--line);background:#0a0c0a}
+  .breakdown .row{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--line);font-family:"IBM Plex Mono";font-size:13px}
+  .breakdown .row:last-child{border-bottom:0}
+  .breakdown .row span{color:var(--muted)}
+  .breakdown .row.total{background:var(--lime);color:#000;font-weight:800}
+  .breakdown .row.total span{color:#000}
+  .note-box{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--amber);padding:12px 14px;font-size:13.5px;line-height:1.65;color:#d8dbc9}
+  .modal{position:fixed;inset:0;z-index:80;display:none;place-items:center;padding:16px;background:rgba(0,0,0,.75)}
+  .modal.open{display:grid}
+  .modal-card{background:#151815;border:1px solid var(--line2);border-top:4px solid var(--lime);width:min(640px,100%);max-height:92vh;overflow-y:auto;padding:22px}
+  .modal-card h3{margin:0 0 4px;font-family:"Anton";font-size:24px;letter-spacing:.03em;text-transform:uppercase}
+  .modal-card .lede{color:var(--muted);font-size:13px;margin:0 0 16px;line-height:1.6}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form-grid .full{grid-column:1/-1}
+  .form-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,80px);background:var(--lime);color:#000;font-weight:800;font-size:13px;padding:12px 18px;z-index:90;box-shadow:4px 4px 0 #000;transition:transform .2s;max-width:92vw;text-align:center}
+  .toast.show{transform:translate(-50%,0)}
+  .hazard{height:8px;background:repeating-linear-gradient(-45deg,var(--lime) 0 12px,#0a0a0a 12px 24px)}
+
+  @media(max-width:1100px){
+    .stats{grid-template-columns:repeat(3,1fr)}
+    .board{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .hero{grid-template-columns:1fr}
+    .bottom-grid{grid-template-columns:1fr}
+    .table-wrap{border:0;background:transparent}
+    table,thead,tbody,tr,td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--panel);border:1px solid var(--line);margin-bottom:10px;padding:6px 0}
+    td{border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;gap:14px;text-align:right}
+    td:last-child{border-bottom:0}
+    td::before{content:attr(data-l);font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding-top:2px}
+  }
+  @media(max-width:640px){
+    .wrap{padding:14px}
+    .head-in{padding:12px 14px}
+    .brand h1{font-size:24px}
+    .stats{grid-template-columns:1fr 1fr}
+    .stat .num{font-size:26px}
+    .board{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr}
+    .calc-grid{grid-template-columns:1fr}
+    .form-grid{grid-template-columns:1fr}
+    .hero-main h2{font-size:23px}
+    .clock{display:none}
+    .sbar-row{grid-template-columns:100px 1fr 70px}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<header>
+  <div class="head-in">
+    <div class="brand">
+      <div class="mark">D$</div>
+      <div>
+        <h1>Deal<em>Desk</em></h1>
+        <p>Detroit, MI — Investor Deal Tracker</p>
+      </div>
+    </div>
+    <div class="head-actions">
+      <div class="clock">DETROIT&nbsp; <b id="clock">--:--</b> ET</div>
+      <button class="btn" id="exportBtn" type="button">↓ Export CSV</button>
+      <button class="btn btn-lime" id="addBtnTop" type="button">+ Add a Deal</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="hero-main">
+      <h2>Every Detroit deal on one desk. <span>No spreadsheets. No sticky notes.</span></h2>
+      <p>Track a lead from the first drive-by to the closing table — asking price, ARV, repairs, and real profit on every card. Numbers below are live: filter, search, or move a deal and the whole desk updates.</p>
+      <div class="hero-tags">
+        <span class="tag">Focus: <b>Eastern Market · Bagley · EEV</b></span>
+        <span class="tag">Strategy: <b>Fix &amp; Flip + BRRRR</b></span>
+        <span class="tag">Buy box: <b>$40K – $150K</b></span>
+      </div>
+    </div>
+    <div class="hero-side">
+      <h3>The 70% Rule — Quick Ref</h3>
+      <div class="rule-box">
+        MAO = (ARV × 0.70) − Repairs<br>
+        <span class="dim">Example:</span> ARV <b>$180,000</b> × .70 = $126,000<br>
+        minus $35K repairs → <b>MAO $91,000</b><br>
+        <span class="dim">Offer above MAO and the margin is gone.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" id="stats" aria-label="Pipeline summary"></section>
+
+  <section class="controls" aria-label="Search and filters">
+    <div class="controls-row">
+      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search address, neighborhood, ZIP, seller…" autocomplete="off"></label>
+      <select id="typeFilter" aria-label="Property type">
+        <option value="All">All property types</option>
+        <option>Single Family</option>
+        <option>Duplex</option>
+        <option>Multi-Family</option>
+        <option>Condo</option>
+      </select>
+      <select id="sortSelect" aria-label="Sort deals">
+        <option value="profit-desc">Sort: Highest profit</option>
+        <option value="profit-asc">Sort: Lowest profit</option>
+        <option value="arv-desc">Sort: Highest ARV</option>
+        <option value="ask-asc">Sort: Lowest asking</option>
+        <option value="ask-desc">Sort: Highest asking</option>
+        <option value="days-desc">Sort: Longest tracked</option>
+        <option value="margin-desc">Sort: Best margin %</option>
+      </select>
+      <div class="view-toggle" role="group" aria-label="View">
+        <button type="button" data-view="board" class="active">Board</button>
+        <button type="button" data-view="grid">Cards</button>
+        <button type="button" data-view="table">Table</button>
+      </div>
+    </div>
+    <div class="stage-pills" id="stagePills"></div>
+  </section>
+
+  <div class="result-line"><span id="resultCount"></span><span>Profit = ARV − Asking − Repairs − Holding (5% of ARV). Click any deal for the full breakdown.</span></div>
+
+  <main id="dealArea"></main>
+
+  <section class="bottom-grid">
+    <div class="panel">
+      <h3>MAO <span>Calculator</span></h3>
+      <p class="lede">Run the numbers before you call the seller. Max Allowable Offer uses the 70% rule Detroit flippers actually underwrite to.</p>
+      <div class="calc-grid">
+        <div class="field"><label for="calcArv">ARV ($)</label><input id="calcArv" type="number" inputmode="numeric" value="185000" min="0" step="1000"></div>
+        <div class="field"><label for="calcRep">Repairs ($)</label><input id="calcRep" type="number" inputmode="numeric" value="38000" min="0" step="500"></div>
+        <div class="field"><label for="calcAsk">They're Asking ($)</label><input id="calcAsk" type="number" inputmode="numeric" value="89900" min="0" step="500"></div>
+      </div>
+      <div class="calc-out">
+        <div><label>Max Allowable Offer</label><div class="big" id="calcMao">$91,500</div></div>
+        <div class="small" id="calcVerdict"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Pipeline <span>by Stage</span></h3>
+      <p class="lede">Where the money is sitting right now, by asking-price value in each stage.</p>
+      <div class="stage-bars" id="stageBars"></div>
+    </div>
+  </section>
+</div>
+
+<div class="hazard"></div>
+<footer>
+  <span>DEALDESK — Built for Detroit investors. Demo deals use realistic Detroit streets, neighborhoods &amp; price points.</span>
+  <span id="footDate"></span>
+</footer>
+
+<!-- DETAIL DRAWER -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Deal details">
+  <div class="drawer-head">
+    <div class="mono" style="font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase" id="dStageLine"></div>
+    <div class="detail-addr" id="dAddr" style="margin-top:6px"></div>
+    <div class="mono" style="font-size:12px;color:var(--muted);margin-top:6px" id="dMeta"></div>
+    <span id="closeSlot"></span>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<!-- ADD DEAL MODAL -->
+<div class="modal" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addTitle">
+  <div class="modal-card">
+    <h3 id="addTitle">Add a <span style="color:var(--lime)">Deal</span></h3>
+    <p class="lede">New lead off the street? Put it on the desk. Profit and MAO calculate automatically when it lands in the pipeline.</p>
+    <form id="addForm">
+      <div class="form-grid">
+        <div class="field full"><label for="fAddr">Street Address *</label><input id="fAddr" required placeholder="e.g. 15420 Woodward Ave"></div>
+        <div class="field"><label for="fHood">Neighborhood *</label><input id="fHood" required placeholder="e.g. Bagley"></div>
+        <div class="field"><label for="fZip">ZIP</label><input id="fZip" placeholder="48221" maxlength="5" inputmode="numeric"></div>
+        <div class="field"><label for="fAsk">Asking Price ($) *</label><input id="fAsk" type="number" required min="1" step="100" placeholder="85000"></div>
+        <div class="field"><label for="fArv">ARV ($) *</label><input id="fArv" type="number" required min="1" step="100" placeholder="175000"></div>
+        <div class="field"><label for="fRep">Repair Estimate ($)</label><input id="fRep" type="number" min="0" step="100" placeholder="30000"></div>
+        <div class="field"><label for="fStage">Stage</label>
+          <select id="fStage"><option>Lead</option><option>Analyzing</option><option>Offer Made</option><option>Under Contract</option><option>Closed</option></select>
+        </div>
+        <div class="field"><label for="fType">Property Type</label>
+          <select id="fType"><option>Single Family</option><option>Duplex</option><option>Multi-Family</option><option>Condo</option></select>
+        </div>
+        <div class="field"><label for="fBeds">Beds / Baths / Sq Ft</label><input id="fSpecs" placeholder="3 bd · 1.5 ba · 1,340 sqft"></div>
+        <div class="field full"><label for="fNotes">Notes</label><textarea id="fNotes" rows="2" placeholder="Seller situation, what you saw on the walkthrough…"></textarea></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-lime" type="submit" style="flex:1">Put it on the desk →</button>
+        <button class="btn" type="button" id="addCancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var STAGES = ["Lead","Analyzing","Offer Made","Under Contract","Closed"];
+var STAGE_DOT = {"Lead":"lead","Analyzing":"analyzing","Offer Made":"offer","Under Contract":"contract","Closed":"closed"};
+var NEXT_STAGE = {"Lead":"Analyzing","Analyzing":"Offer Made","Offer Made":"Under Contract","Under Contract":"Closed","Closed":null};
+
+var deals = [
+  {id:1, address:"14218 E Warren Ave", hood:"East English Village", zip:"48224", type:"Single Family", specs:"3 bd · 1.5 ba · 1,420 sqft", asking:89900, arv:185000, repairs:38000, stage:"Analyzing", days:6, seller:"Estate sale — probate", source:"Driving for dollars", hot:true, notes:"Brick colonial, original hardwoods under carpet. Roof has 3–4 years left. Seller's daughter lives in Ohio and wants it gone before winter — motivated."},
+  {id:2, address:"19355 Woodward Ave", hood:"Palmer Park", zip:"48203", type:"Single Family", specs:"4 bd · 2 ba · 1,980 sqft", asking:124500, arv:235000, repairs:52000, stage:"Offer Made", days:11, seller:"Out-of-state landlord", source:"Wholesaler list", hot:true, notes:"Offer in at $118K. Needs kitchen gut + electrical panel. Two offers competing — decision expected Friday."},
+  {id:3, address:"2050 Michigan Ave", hood:"Corktown", zip:"48216", type:"Duplex", specs:"2 units · 2,260 sqft total", asking:159000, arv:285000, repairs:61000, stage:"Under Contract", days:23, seller:"Retiring landlord, 31 yrs", source:"Agent referral", hot:false, notes:"Both units occupied, rents $950 + $875 — below market. Close scheduled Dec 4. Title came back clean."},
+  {id:4, address:"6215 Livernois Ave", hood:"Bagley", zip:"48221", type:"Single Family", specs:"3 bd · 2 ba · 1,510 sqft", asking:97500, arv:198000, repairs:41500, stage:"Lead", days:2, seller:"FSBO — sign in yard", source:"Driving for dollars", hot:false, notes:"Just spotted it. Tudor-style brick, detached garage. Haven't reached the owner yet — number on the sign goes to voicemail."},
+  {id:5, address:"14801 Grand River Ave", hood:"Grandmont Rosedale", zip:"48227", type:"Single Family", specs:"4 bd · 2.5 ba · 2,140 sqft", asking:142000, arv:262000, repairs:48000, stage:"Analyzing", days:9, seller:"Relocating for work", source:"MLS — 47 DOM", hot:false, notes:"Comps on Minock St support $260K+. Basement is finished but not permitted — budget for the city inspection dance."},
+  {id:6, address:"14624 E Jefferson Ave", hood:"Jefferson-Chalmers", zip:"48215", type:"Multi-Family", specs:"4 units · 3,880 sqft total", asking:215000, arv:390000, repairs:88000, stage:"Offer Made", days:14, seller:"Estate — three siblings", source:"Direct mail", hot:true, notes:"Waterfront-adjacent block near Alter Rd. One unit needs full rehab after a pipe burst. Siblings disagree on price — the middle one is the decision-maker."},
+  {id:7, address:"19120 W Seven Mile Rd", hood:"Evergreen-Outer Drive", zip:"48219", type:"Single Family", specs:"3 bd · 1 ba · 1,180 sqft", asking:64000, arv:142000, repairs:29500, stage:"Closed", days:41, seller:"Bank REO", source:"Auction", hot:false, notes:"Closed Oct 28 at $61,200. Crew starts demo Monday. This is the comp-maker for the whole block if it appraises right."},
+  {id:8, address:"7701 Kercheval Ave", hood:"Islandview", zip:"48214", type:"Duplex", specs:"2 units · 2,040 sqft total", asking:118500, arv:224000, repairs:46000, stage:"Under Contract", days:18, seller:"Tired landlord", source:"MREI meetup", hot:false, notes:"Inspection found knob-and-tube in the attic — renegotiated $6K credit. Earnest money is down, appraisal ordered."},
+  {id:9, address:"15433 Mack Ave", hood:"Morningside", zip:"48224", type:"Single Family", specs:"3 bd · 1.5 ba · 1,365 sqft", asking:78500, arv:168000, repairs:34000, stage:"Lead", days:4, seller:"Inherited property", source:"Probate list", hot:false, notes:"Heir lives in Atlanta, has never seen the house. Taxes current. Needs furnace — it was red-tagged last winter."},
+  {id:10, address:"2250 W Boston Blvd", hood:"Boston-Edison", zip:"48206", type:"Single Family", specs:"5 bd · 3.5 ba · 3,420 sqft", asking:289000, arv:475000, repairs:96000, stage:"Analyzing", days:13, seller:"Downsizing couple", source:"Agent referral", hot:true, notes:"Historic district rules apply — exterior work needs HDC approval. Big swing, big spread. Only works if the carriage house converts clean."},
+  {id:11, address:"13620 Gratiot Ave", hood:"Outer Drive-Hayes", zip:"48205", type:"Single Family", specs:"3 bd · 1 ba · 1,090 sqft", asking:52900, arv:128000, repairs:31000, stage:"Offer Made", days:8, seller:"Tax auction pickup", source:"Wholesaler list", hot:false, notes:"Offer at asking, cash, 14-day close. Copper is gone (of course) — already in the repair number. Rent-ready play, not a flip."},
+  {id:12, address:"4411 Cass Ave", hood:"Midtown", zip:"48201", type:"Condo", specs:"2 bd · 2 ba · 1,150 sqft", asking:132000, arv:205000, repairs:18500, stage:"Closed", days:57, seller:"Investor exit", source:"MLS", hot:false, notes:"Closed and already listed for rent at $1,650/mo. HOA is $310/mo — factored in. Wayne State grad students are the tenant pool."},
+  {id:13, address:"9925 Dexter Ave", hood:"Dexter-Linwood", zip:"48206", type:"Single Family", specs:"4 bd · 1.5 ba · 1,640 sqft", asking:58750, arv:139000, repairs:36500, stage:"Lead", days:1, seller:"City land bank adjacent", source:"Direct mail reply", hot:false, notes:"Owner called back off the postcard. House next door is land-bank owned — check the side lot, could bundle both parcels."}
+];
+
+var state = { q:"", stage:"All", type:"All", sort:"profit-desc", view:"board" };
+var selectedId = null;
+
+function holding(d){ return Math.round(d.arv * 0.05); }
+function profit(d){ return d.arv - d.asking - d.repairs - holding(d); }
+function margin(d){ return d.arv ? Math.round(profit(d)/d.arv*100) : 0; }
+function mao(d){ return Math.round(d.arv*0.70 - d.repairs); }
+function roi(d){ var inv = d.asking + d.repairs; return inv ? Math.round(profit(d)/inv*100) : 0; }
+function money(n){ var neg = n<0; var v = Math.abs(Math.round(n)).toLocaleString("en-US"); return (neg?"−$":"$")+v; }
+function moneyShort(n){ if(Math.abs(n)>=1000000) return "$"+(n/1000000).toFixed(2)+"M"; if(Math.abs(n)>=1000) return "$"+Math.round(n/1000)+"K"; return money(n); }
+function esc(s){ return String(s||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+
+function filtered(){
+  var list = deals.filter(function(d){
+    if(state.stage!=="All" && d.stage!==state.stage) return false;
+    if(state.type!=="All" && d.type!==state.type) return false;
+    if(state.q){
+      var hay = (d.address+" "+d.hood+" "+d.zip+" "+d.seller+" "+d.type).toLowerCase();
+      if(hay.indexOf(state.q.toLowerCase())===-1) return false;
+    }
+    return true;
+  });
+  var s = state.sort;
+  list.sort(function(a,b){
+    if(s==="profit-desc") return profit(b)-profit(a);
+    if(s==="profit-asc") return profit(a)-profit(b);
+    if(s==="arv-desc") return b.arv-a.arv;
+    if(s==="ask-asc") return a.asking-b.asking;
+    if(s==="ask-desc") return b.asking-a.asking;
+    if(s==="days-desc") return b.days-a.days;
+    if(s==="margin-desc") return margin(b)-margin(a);
+    return 0;
+  });
+  return list;
+}
+
+function renderStats(){
+  var active = deals.filter(function(d){return d.stage!=="Closed";});
+  var closed = deals.filter(function(d){return d.stage==="Closed";});
+  var pipelineValue = active.reduce(function(t,d){return t+d.asking;},0);
+  var pipelineArv = active.reduce(function(t,d){return t+d.arv;},0);
+  var avgProfit = deals.length ? Math.round(deals.reduce(function(t,d){return t+profit(d);},0)/deals.length) : 0;
+  var totalProfit = active.reduce(function(t,d){return t+profit(d);},0);
+  var underContract = deals.filter(function(d){return d.stage==="Under Contract";});
+  var ucValue = underContract.reduce(function(t,d){return t+profit(d);},0);
+  var hot = deals.filter(function(d){return d.hot && d.stage!=="Closed";}).length;
+  document.getElementById("stats").innerHTML =
+    stat("lime","Total Deals", deals.length, "<b>"+active.length+" active</b> · "+closed.length+" closed") +
+    stat("","Pipeline Value", moneyShort(pipelineValue), "Asking across active deals · ARV <b>"+moneyShort(pipelineArv)+"</b>") +
+    stat("lime","Projected Profit", moneyShort(totalProfit), "On active deals if all close at ask") +
+    stat("amber","Average Profit", money(avgProfit), "Per deal, all stages, after holding") +
+    stat("cyan","Under Contract", underContract.length, "<b>"+moneyShort(ucValue)+"</b> profit locked · "+hot+" hot leads");
+  function stat(cls,label,num,sub){ return '<div class="stat '+cls+'"><label>'+label+'</label><div class="num">'+num+'</div><div class="sub">'+sub+'</div></div>'; }
+
+  // stage pills
+  var pills = '<button type="button" class="pill'+(state.stage==="All"?" active":"")+'" data-stage="All">All Deals <span class="cnt">'+deals.length+'</span></button>';
+  STAGES.forEach(function(st){
+    var c = deals.filter(function(d){return d.stage===st;}).length;
+    pills += '<button type="button" class="pill'+(state.stage===st?" active":"")+'" data-stage="'+st+'"><span class="dot '+STAGE_DOT[st]+'"></span>'+st+' <span class="cnt">'+c+'</span></button>';
+  });
+  document.getElementById("stagePills").innerHTML = pills;
+  var pillEls = document.querySelectorAll(".pill");
+  for(var i=0;i<pillEls.length;i++){ pillEls[i].addEventListener("click",function(){ state.stage=this.getAttribute("data-stage"); render(); }); }
+
+  // stage bars
+  var maxV = Math.max.apply(null, STAGES.map(function(st){ return deals.filter(function(d){return d.stage===st;}).reduce(function(t,d){return t+d.asking;},0); }).concat([1]));
+  document.getElementById("stageBars").innerHTML = STAGES.map(function(st){
+    var ds = deals.filter(function(d){return d.stage===st;});
+    var v = ds.reduce(function(t,d){return t+d.asking;},0);
+    var pct = Math.max(2, Math.round(v/maxV*100));
+    return '<div class="sbar-row"><span class="nm"><span class="dot '+STAGE_DOT[st]+'"></span>'+st+'</span><div class="sbar-track"><div class="sbar-fill" style="width:'+pct+'%"></div></div><span class="amt"><b>'+ds.length+'</b> · '+moneyShort(v)+'</span></div>';
+  }).join("");
+}
+
+function cardHTML(d, compact){
+  var p = profit(d), m = margin(d);
+  var tot = Math.max(1, d.asking + d.repairs + Math.max(0,p));
+  var wAsk = Math.round(d.asking/tot*100), wRep = Math.round(d.repairs/tot*100), wProf = Math.max(0,100-wAsk-wRep);
+  var next = NEXT_STAGE[d.stage];
+  return '<article class="deal'+(d.hot&&d.stage!=="Closed"?" hot":"")+'" data-id="'+d.id+'" tabindex="0" role="button" aria-label="Open '+esc(d.address)+'">'+
+    '<div class="deal-top"><div class="deal-addr">'+esc(d.address)+'</div>'+
+    '<div class="deal-meta"><b>'+esc(d.hood)+'</b> · Detroit, MI '+esc(d.zip)+'<br>'+esc(d.type)+' · '+d.days+'d on desk · '+esc(d.source)+'</div>'+
+    '<div class="specs"><span class="spec">'+esc(d.specs)+'</span></div></div>'+
+    '<div class="nums">'+
+      '<div class="row"><span>ASKING</span><b>'+money(d.asking)+'</b></div>'+
+      '<div class="row"><span>ARV</span><b>'+money(d.arv)+'</b></div>'+
+      '<div class="row"><span>REPAIRS</span><b>'+money(d.repairs)+'</b></div>'+
+      '<div class="row"><span>MAO (70%)</span><b style="color:'+(d.asking<=mao(d)?"var(--lime)":"var(--amber)")+'">'+money(mao(d))+'</b></div>'+
+    '</div>'+
+    '<div class="profit-box"><div><label>Proj. Profit</label><div class="profit-val'+(p<0?" neg":"")+'">'+money(p)+'</div></div>'+
+    '<div class="margin">MARGIN<br><b>'+m+'%</b> · ROI <b>'+roi(d)+'%</b></div></div>'+
+    '<div class="bar" title="Asking / Repairs / Profit split"><i class="b-ask" style="width:'+wAsk+'%"></i><i class="b-rep" style="width:'+wRep+'%"></i><i class="b-prof" style="width:'+wProf+'%"></i></div>'+
+    '<div class="deal-foot">'+
+      (next ? '<button type="button" class="btn btn-sm advance" data-id="'+d.id+'">→ '+next+'</button>' : '<button type="button" class="btn btn-sm" disabled style="opacity:.55;cursor:default">✓ Closed</button>')+
+      '<button type="button" class="btn btn-sm open-deal" data-id="'+d.id+'">Numbers</button>'+
+    '</div></article>';
+}
+
+function render(){
+  renderStats();
+  var list = filtered();
+  var area = document.getElementById("dealArea");
+  document.getElementById("resultCount").innerHTML = "Showing <b>"+list.length+"</b> of <b>"+deals.length+"</b> deals"+(state.stage!=="All" ? " in <b>"+esc(state.stage)+"</b>" : "")+(state.q ? " matching “<b>"+esc(state.q)+"</b>”" : "");
+
+  if(!list.length){
+    area.innerHTML = '<div class="empty"><h3>Nothing on the desk</h3><p>No deals match that search. Clear the filters or add the lead you just drove past.</p><div style="margin-top:14px"><button class="btn btn-lime" type="button" onclick="clearFilters()">Clear filters</button></div></div>';
+    return;
+  }
+
+  if(state.view==="board"){
+    // When a single stage is filtered, board still groups — filtered list only
+    var html = '<div class="board">';
+    STAGES.forEach(function(st){
+      var ds = list.filter(function(d){return d.stage===st;});
+      var v = ds.reduce(function(t,d){return t+d.asking;},0);
+      html += '<section class="col"><div class="col-head"><h3><span class="dot '+STAGE_DOT[st]+'"></span>&nbsp; '+st+'</h3><span class="val">'+ds.length+' · '+moneyShort(v)+'</span></div><div class="col-body">';
+      html += ds.length ? ds.map(function(d){return cardHTML(d,true);}).join("") : '<div class="mono" style="font-size:11px;color:var(--muted2);padding:8px 4px">— empty —</div>';
+      html += '</div></section>';
+    });
+    html += '</div>';
+    area.innerHTML = html;
+  } else if(state.view==="grid"){
+    area.innerHTML = '<div class="grid">'+list.map(function(d){return cardHTML(d,false);}).join("")+'</div>';
+  } else {
+    var rows = list.map(function(d){
+      var p = profit(d);
+      return '<tr data-id="'+d.id+'"><td data-l="Property"><span class="addr">'+esc(d.address)+'</span><div class="sub2">'+esc(d.hood)+' · '+esc(d.zip)+' · '+esc(d.specs)+'</div></td>'+
+      '<td data-l="Stage"><span class="badge"><span class="dot '+STAGE_DOT[d.stage]+'"></span>'+d.stage+'</span></td>'+
+      '<td data-l="Asking" class="mono">'+money(d.asking)+'</td>'+
+      '<td data-l="ARV" class="mono">'+money(d.arv)+'</td>'+
+      '<td data-l="Repairs" class="mono">'+money(d.repairs)+'</td>'+
+      '<td data-l="MAO" class="mono">'+money(mao(d))+'</td>'+
+      '<td data-l="Profit" class="profit-cell'+(p<0?" neg":"")+'">'+money(p)+'</td>'+
+      '<td data-l="Margin" class="mono">'+margin(d)+'%</td>'+
+      '<td data-l="Days" class="mono">'+d.days+'d</td></tr>';
+    }).join("");
+    area.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Property</th><th>Stage</th><th>Asking</th><th>ARV</th><th>Repairs</th><th>MAO</th><th>Profit</th><th>Margin</th><th>Days</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  }
+  bindCards();
+}
+
+function bindCards(){
+  var cards = document.querySelectorAll(".deal, tbody tr[data-id]");
+  for(var i=0;i<cards.length;i++){
+    cards[i].addEventListener("click",function(e){
+      if(e.target.closest(".advance")) return;
+      openDrawer(parseInt(this.getAttribute("data-id"),10));
+    });
+    cards[i].addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openDrawer(parseInt(this.getAttribute("data-id"),10)); } });
+  }
+  var adv = document.querySelectorAll(".advance");
+  for(var j=0;j<adv.length;j++){
+    adv[j].addEventListener("click",function(e){
+      e.stopPropagation();
+      advanceDeal(parseInt(this.getAttribute("data-id"),10));
+    });
+  }
+  var opn = document.querySelectorAll(".open-deal");
+  for(var k=0;k<opn.length;k++){
+    opn[k].addEventListener("click",function(e){ e.stopPropagation(); openDrawer(parseInt(this.getAttribute("data-id"),10)); });
+  }
+}
+
+function advanceDeal(id){
+  var d = deals.find(function(x){return x.id===id;});
+  if(!d || !NEXT_STAGE[d.stage]) return;
+  var from = d.stage; d.stage = NEXT_STAGE[d.stage]; d.days = 0;
+  showToast(d.address+" moved: "+from+" → "+d.stage);
+  render();
+  if(selectedId===id) openDrawer(id, true);
+}
+
+function openDrawer(id, keepOpen){
+  var d = deals.find(function(x){return x.id===id;});
+  if(!d) return;
+  selectedId = id;
+  var p = profit(d), m = mao(d);
+  document.getElementById("dStageLine").innerHTML = '<span class="dot '+STAGE_DOT[d.stage]+'"></span>&nbsp; '+d.stage+' · '+d.days+' days on desk · '+esc(d.source);
+  document.getElementById("dAddr").textContent = d.address;
+  document.getElementById("dMeta").textContent = d.hood+" · Detroit, MI "+d.zip+" — "+d.type+" · "+d.specs;
+  var verdict = d.asking <= m
+    ? '<span style="color:var(--lime);font-weight:700">✓ INSIDE THE BUY BOX</span> — asking is '+money(m-d.asking)+' under MAO.'
+    : '<span style="color:var(--amber);font-weight:700">⚠ ABOVE MAO</span> — asking is '+money(d.asking-m)+' over MAO. Negotiate or walk.';
+  var next = NEXT_STAGE[d.stage];
+  document.getElementById("drawerBody").innerHTML =
+    '<div class="breakdown">'+
+      '<div class="row"><span>After Repair Value (ARV)</span><b>'+money(d.arv)+'</b></div>'+
+      '<div class="row"><span>Asking / Purchase</span><b>− '+money(d.asking)+'</b></div>'+
+      '<div class="row"><span>Repair estimate</span><b>− '+money(d.repairs)+'</b></div>'+
+      '<div class="row"><span>Holding &amp; closing (5% ARV)</span><b>− '+money(holding(d))+'</b></div>'+
+      '<div class="row total"><span>PROJECTED PROFIT</span><b>'+money(p)+'</b></div>'+
+    '</div>'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'+
+      miniStat("Margin", m && d.arv ? Math.round(p/d.arv*100)+"%" : "0%") + miniStat("ROI", roi(d)+"%") + miniStat("MAO (70%)", moneyShort(m))+
+    '</div>'+
+    '<div class="mono" style="font-size:12.5px;line-height:1.7">'+verdict+'</div>'+
+    '<div><div class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Seller situation</div><div style="font-size:14px">'+esc(d.seller)+'</div></div>'+
+    '<div class="note-box"><b style="color:var(--amber)">Field notes —</b> '+esc(d.notes)+'</div>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap">'+
+      (next ? '<button class="btn btn-lime" type="button" id="dAdvance" style="flex:1">Move to '+next+' →</button>' : '<span class="badge" style="padding:10px 12px">✓ Deal closed</span>')+
+      '<button class="btn" type="button" id="dRemove">Remove deal</button>'+
+    '</div>';
+  function miniStat(l,v){ return '<div style="background:var(--panel);border:1px solid var(--line);padding:10px"><div class="mono" style="font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)">'+l+'</div><div class="mono" style="font-size:16px;font-weight:700;margin-top:3px">'+v+'</div></div>'; }
+  document.getElementById("closeSlot").innerHTML = '<button class="icon-btn close" id="drawerClose" type="button" aria-label="Close details">✕</button>';
+  document.getElementById("drawerClose").addEventListener("click", closeDrawer);
+  document.getElementById("overlay").classList.add("open");
+  document.getElementById("drawer").classList.add("open");
+  var advBtn = document.getElementById("dAdvance");
+  if(advBtn) advBtn.addEventListener("click",function(){ advanceDeal(id); });
+  document.getElementById("dRemove").addEventListener("click",function(){
+    deals = deals.filter(function(x){return x.id!==id;});
+    closeDrawer(); showToast("Removed "+d.address+" from the desk."); render();
+  });
+}
+function closeDrawer(){
+  selectedId = null;
+  document.getElementById("overlay").classList.remove("open");
+  document.getElementById("drawer").classList.remove("open");
+  document.getElementById("closeSlot").innerHTML = "";
+}
+document.getElementById("overlay").addEventListener("click", closeDrawer);
+document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ closeDrawer(); document.getElementById("addModal").classList.remove("open"); } });
+
+function clearFilters(){ state.q=""; state.stage="All"; state.type="All"; document.getElementById("searchInput").value=""; document.getElementById("typeFilter").value="All"; render(); }
+
+/* Controls */
+document.getElementById("searchInput").addEventListener("input",function(){ state.q=this.value.trim(); render(); });
+document.getElementById("typeFilter").addEventListener("change",function(){ state.type=this.value; render(); });
+document.getElementById("sortSelect").addEventListener("change",function(){ state.sort=this.value; render(); });
+var vt = document.querySelectorAll(".view-toggle button");
+for(var i=0;i<vt.length;i++){ vt[i].addEventListener("click",function(){
+  for(var j=0;j<vt.length;j++) vt[j].classList.remove("active");
+  this.classList.add("active"); state.view=this.getAttribute("data-view"); render();
+});}
+
+/* Calculator */
+function runCalc(){
+  var arv = parseFloat(document.getElementById("calcArv").value)||0;
+  var rep = parseFloat(document.getElementById("calcRep").value)||0;
+  var ask = parseFloat(document.getElementById("calcAsk").value)||0;
+  var m = Math.round(arv*0.70 - rep);
+  document.getElementById("calcMao").textContent = money(m);
+  var v = document.getElementById("calcVerdict");
+  if(!arv){ v.innerHTML = "Enter an ARV to run it."; return; }
+  var proj = Math.round(arv - ask - rep - arv*0.05);
+  if(ask<=m) v.innerHTML = "Asking is <b>"+money(m-ask)+" under MAO</b><br>Projected profit at ask: <b style='color:var(--lime)'>"+money(proj)+"</b>";
+  else v.innerHTML = "Asking is <b style='color:var(--amber)'>"+money(ask-m)+" over MAO</b><br>Projected profit at ask: <b>"+money(proj)+"</b> — thin. Push back.";
+}
+["calcArv","calcRep","calcAsk"].forEach(function(id){ document.getElementById(id).addEventListener("input", runCalc); });
+
+/* Add deal */
+var modal = document.getElementById("addModal");
+function openModal(){ modal.classList.add("open"); setTimeout(function(){ document.getElementById("fAddr").focus(); },50); }
+document.getElementById("addBtnTop").addEventListener("click", openModal);
+document.getElementById("addCancel").addEventListener("click",function(){ modal.classList.remove("open"); });
+modal.addEventListener("click",function(e){ if(e.target===modal) modal.classList.remove("open"); });
+document.getElementById("addForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var nd = {
+    id: Date.now(),
+    address: document.getElementById("fAddr").value.trim(),
+    hood: document.getElementById("fHood").value.trim(),
+    zip: document.getElementById("fZip").value.trim() || "482—",
+    type: document.getElementById("fType").value,
+    specs: document.getElementById("fSpecs").value.trim() || "Specs TBD — walk it",
+    asking: parseFloat(document.getElementById("fAsk").value)||0,
+    arv: parseFloat(document.getElementById("fArv").value)||0,
+    repairs: parseFloat(document.getElementById("fRep").value)||0,
+    stage: document.getElementById("fStage").value,
+    days: 0, seller:"—", source:"Manual entry", hot:false,
+    notes: document.getElementById("fNotes").value.trim() || "Just added. Walk the property and tighten the repair number before offering."
+  };
+  deals.unshift(nd);
+  modal.classList.remove("open");
+  this.reset();
+  state.stage="All"; state.q=""; document.getElementById("searchInput").value="";
+  showToast("On the desk: "+nd.address+" — projected profit "+money(profit(nd)));
+  render();
+});
+
+/* Export CSV */
+document.getElementById("exportBtn").addEventListener("click",function(){
+  var rows = [["Address","Neighborhood","ZIP","Type","Stage","Asking","ARV","Repairs","Holding","Projected Profit","Margin %","MAO"]];
+  deals.forEach(function(d){ rows.push([d.address,d.hood,d.zip,d.type,d.stage,d.asking,d.arv,d.repairs,holding(d),profit(d),margin(d),mao(d)]); });
+  var csv = rows.map(function(r){ return r.map(function(c){ return '"'+String(c).replace(/"/g,'""')+'"'; }).join(","); }).join("\n");
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  a.download = "dealdesk-detroit-pipeline.csv";
+  document.body.appendChild(a); a.click(); a.remove();
+  showToast("Pipeline exported — "+deals.length+" deals in the CSV.");
+});
+
+/* Toast */
+var toastTimer=null;
+function showToast(msg){
+  var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer=setTimeout(function(){ t.classList.remove("show"); },3200);
+}
+
+/* Ticker + clock */
+(function(){
+  var items = ["EAST ENGLISH VILLAGE — MEDIAN ASK $112K","BAGLEY — 3BD BRICKS MOVING IN 19 DAYS","CORKTOWN DUPLEXES — RENTS UP 6% YOY","BOSTON-EDISON — HISTORIC REVIEW ADDS ~3 WKS","LAND BANK AUCTION — NEW BATCH DROPS MONTHLY","48224 IS THE ZIP TO WATCH","CASH CLOSES IN 14 DAYS WIN DEALS HERE"];
+  var html = items.map(function(t){return "<span>"+t+"</span>";}).join("");
+  document.getElementById("tickerTrack").innerHTML = html + html;
+  function tickClock(){
+    try{
+      var s = new Date().toLocaleTimeString("en-US",{timeZone:"America/Detroit",hour:"numeric",minute:"2-digit"});
+      document.getElementById("clock").textContent = s;
+    }catch(e){ document.getElementById("clock").textContent = new Date().toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}); }
+  }
+  tickClock(); setInterval(tickClock, 20000);
+  document.getElementById("footDate").textContent = "Snapshot: Friday, November 20, 2026 · Detroit, MI";
+})();
+
+runCalc();
+render();
+</script>
+</body>
+</html>

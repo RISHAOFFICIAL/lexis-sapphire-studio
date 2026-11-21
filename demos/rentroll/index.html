@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>RentRoll — Detroit Landlord Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0a35ff; --blue2:#0729c7; --navy:#061a6e; --yellow:#ffc900; --yellow2:#ffe066;
+  --bg:#f4f6fb; --card:#ffffff; --ink:#0f1a2e; --muted:#5b6a85; --line:#e3e8f2;
+  --green:#067647; --green-bg:#ecfdf3; --red:#c81e1e; --red-bg:#fef3f2; --amber:#b54708; --amber-bg:#fffaeb;
+  --shadow:0 4px 20px rgba(10,53,255,.07), 0 1px 3px rgba(15,26,46,.06);
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){
+  :root{ --bg:#0d1322; --card:#161e33; --ink:#f2f5ff; --muted:#a8b3cc; --line:#26304d; --green-bg:#0e2e22; --red-bg:#3a1515; --amber-bg:#332408; color-scheme:dark; }
+}
+*{box-sizing:border-box} body{margin:0;font-family:"DM Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none} button{font-family:inherit;cursor:pointer;min-height:44px}
+h1,h2,h3{font-family:"Archivo",sans-serif;margin:0;line-height:.95;letter-spacing:-.02em}
+.mono{font-family:"JetBrains Mono",monospace}
+
+/* LAYOUT */
+.shell{display:flex;min-height:100vh}
+.sidebar{width:248px;background:var(--navy);color:white;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;flex-shrink:0}
+.logo{padding:22px 20px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.14)}
+.mark{width:42px;height:42px;background:var(--yellow);color:#061a6e;display:grid;place-items:center;font-family:"Archivo";font-weight:900;font-size:22px;border-radius:10px 10px 10px 2px;transform:rotate(-3deg)}
+.logo b{font-family:"Archivo";font-size:22px;letter-spacing:-.03em;line-height:1} .logo span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#b9c6ff;font-weight:700;margin-top:3px}
+.nav{padding:16px 12px;display:flex;flex-direction:column;gap:4px}
+.nav a{display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:8px;font-weight:600;font-size:14.5px;color:#dbe3ff;min-height:44px}
+.nav a.active{background:white;color:var(--navy);font-weight:800}
+.nav a.active i{background:var(--yellow)}
+.nav i{width:8px;height:8px;border-radius:50%;background:#5f78e6;flex-shrink:0}
+.badge{margin-left:auto;background:var(--yellow);color:#111827;font-size:11px;font-weight:900;padding:2px 7px;border-radius:99px}
+.sidefoot{margin-top:auto;padding:16px;border-top:1px solid rgba(255,255,255,.14)}
+.landlord{display:flex;gap:11px;align-items:center}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--yellow);color:#111827;display:grid;place-items:center;font-weight:900;font-family:"Archivo"}
+.sidefoot small{color:#b9c6ff;line-height:1.3;display:block}
+.main{flex:1;min-width:0}
+.topbar{background:var(--card);border-bottom:3px solid var(--yellow);padding:14px 28px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:20}
+.search{flex:1;max-width:420px;display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:0 16px}
+.search input{border:0;background:transparent;outline:0;height:42px;width:100%;font-size:14px;color:var(--ink)}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:8px 14px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;min-height:40px}
+.btn{border:0;border-radius:8px;padding:0 18px;font-weight:800;font-size:14px;display:inline-flex;align-items:center;gap:8px}
+.btn-yellow{background:var(--yellow);color:#131313;box-shadow:3px 3px 0 var(--navy)} .btn-blue{background:var(--blue);color:white}
+.content{padding:28px;max-width:1240px;margin:0 auto}
+.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;flex-wrap:wrap;margin-bottom:22px}
+.hero h1{font-size:clamp(32px,5vw,52px)} .hero h1 em{font-style:normal;background:var(--yellow);padding:0 8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero p{color:var(--muted);margin:10px 0 0;font-size:15.5px;line-height:1.5;max-width:560px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* KPIs - intentionally not uniform */
+.kpis{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:14px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.kpi.blue{background:var(--blue);color:white;border-color:var(--blue)}
+.kpi label{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;opacity:.75}
+.kpi strong{display:block;font-family:"Archivo";font-size:34px;line-height:1;margin:10px 0 6px;letter-spacing:-.03em}
+.kpi p{margin:0;font-size:13.5px;line-height:1.45;color:var(--muted)} .kpi.blue p{color:#d6deff}
+.bar{height:8px;background:rgba(127,140,170,.22);border-radius:99px;margin-top:12px;overflow:hidden}.bar i{display:block;height:100%;background:var(--yellow);border-radius:99px}
+.up{color:var(--green);font-weight:800}.down{color:var(--red);font-weight:800}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1.9fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.card-head{padding:18px 20px 8px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.card-head h2{font-size:19px} .card-head p{color:var(--muted);font-size:13.5px;margin:5px 0 0}
+.legend{display:flex;gap:14px;font-size:12.5px;font-weight:700;color:var(--muted)} .dot{width:10px;height:10px;border-radius:2px;display:inline-block;vertical-align:-1px;margin-right:5px}
+.chart-wrap{padding:6px 14px 16px}
+.chart{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:end;height:210px;padding-top:18px;border-bottom:2px solid var(--ink)}
+.month{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.bars{display:flex;gap:5px;align-items:end;height:160px}
+.b{width:22px;border-radius:5px 5px 0 0;position:relative}
+.b.due{background:transparent;border:2px solid #cbd5e8;border-bottom:0}
+.b.got{background:var(--blue)} .b.current{background:var(--yellow);border:2px solid var(--ink)}
+.month span{font-size:12px;font-weight:800;color:var(--muted)} .month b{font-size:11px}
+.tooltip{min-height:28px;margin-top:12px;background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600}
+
+/* Late */
+.late-list{padding:8px 14px 14px;display:flex;flex-direction:column;gap:10px}
+.late{display:flex;gap:12px;padding:13px;border-radius:10px;background:var(--red-bg);border:1px solid #fecdca}
+.late.amber{background:var(--amber-bg);border-color:#fedf89}
+.flag{font-size:20px;line-height:1} .late b{font-size:14.5px} .late p{margin:3px 0 0;font-size:13px;color:var(--muted);line-height:1.4}
+.amount{margin-left:auto;text-align:right;flex-shrink:0}.amount strong{font-family:"Archivo";font-size:16px}.amount span{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.nudge{width:100%;margin-top:2px;background:var(--ink);color:white;border:0;border-radius:8px;font-weight:800;font-size:13.5px}
+
+/* Properties */
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin:26px 0 14px}
+.section-head h2{font-size:26px} .section-head p{color:var(--muted);margin:6px 0 0;font-size:14px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1.5px solid var(--line);background:var(--card);border-radius:99px;padding:8px 14px;font-weight:800;font-size:13px;min-height:40px}.chip.on{background:var(--ink);color:white;border-color:var(--ink)}
+.props{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.prop{overflow:hidden;border-radius:14px}
+.prop-top{padding:16px 18px 14px;color:white;position:relative}
+.prop-top.c1{background:#0a35ff}.prop-top.c2{background:#111827}.prop-top.c3{background:#7a4a00;background:#8a5a00}.prop-top.c3{background:#5b3a8a} /* varied, not templated */
+.prop-top.c3{background:#0f766e}.prop-top.c4{background:#9a3412}.prop-top.c5{background:#1e40af}.prop-top.c6{background:#334155}
+.prop-top h3{font-size:18px;color:white}.prop-top p{margin:5px 0 0;font-size:13px;opacity:.85}
+.occ{position:absolute;right:14px;top:14px;background:var(--yellow);color:#111827;font-weight:900;font-size:12px;padding:5px 8px;border-radius:6px;transform:rotate(2deg)}
+.prop-body{padding:16px 18px}
+.rows{display:flex;flex-direction:column;gap:9px;font-size:13.5px}
+.rows div{display:flex;justify-content:space-between;gap:12px}.rows span{color:var(--muted)}.rows b{font-weight:800;text-align:right}
+.prop-foot{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.status{font-weight:900;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px}.s-green{background:var(--green-bg);color:var(--green)}.s-amber{background:var(--amber-bg);color:var(--amber)}.s-red{background:var(--red-bg);color:var(--red)}
+
+/* Bottom two */
+.grid-bottom{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:14px}
+.maint{padding:4px 10px 12px;display:flex;flex-direction:column}
+.mrow{display:flex;gap:12px;padding:14px 10px;border-bottom:1px solid var(--line);align-items:flex-start}
+.mrow:last-child{border-bottom:0}
+.iconbox{width:40px;height:40px;border-radius:9px;display:grid;place-items:center;font-size:18px;flex-shrink:0;background:#eef2ff}
+.mrow b{font-size:14.5px}.mrow p{margin:3px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+.mrow .st{margin-left:auto;flex-shrink:0}
+.tenant-search{margin:0 18px 6px}.tenant-search input{width:100%;height:44px;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:0 14px;font-size:14px;color:var(--ink)}
+.tlist{padding:6px 10px 12px}
+.trow{display:flex;align-items:center;gap:11px;padding:11px 10px;border-bottom:1px solid var(--line)}
+.trow:last-child{border:0}.trow .avatar{width:38px;height:38px;font-size:13px}
+.trow b{font-size:14px;display:block}.trow span{font-size:12.5px;color:var(--muted)}
+.trow .rent{margin-left:auto;text-align:right}.trow .rent b{font-family:"Archivo"}
+.note{margin-top:14px;background:#fff8cc;border:1.5px dashed #d9a400;border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;color:#3f3000}
+@media(prefers-color-scheme:dark){.note{background:#2a2305;color:#ffe98a;border-color:#8a6d00}}
+.note b{font-family:"Archivo"} .note p{margin:4px 0 0;font-size:13.5px;line-height:1.55}
+footer{padding:22px 28px 34px;color:var(--muted);font-size:12.5px;text-align:center}
+.mobile-nav{display:none}
+
+@media(max-width:980px){.kpis{grid-template-columns:1fr 1fr}.grid2,.grid-bottom{grid-template-columns:1fr}.props{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){
+  .sidebar{display:none}.topbar{padding:12px 16px}.search{display:none}.content{padding:20px 16px 28px}
+  .props{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.kpi strong{font-size:28px}
+  .mobile-nav{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px 0}
+  .mobile-nav a{background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:99px;font-weight:800;font-size:13px;min-height:40px;display:inline-flex;align-items:center}
+  .mobile-nav a.on{background:var(--blue);color:white;border-color:var(--blue)}
+  .chart{gap:4px}.b{width:15px}.hero-actions .btn{flex:1;justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="logo"><div class="mark">R</div><div><b>RentRoll</b><span>Detroit • Est. 2019</span></div></div>
+    <nav class="nav" aria-label="Main">
+      <a class="active" href="#overview"><i></i>Overview</a>
+      <a href="#properties"><i></i>Properties</a>
+      <a href="#tenants"><i></i>Tenants</a>
+      <a href="#payments"><i></i>Payments <span class="badge">3 late</span></a>
+      <a href="#maintenance"><i></i>Maintenance <span class="badge">4 open</span></a>
+      <a href="#chart"><i></i>Reports</a>
+      <a href="#"><i></i>Documents</a>
+      <a href="#"><i></i>Settings</a>
+    </nav>
+    <div class="sidefoot">
+      <div class="landlord"><div class="avatar">DB</div><div><b style="font-size:14.5px">Darnell Brooks</b><small>Brooks Property Group<br>24 units • Detroit, MI</small></div></div>
+      <p style="font-size:12px;color:#8fa2e8;line-height:1.5;margin:14px 0 0">Office: 313-555-0147<br>1420 Woodward Ave, Ste 210</p>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="search">🔍 <input id="topSearch" type="search" placeholder="Search tenant, address, or unit…" aria-label="Search"></div>
+      <button class="pill" id="monthBtn">📅 November 2026 ▾</button>
+      <span class="pill" style="background:var(--green-bg);color:var(--green);border-color:transparent">● Rent portal open</span>
+    </header>
+    <nav class="mobile-nav"><a class="on" href="#overview">Overview</a><a href="#properties">Properties</a><a href="#tenants">Tenants</a><a href="#payments">Payments</a><a href="#maintenance">Maintenance</a></nav>
+
+    <main class="content" id="overview">
+      <div class="hero">
+        <div>
+          <h1>Good afternoon,<br>Darnell. <em>Rent's moving.</em></h1>
+          <p>Friday, November 20, 2026 — here's where Brooks Property Group stands with 10 days left in the month. Two furnaces to watch, three late pays to chase.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-blue" onclick="showToast('Payment form would open here — log a check, Cash App, or portal payment.')">+ Log payment</button>
+          <button class="btn btn-yellow" onclick="showToast('New work order started. Pick a property and tenant next.')">+ New work order</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <section class="kpis" aria-label="Portfolio overview">
+        <article class="kpi blue">
+          <label>Rent collected — November</label>
+          <strong>$24,225</strong>
+          <p>of <b>$26,075</b> due from occupied units &nbsp;•&nbsp; <b>92.9%</b> collected</p>
+          <div class="bar"><i style="width:92.9%"></i></div>
+          <p style="margin-top:9px;font-size:12.5px">$1,850 still out — and it's exactly 3 tenants. They're flagged below.</p>
+        </article>
+        <article class="kpi">
+          <label>Total units</label><strong>24</strong>
+          <p>6 properties<br>Detroit + Highland Park</p>
+          <p style="margin-top:10px"><span class="up">↑ 2 units</span> added in Sept — Bagley duplex</p>
+        </article>
+        <article class="kpi">
+          <label>Occupancy</label><strong>91.7%</strong>
+          <p><b>22 of 24</b> occupied<br>2 vacant, both being shown</p>
+          <p style="margin-top:10px">Avg. days vacant: <b>18</b></p>
+        </article>
+        <article class="kpi">
+          <label>Avg. rent / unit</label><strong>$1,181</strong>
+          <p>Full rent roll: $28,350 / mo<br><span class="down">3 leases</span> up for renewal in Dec</p>
+          <p style="margin-top:10px">Renewal target: <b>+$50–$75</b></p>
+        </article>
+      </section>
+
+      <!-- Chart + Late -->
+      <section class="grid2" id="payments">
+        <article class="card" id="chart">
+          <div class="card-head">
+            <div><h2>Rent collection — last 6 months</h2><p>Collected vs. billed. November is month-to-date (through Nov 20).</p></div>
+            <div class="legend"><span><i class="dot" style="background:var(--blue)"></i>Collected</span><span><i class="dot" style="background:white;border:2px solid #cbd5e8"></i>Due</span></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart" id="chartBars" role="img" aria-label="Bar chart: rent collected June 22840 of 23775, July 23310 of 23775, August 22610 of 24025, September 25540 of 26075, October 25690 of 26075, November 24225 of 26075 so far. Bagley duplex added in September raised the rent roll."></div>
+            <div class="tooltip" id="chartTip">Tap a month — October was your best: $25,690 collected (98.5%). Bagley duplex joined the roll in September.</div>
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:13px;color:var(--muted)"><span>6-mo collection rate: <b style="color:var(--ink)">96.3%</b></span><span>Total collected Jun–Nov: <b style="color:var(--ink)">$144,215</b></span><span>Total billed: <b style="color:var(--ink)">$149,800</b></span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head"><div><h2>⚑ Late payments</h2><p>Flagged automatically after the 5th. Late fee is $50 after day 5.</p></div><span class="status s-red">3 flagged</span></div>
+          <div class="late-list">
+            <div class="late"><div class="flag">🔴</div><div><b>Keisha Thompson</b><p>5045 Bishop St, Unit A — East English Village<br>Texted Nov 18: paycheck delayed, paying Fri Nov 21.</p></div><div class="amount"><strong>$925</strong><span>15 days late</span></div></div>
+            <div class="late"><div class="flag">🔴</div><div><b>Marcus &amp; Tanya Reed</b><p>17344 Wisconsin St, Upper — Bagley<br>No response to Nov 12 notice. Second month late.</p></div><div class="amount"><strong>$575</strong><span>15 days late</span></div></div>
+            <div class="late amber"><div class="flag">🟡</div><div><b>Andre Washington</b><p>1911 W Boston Blvd, #3 — Boston-Edison<br>Partial pay $700 on Nov 9, balance promised Nov 25.</p></div><div class="amount"><strong>$350</strong><span>Partial</span></div></div>
+            <button class="nudge" onclick="showToast('Reminder texts queued for Keisha, the Reeds, and Andre — polite first, firm second.')">Send all 3 a reminder text →</button>
+          </div>
+        </article>
+      </section>
+
+      <!-- Properties -->
+      <div class="section-head" id="properties">
+        <div><h2>Your properties</h2><p>Real addresses, real numbers. Sorted by rent roll, biggest first.</p></div>
+        <div class="filters" role="group" aria-label="Filter properties">
+          <button class="chip on" data-filter="all">All 6</button><button class="chip" data-filter="full">Fully occupied</button><button class="chip" data-filter="vacancy">Has vacancy</button><button class="chip" data-filter="attention">Needs attention</button>
+        </div>
+      </div>
+      <section class="props" id="propGrid">
+        <article class="card prop" data-tags="attention"><div class="prop-top c1"><span class="occ">7 / 8 units</span><h3>Corktown Flats</h3><p>1550 Bagley St • Corktown • 48216</p></div><div class="prop-body"><div class="rows"><div><span>Rent roll</span><b>$9,840 / mo</b></div><div><span>Collected Nov</span><b>$8,590 — occupied paid in full</b></div><div><span>Open work orders</span><b>2 — boiler, Unit 6 leak</b></div><div><span>Vacant</span><b>Unit 4 — $1,250, showing Sat</b></div></div><div class="prop-foot"><span class="status s-amber">Needs attention</span><span>Built 1924 • 8 units</span></div></div></article>
+
+        <article class="card prop" data-tags="full"><div class="prop-top c2"><span class="occ">6 / 6 units</span><h3>The Boston House</h3><p>1911 W Boston Blvd • Boston-Edison • 48206</p></div><div class="prop-body"><div class="rows"><div><span>Rent roll</span><b>$7,350 / mo</b></div><div><span>Collected Nov</span><b>$7,000 (95%)</b></div><div><span>Open work orders</span><b>0</b></div><div><span>Next renewal</span><b>Unit 2 — Dec 1, +$60</b></div></div><div class="prop-foot"><span class="status s-green">All current</span><span>Built 1916 • 6 units</span></div></div></article>
+
+        <article class="card prop" data-tags="full"><div class="prop-top c3"><span class="occ">4 / 4 units</span><h3>Jefferson-Chalmers 4-Plex</h3><p>14410 Essex Ave • Jefferson-Chalmers • 48215</p></div><div class="prop-body"><div class="rows"><div><span>Rent roll</span><b>$4,600 / mo</b></div><div><span>Collected Nov</span><b>$4,600 (100%)</b></div><div><span>Open work orders</span><b>1 — porch step repair</b></div><div><span>Notes</span><b>All Section 8, paid 1st</b></div></div><div class="prop-foot"><span class="status s-green">All current</span><span>Built 1938 • 4 units</span></div></div></article>
+
+        <article class="card prop" data-tags="vacancy attention"><div class="prop-top c4"><span class="occ">2 / 3 units</span><h3>Highland Park Triplex</h3><p>128 Glendale St • Highland Park • 48203</p></div><div class="prop-body"><div class="rows"><div><span>Rent roll</span><b>$3,085 / mo</b></div><div><span>Collected Nov</span><b>$2,060 (67%)</b></div><div><span>Open work orders</span><b>1 — furnace, Unit 1</b></div><div><span>Vacant</span><b>Unit 3 — $1,025, listed 12 days</b></div></div><div class="prop-foot"><span class="status s-red">Watch closely</span><span>Built 1921 • 3 units</span></div></div></article>
+
+        <article class="card prop" data-tags="attention"><div class="prop-top c5"><span class="occ">2 / 2 units</span><h3>Bagley Duplex</h3><p>17344 Wisconsin St • Bagley • 48221</p></div><div class="prop-body"><div class="rows"><div><span>Rent roll</span><b>$2,300 / mo</b></div><div><span>Collected Nov</span><b>$1,725 (75%)</b></div><div><span>Open work orders</span><b>0</b></div><div><span>Issue</span><b>Upper unit late — see flags</b></div></div><div class="prop-foot"><span class="status s-amber">1 late tenant</span><span>Bought Sept 2026 • 2 units</span></div></div></article>
+
+        <article class="card prop" data-tags="full"><div class="prop-top c6"><span class="occ">1 / 1 unit</span><h3>Bishop Street House</h3><p>5045 Bishop St • East English Village • 48224</p></div><div class="prop-body"><div class="rows"><div><span>Rent roll</span><b>$1,175 / mo</b></div><div><span>Collected Nov</span><b>$250 (21%)</b></div><div><span>Open work orders</span><b>0</b></div><div><span>Tenant</span><b>Keisha T. — since 2022</b></div></div><div class="prop-foot"><span class="status s-amber">Payment plan</span><span>3 bed / 1.5 bath house</span></div></div></article>
+      </section>
+      <p id="noProps" style="display:none;color:var(--muted);font-weight:600;padding:8px 2px">No properties match that filter.</p>
+
+      <!-- Maintenance + Tenants -->
+      <section class="grid-bottom">
+        <article class="card" id="maintenance">
+          <div class="card-head"><div><h2>Maintenance requests</h2><p>4 open • Your handyman is Ray Delgado (313-555-0192). DTE called on the Glendale furnace.</p></div></div>
+          <div style="display:flex;gap:8px;padding:0 18px 8px;flex-wrap:wrap">
+            <button class="chip on" data-mfilter="all">All</button><button class="chip" data-mfilter="open">Open</button><button class="chip" data-mfilter="progress">In progress</button><button class="chip" data-mfilter="done">Done</button>
+          </div>
+          <div class="maint" id="maintList">
+            <div class="mrow" data-status="progress"><div class="iconbox">🔥</div><div><b>Furnace short-cycling — no steady heat</b><p>128 Glendale St, Unit 1 • Denise Carter • Reported Nov 19 • Ray diagnosed ignitor, part arrives Nov 21. Space heaters dropped off.</p></div><span class="status s-amber st">In progress</span></div>
+            <div class="mrow" data-status="open"><div class="iconbox">💧</div><div><b>Bathroom ceiling leak, gets worse when it rains</b><p>1550 Bagley St, Unit 6 • James Okafor • Reported Nov 18 • Needs roof patch above Unit 6 — get 2 quotes.</p></div><span class="status s-red st">Open • High</span></div>
+            <div class="mrow" data-status="open"><div class="iconbox">🔌</div><div><b>Boiler pressure dropping, radiators cold on 3rd floor</b><p>1550 Bagley St (building) • Reported by super Nov 17 • DTE / boiler tech scheduled Mon Nov 23, 9 a.m.</p></div><span class="status s-amber st">Scheduled</span></div>
+            <div class="mrow" data-status="progress"><div class="iconbox">🪜</div><div><b>Front porch step crumbling</b><p>14410 Essex Ave, Unit B • Reported Nov 10 • Ray to pour new step Sat Nov 21 if weather holds.</p></div><span class="status s-amber st">In progress</span></div>
+            <div class="mrow" data-status="done"><div class="iconbox">✓</div><div><b>Kitchen faucet replacement</b><p>1911 W Boston Blvd, Unit 5 • Completed Nov 14 • $145 parts + labor. Tenant confirmed fixed.</p></div><span class="status s-green st">Completed</span></div>
+            <div class="mrow" data-status="done"><div class="iconbox">✓</div><div><b>Smoke / CO detectors — whole building check</b><p>17344 Wisconsin St • Completed Nov 8 • City rental inspection passed Nov 12.</p></div><span class="status s-green st">Completed</span></div>
+          </div>
+        </article>
+
+        <article class="card" id="tenants">
+          <div class="card-head"><div><h2>Tenants</h2><p>22 households • Tap a name in the real app to see lease + payment history.</p></div><span class="status s-green">22 active</span></div>
+          <div class="tenant-search"><input id="tenantSearch" type="search" placeholder="Search tenants…" aria-label="Search tenants"></div>
+          <div class="tlist" id="tenantList">
+            <div class="trow" data-name="keisha thompson bishop"><div class="avatar" style="background:#ffe066">KT</div><div><b>Keisha Thompson</b><span>5045 Bishop St • Since Mar 2022</span></div><div class="rent"><b>$1,175</b><br><span class="status s-red">Late $925</span></div></div>
+            <div class="trow" data-name="denise carter glendale"><div class="avatar" style="background:#c7d2fe">DC</div><div><b>Denise Carter</b><span>128 Glendale St, #1 • Since Jun 2023</span></div><div class="rent"><b>$1,030</b><br><span class="status s-green">Current</span></div></div>
+            <div class="trow" data-name="andre washington boston"><div class="avatar" style="background:#bbf7d0">AW</div><div><b>Andre Washington</b><span>1911 W Boston Blvd, #3 • Since Jan 2024</span></div><div class="rent"><b>$1,050</b><br><span class="status s-amber">Partial</span></div></div>
+            <div class="trow" data-name="james okafor bagley corktown"><div class="avatar" style="background:#fecaca">JO</div><div><b>James Okafor</b><span>1550 Bagley St, #6 • Since Aug 2023</span></div><div class="rent"><b>$1,295</b><br><span class="status s-green">Current</span></div></div>
+            <div class="trow" data-name="latisha moore essex"><div class="avatar" style="background:#fde68a">LM</div><div><b>Latisha Moore</b><span>14410 Essex Ave, #A • Since Feb 2021</span></div><div class="rent"><b>$1,150</b><br><span class="status s-green">Current</span></div></div>
+            <div class="trow" data-name="robert hayes boston"><div class="avatar" style="background:#dbeafe">RH</div><div><b>Robert Hayes</b><span>1911 W Boston Blvd, #2 • Lease ends Nov 30</span></div><div class="rent"><b>$1,180</b><br><span class="status s-amber">Renewing</span></div></div>
+            <div class="trow" data-name="marcus tanya reed wisconsin bagley"><div class="avatar" style="background:#e9d5ff">MR</div><div><b>Marcus &amp; Tanya Reed</b><span>17344 Wisconsin St, Upper • Since Sep 2026</span></div><div class="rent"><b>$1,150</b><br><span class="status s-red">Late $575</span></div></div>
+          </div>
+          <p style="padding:0 18px 14px;margin:0;font-size:13px;color:var(--muted)">Showing 7 of 22 — <a href="#" onclick="showToast('Full tenant directory would load here.');return false" style="color:var(--blue);font-weight:800;text-decoration:underline">view all tenants →</a></p>
+        </article>
+      </section>
+
+      <div class="note"><div style="font-size:22px">📌</div><div><b>Darnell's note to self — Nov 20</b><p>Corktown Unit 4 showing Saturday at 11 — bring applications. Don't renew Glendale Unit 3 until furnace is sorted. City rental inspections: Essex passed, Bagley passed, Boston due in January — book it before the holidays.</p></div></div>
+
+      <div id="toast" role="status" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:50;background:#111827;color:white;padding:14px 18px;border-radius:10px;font-weight:700;font-size:14px;max-width:min(520px,90vw);box-shadow:0 12px 32px rgba(0,0,0,.25);border-bottom:4px solid var(--yellow)"></div>
+    </main>
+    <footer>RentRoll demo for Brooks Property Group • Snapshot as of Friday, November 20, 2026 • Detroit, Michigan • Built by Lexis Sapphire Studio</footer>
+  </div>
+</div>
+
+<script>
+var DATA=[
+ {m:'Jun',due:23775,got:22840},{m:'Jul',due:23775,got:23310},{m:'Aug',due:24025,got:22610},
+ {m:'Sep',due:26075,got:25540},{m:'Oct',due:26075,got:25690},{m:'Nov',due:26075,got:24225}
+];
+var chart=document.getElementById('chartBars'), tip=document.getElementById('chartTip');
+DATA.forEach(function(d,i){
+  var pct=Math.round(d.got/d.due*100);
+  var wrap=document.createElement('div'); wrap.className='month';
+  wrap.innerHTML='<div class="bars"><div class="b due" style="height:'+(d.due/26075*160)+'px" title="Due"></div><div class="b '+(i===5?'current':'got')+'" style="height:'+(d.got/26075*160)+'px"></div></div><span>'+d.m+'</span><b>'+pct+'%</b>';
+  wrap.style.cursor='pointer'; wrap.setAttribute('tabindex','0'); wrap.setAttribute('role','button');
+  function show(){ tip.textContent=d.m+': Collected $'+d.got.toLocaleString()+' of $'+d.due.toLocaleString()+' due — '+pct+'%'+(i===5?' (through Nov 20, still collecting)':''); }
+  wrap.addEventListener('click',show); wrap.addEventListener('focus',show);
+  chart.appendChild(wrap);
+});
+// Property filter
+document.querySelectorAll('[data-filter]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('[data-filter]').forEach(function(b){b.classList.remove('on')}); btn.classList.add('on');
+    var f=btn.getAttribute('data-filter'), visible=0;
+    document.querySelectorAll('.prop').forEach(function(p){
+      var show=f==='all'||p.getAttribute('data-tags').indexOf(f)>-1; p.style.display=show?'':'none'; if(show)visible++;
+    });
+    document.getElementById('noProps').style.display=visible?'none':'block';
+  });
+});
+// Maintenance filter
+document.querySelectorAll('[data-mfilter]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('[data-mfilter]').forEach(function(b){b.classList.remove('on')}); btn.classList.add('on');
+    var f=btn.getAttribute('data-mfilter');
+    document.querySelectorAll('#maintList .mrow').forEach(function(r){ r.style.display=(f==='all'||r.getAttribute('data-status')===f)?'':'none'; });
+  });
+});
+// Tenant search + top search sync
+function filterTenants(q){ q=(q||'').toLowerCase().trim(); document.querySelectorAll('#tenantList .trow').forEach(function(r){ r.style.display=(!q||r.getAttribute('data-name').indexOf(q)>-1)?'':'none'; }); }
+document.getElementById('tenantSearch').addEventListener('input',function(e){filterTenants(e.target.value)});
+document.getElementById('topSearch').addEventListener('input',function(e){filterTenants(e.target.value); document.getElementById('tenantSearch').value=e.target.value;});
+document.getElementById('monthBtn').addEventListener('click',function(){ showToast('Month picker: November 2026 is the current open month. October and earlier are closed.'); });
+var toastTimer;
+function showToast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; clearTimeout(toastTimer); toastTimer=setTimeout(function(){t.style.display='none'},4200); }
+</script>
+</body>
+</html>
