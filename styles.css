@@ -114,6 +114,7 @@ h1, h2, h3, .founder-name {
 .hero-demo .fb-page { flex: 1; align-items: center; }
 .hero-video-caption {
   font-size: 14px; color: var(--muted); text-align: center;
+  min-height: 42px; display: flex; align-items: center; justify-content: center;
 }
 .hero-video-caption b { color: var(--gold-light); font-weight: 600; }
 .hero-eyebrow {
