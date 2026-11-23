@@ -1,0 +1,352 @@
+// ============================================================
+// Seasonal holiday decor. Auto-switches by date.
+// Same 14-holiday system as the Lexis Sapphire Studio site.
+// Add a new holiday by adding one entry to HOLIDAYS below.
+// ============================================================
+(function () {
+  // --- Date helpers (all local time) ---
+  function nthWeekdayOfMonth(year, month, weekday, n) {
+    // month 0-11, weekday 0=Sun..6=Sat, n=1st..4th (or -1 for last)
+    var d;
+    if (n > 0) {
+      d = new Date(year, month, 1);
+      var offset = (weekday - d.getDay() + 7) % 7;
+      d.setDate(1 + offset + (n - 1) * 7);
+    } else {
+      d = new Date(year, month + 1, 0);
+      var back = (d.getDay() - weekday + 7) % 7;
+      d.setDate(d.getDate() - back);
+    }
+    return d;
+  }
+  function easterSunday(year) {
+    // Anonymous Gregorian algorithm
+    var a = year % 19, b = Math.floor(year / 100), c = year % 100;
+    var d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    var g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    var i = Math.floor(c / 4), k = c % 4;
+    var l = (32 + 2 * e + 2 * i - h - k) % 7;
+    var m = Math.floor((a + 11 * h + 22 * l) / 451);
+    var month = Math.floor((h + l - 7 * m + 114) / 31) - 1;
+    var day = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(year, month, day);
+  }
+  function daysBefore(date, n) {
+    var d = new Date(date);
+    d.setDate(d.getDate() - n);
+    return d;
+  }
+
+  var HOLIDAYS = [
+    {
+      id: "new-year",
+      emoji: "\u2728",
+      falling: ["\u2728", "\u2B50", "\uD83C\uDF89"],
+      banner: "Happy New Year from Risha Alexis! New year, new apps, new ideas. Let us build something great.",
+      footer: "Happy New Year! Here is to bold ideas and bigger launches in the year ahead.",
+      gradient: "linear-gradient(90deg, #0a0a2e 0%, #1a1a4e 25%, #2d1b69 50%, #1a1a4e 75%, #0a0a2e 100%)",
+      glow: "rgba(147, 112, 219, 0.15)",
+      window: function (y) {
+        return { start: new Date(y, 11, 26), end: new Date(y + 1, 0, 1, 23, 59, 59) };
+      }
+    },
+    {
+      id: "valentines",
+      emoji: "\u2764\uFE0F",
+      falling: ["\u2764\uFE0F", "\uD83D\uDC95", "\uD83D\uDC97"],
+      banner: "Happy Valentine's Day from Risha Alexis! Fall in love with an app your users adore.",
+      footer: "Happy Valentine's Day! Built with love in Detroit.",
+      gradient: "linear-gradient(90deg, #5c0e1e 0%, #8b1a2b 25%, #c2183b 50%, #8b1a2b 75%, #5c0e1e 100%)",
+      glow: "rgba(194, 24, 59, 0.15)",
+      window: function (y) {
+        return { start: new Date(y, 1, 1), end: new Date(y, 1, 14, 23, 59, 59) };
+      }
+    },
+    {
+      id: "st-patricks",
+      emoji: "\u2618\uFE0F",
+      falling: ["\u2618\uFE0F", "\uD83C\uDF40"],
+      banner: "Happy St. Patrick's Day from Risha Alexis! A little luck, a lot of hard work, and an app that shines.",
+      footer: "Happy St. Patrick's Day! Wishing you luck in business and beyond.",
+      gradient: "linear-gradient(90deg, #0b3d1e 0%, #145a32 25%, #1e8449 50%, #145a32 75%, #0b3d1e 100%)",
+      glow: "rgba(30, 132, 73, 0.15)",
+      window: function (y) {
+        return { start: new Date(y, 2, 10), end: new Date(y, 2, 17, 23, 59, 59) };
+      }
+    },
+    {
+      id: "easter",
+      emoji: "\uD83D\uDC23",
+      falling: ["\uD83C\uDF38", "\uD83C\uDF37", "\uD83D\uDC23"],
+      banner: "Happy Easter from Risha Alexis! Fresh ideas, fresh starts, fresh apps.",
+      footer: "Happy Easter! Wishing you a bright and hopeful spring.",
+      gradient: "linear-gradient(90deg, #6b4c8a 0%, #9b7bb8 25%, #c9a0dc 50%, #9b7bb8 75%, #6b4c8a 100%)",
+      glow: "rgba(155, 123, 184, 0.15)",
+      window: function (y) {
+        var easter = easterSunday(y);
+        return { start: daysBefore(easter, 14), end: new Date(easter.getFullYear(), easter.getMonth(), easter.getDate(), 23, 59, 59) };
+      }
+    },
+    {
+      id: "mothers-day",
+      emoji: "\uD83D\uDC90",
+      falling: ["\uD83C\uDF38", "\uD83D\uDC90", "\uD83C\uDF37"],
+      banner: "Happy Mother's Day from Risha Alexis! To every mom building a business and a family at the same time.",
+      footer: "Happy Mother's Day! Honoring the moms who make it all happen.",
+      gradient: "linear-gradient(90deg, #6b2d4a 0%, #9b4a72 25%, #d4789e 50%, #9b4a72 75%, #6b2d4a 100%)",
+      glow: "rgba(212, 120, 158, 0.15)",
+      window: function (y) {
+        var md = nthWeekdayOfMonth(y, 4, 0, 2);
+        return { start: new Date(y, 4, 1), end: new Date(md.getFullYear(), md.getMonth(), md.getDate(), 23, 59, 59) };
+      }
+    },
+    {
+      id: "memorial-day",
+      emoji: "\uD83C\uDDFA\uD83C\uDDF8",
+      falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC99"],
+      banner: "This Memorial Day, Risha Alexis honors those who served and gave everything.",
+      footer: "Remembering and honoring our fallen heroes this Memorial Day.",
+      gradient: "linear-gradient(90deg, #1a1a3e 0%, #2c3e6b 25%, #4a6fa5 50%, #2c3e6b 75%, #1a1a3e 100%)",
+      glow: "rgba(74, 111, 165, 0.15)",
+      window: function (y) {
+        var md = nthWeekdayOfMonth(y, 4, 1, -1);
+        return { start: daysBefore(md, 7), end: new Date(md.getFullYear(), md.getMonth(), md.getDate(), 23, 59, 59) };
+      }
+    },
+    {
+      id: "fathers-day",
+      emoji: "\uD83D\uDCAA",
+      falling: ["\uD83D\uDC99", "\u2B50", "\uD83D\uDCAA"],
+      banner: "Happy Father's Day from Risha Alexis! To every dad building a legacy for his family.",
+      footer: "Happy Father's Day! Honoring the dads who build, provide, and inspire.",
+      gradient: "linear-gradient(90deg, #1a2f4a 0%, #2c4a6b 25%, #4a7a9b 50%, #2c4a6b 75%, #1a2f4a 100%)",
+      glow: "rgba(74, 122, 155, 0.15)",
+      window: function (y) {
+        var fd = nthWeekdayOfMonth(y, 5, 0, 3);
+        return { start: daysBefore(fd, 10), end: new Date(fd.getFullYear(), fd.getMonth(), fd.getDate(), 23, 59, 59) };
+      }
+    },
+    {
+      id: "juneteenth",
+      emoji: "\u270A\uFE0F",
+      falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC9A"],
+      banner: "Happy Juneteenth from Risha Alexis! Celebrating freedom, resilience, and Black excellence in Detroit and beyond.",
+      footer: "Happy Juneteenth! Freedom, pride, and progress.",
+      gradient: "linear-gradient(90deg, #5c0e0e 0%, #8b1a1a 25%, #1a5c1a 50%, #1a1a8b 75%, #5c0e0e 100%)",
+      glow: "rgba(139, 26, 26, 0.12)",
+      window: function (y) {
+        return { start: new Date(y, 5, 12), end: new Date(y, 5, 19, 23, 59, 59) };
+      }
+    },
+    {
+      id: "july-4th",
+      emoji: "\uD83C\uDF86",
+      falling: ["\uD83C\uDF86", "\u2B50", "\uD83C\uDF1F"],
+      banner: "Happy Independence Day from Risha Alexis! Built free, built bold, built in Detroit.",
+      footer: "Happy 4th of July! Celebrating freedom and the American dream.",
+      gradient: "linear-gradient(90deg, #0e2a5c 0%, #1a4a8b 25%, #c2183b 50%, #1a4a8b 75%, #0e2a5c 100%)",
+      glow: "rgba(194, 24, 59, 0.12)",
+      window: function (y) {
+        return { start: new Date(y, 5, 27), end: new Date(y, 6, 4, 23, 59, 59) };
+      }
+    },
+    {
+      id: "labor-day",
+      emoji: "\uD83D\uDCAA",
+      falling: ["\u2B50", "\uD83D\uDCAA", "\uD83D\uDC4F"],
+      banner: "Happy Labor Day from Risha Alexis! Honoring every worker, builder, and dreamer.",
+      footer: "Happy Labor Day! Rest well, you earned it.",
+      gradient: "linear-gradient(90deg, #2e4a1e 0%, #4a6b2e 25%, #6b8e3e 50%, #4a6b2e 75%, #2e4a1e 100%)",
+      glow: "rgba(107, 142, 62, 0.15)",
+      window: function (y) {
+        var ld = nthWeekdayOfMonth(y, 8, 1, 1);
+        return { start: daysBefore(ld, 7), end: new Date(ld.getFullYear(), ld.getMonth(), ld.getDate(), 23, 59, 59) };
+      }
+    },
+    {
+      id: "halloween",
+      emoji: "\uD83C\uDF83",
+      falling: ["\uD83C\uDF83", "\uD83D\uDC7B", "\uD83E\uDD87"],
+      banner: "Happy Halloween from Risha Alexis! No tricks, just treats. An app so good it is scary.",
+      footer: "Happy Halloween! Have a spooky, safe, and sweet night.",
+      gradient: "linear-gradient(90deg, #1a0a2e 0%, #2e1a4a 25%, #e65100 50%, #2e1a4a 75%, #1a0a2e 100%)",
+      glow: "rgba(230, 81, 0, 0.15)",
+      window: function (y) {
+        return { start: new Date(y, 9, 15), end: new Date(y, 9, 31, 23, 59, 59) };
+      }
+    },
+    {
+      id: "veterans-day",
+      emoji: "\uD83C\uDF96\uFE0F",
+      falling: ["\u2B50", "\u2764\uFE0F", "\uD83D\uDC99"],
+      banner: "Happy Veterans Day from Risha Alexis! Thank you to every veteran who served.",
+      footer: "Thank you, veterans, for your service and sacrifice.",
+      gradient: "linear-gradient(90deg, #1a1a3e 0%, #2c3e6b 25%, #8b1a1a 50%, #2c3e6b 75%, #1a1a3e 100%)",
+      glow: "rgba(44, 62, 107, 0.15)",
+      window: function (y) {
+        return { start: new Date(y, 10, 4), end: new Date(y, 10, 11, 23, 59, 59) };
+      }
+    },
+    {
+      id: "thanksgiving",
+      emoji: "\uD83C\uDF42",
+      falling: ["\uD83C\uDF42", "\uD83C\uDF41", "\uD83C\uDF43"],
+      banner: "Happy Thanksgiving from Risha Alexis! Grateful for every app, every client, and every Detroit business I get to build for.",
+      footer: "Happy Thanksgiving! Grateful for our clients, our community, and the city we call home.",
+      gradient: "linear-gradient(90deg, #5c2e0e 0%, #8b4513 25%, #b5651d 50%, #8b4513 75%, #5c2e0e 100%)",
+      glow: "rgba(181, 101, 29, 0.15)",
+      window: function (y) {
+        var tg = nthWeekdayOfMonth(y, 10, 4, 4);
+        return { start: new Date(y, 10, 12), end: new Date(tg.getFullYear(), tg.getMonth(), tg.getDate(), 23, 59, 59) };
+      }
+    },
+    {
+      id: "christmas",
+      emoji: "\uD83C\uDF84",
+      falling: ["\u2744\uFE0F", "\u26C4", "\uD83C\uDF84"],
+      banner: "Merry Christmas from Risha Alexis! Wishing you joy, peace, and a brand new app under the tree.",
+      footer: "Merry Christmas! Wishing you warmth, joy, and a wonderful new year.",
+      gradient: "linear-gradient(90deg, #0b3d1e 0%, #145a32 25%, #8b1a1a 50%, #145a32 75%, #0b3d1e 100%)",
+      glow: "rgba(20, 90, 50, 0.15)",
+      window: function (y) {
+        return { start: new Date(y, 10, 27), end: new Date(y, 11, 25, 23, 59, 59) };
+      }
+    }
+  ];
+
+  function currentHoliday() {
+    var now = new Date();
+    var year = now.getFullYear();
+    // Check this year and last year (New Year window spans Dec-Jan)
+    var years = [year - 1, year];
+    for (var i = 0; i < years.length; i++) {
+      for (var j = 0; j < HOLIDAYS.length; j++) {
+        var w = HOLIDAYS[j].window(years[i]);
+        if (now >= w.start && now <= w.end) return HOLIDAYS[j];
+      }
+    }
+    return null;
+  }
+
+  // --- Falling seasonal elements (leaves, snow, etc.) ---
+  // Pure CSS animation on emoji characters: zero image downloads,
+  // GPU-accelerated transforms only, so page speed is unaffected.
+  // Respects prefers-reduced-motion and pauses when tab is hidden.
+  function startFalling(h) {
+    if (!h || !h.falling || !h.falling.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Fewer pieces on small screens for performance
+    var isMobile = window.innerWidth < 700;
+    var count = isMobile ? 10 : 16;
+    var container = document.createElement("div");
+    container.className = "falling-layer";
+    container.setAttribute("aria-hidden", "true");
+    for (var i = 0; i < count; i++) {
+      var el = document.createElement("span");
+      el.className = "falling-piece";
+      el.textContent = h.falling[i % h.falling.length];
+      // Randomize position, size, speed, and phase
+      el.style.left = (Math.random() * 96 + 2) + "%";
+      el.style.fontSize = (Math.random() * 10 + 14) + "px";
+      el.style.opacity = (Math.random() * 0.4 + 0.5).toFixed(2);
+      var duration = (Math.random() * 8 + 10).toFixed(1);
+      el.style.animationDuration = duration + "s";
+      // Negative delay spreads pieces across the screen on load
+      el.style.animationDelay = (-Math.random() * parseFloat(duration)).toFixed(1) + "s";
+      container.appendChild(el);
+    }
+    document.body.appendChild(container);
+  }
+
+  function applySeason() {
+    var banner = document.querySelector(".seasonal-banner");
+    var footer = document.querySelector(".seasonal-footer");
+    var hero = document.querySelector(".hero");
+    if (!banner) return;
+    var h = currentHoliday();
+    if (!h) {
+      // No holiday right now: hide the banner and footer line
+      banner.style.display = "none";
+      if (footer) footer.style.display = "none";
+      return;
+    }
+    // Banner text + colors
+    banner.style.background = h.gradient;
+    var text = banner.querySelector("p");
+    if (text) text.textContent = h.banner;
+    var leaves = banner.querySelectorAll(".seasonal-leaf");
+    leaves.forEach(function (el) { el.textContent = h.emoji; });
+    // Footer line
+    if (footer) {
+      footer.textContent = h.emoji + " " + h.footer + " " + h.emoji;
+      footer.style.display = "";
+    }
+    // Hero warm glow
+    if (hero) {
+      hero.style.background =
+        "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201, 162, 39, 0.12) 0%, transparent 70%)," +
+        "radial-gradient(ellipse 50% 40% at 50% 100%, " + h.glow + " 0%, transparent 70%)," +
+        "var(--bg)";
+    }
+    // Falling seasonal pieces (leaves for Thanksgiving, snow for Christmas, etc.)
+    startFalling(h);
+  }
+
+  document.addEventListener("DOMContentLoaded", applySeason);
+})();
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Scroll reveal animation
+  var cards = document.querySelectorAll(".card, .step, .skill-group");
+  cards.forEach(function (el) { el.classList.add("reveal"); });
+
+  var items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    items.forEach(function (el) { el.classList.add("visible"); });
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    items.forEach(function (el) { observer.observe(el); });
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var target = document.querySelector(a.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
+  // Lightbox: tap a screenshot to see it full size
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxClose = document.getElementById("lightbox-close");
+  if (lightbox && lightboxImg) {
+    document.querySelectorAll(".screenshots img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+    });
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    lightbox.addEventListener("click", closeLightbox);
+    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+  }
+});
