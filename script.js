@@ -375,3 +375,56 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// Social share: copy link + floating share panel
+document.addEventListener("DOMContentLoaded", function () {
+  var toast = document.getElementById("share-toast");
+  var toastTimer = null;
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2000);
+  }
+  function fallbackCopy(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    done();
+  }
+  function copyText(text, done) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text, done); });
+    } else {
+      fallbackCopy(text, done);
+    }
+  }
+  document.querySelectorAll(".js-copy-link").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      copyText(btn.getAttribute("data-url") || "https://lexissapphirestudio.com/", function () {
+        showToast("Link copied!");
+      });
+    });
+  });
+  var floatWrap = document.getElementById("share-float");
+  var floatToggle = document.getElementById("share-float-toggle");
+  if (floatWrap && floatToggle) {
+    floatToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = floatWrap.classList.toggle("open");
+      floatToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.addEventListener("click", function (e) {
+      if (!floatWrap.contains(e.target)) {
+        floatWrap.classList.remove("open");
+        floatToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+});
