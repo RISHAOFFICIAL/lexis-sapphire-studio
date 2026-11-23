@@ -663,3 +663,42 @@ document.addEventListener("DOMContentLoaded", function () {
     handleUserText(text);
   });
 });
+
+/* ---------- How it works accordion ---------- */
+document.addEventListener("DOMContentLoaded", function () {
+  var section = document.getElementById("process");
+  var toggle = document.getElementById("process-toggle");
+  var body = document.getElementById("process-body");
+  if (!section || !toggle || !body) return;
+
+  function openAccordion() {
+    section.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    body.style.maxHeight = body.scrollHeight + "px";
+  }
+  function closeAccordion() {
+    section.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    body.style.maxHeight = "";
+  }
+  function toggleAccordion() {
+    if (section.classList.contains("open")) { closeAccordion(); } else { openAccordion(); }
+  }
+
+  toggle.addEventListener("click", toggleAccordion);
+  toggle.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleAccordion(); }
+  });
+
+  window.addEventListener("resize", function () {
+    if (section.classList.contains("open")) {
+      body.style.maxHeight = body.scrollHeight + "px";
+    }
+  });
+
+  var anchors = document.querySelectorAll('a[href="#process"]');
+  anchors.forEach(function (a) {
+    a.addEventListener("click", openAccordion);
+  });
+  if (window.location.hash === "#process") { openAccordion(); }
+});
