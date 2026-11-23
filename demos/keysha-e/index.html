@@ -26,7 +26,7 @@
     --line: rgba(255, 246, 236, 0.12);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
   body {
     background: var(--bg);
     color: var(--ink);
@@ -121,9 +121,10 @@
   .stat span { color: var(--muted); font-size: 0.88rem; }
 
   /* ---------- marquee ---------- */
+  .marquee-wrap { overflow: hidden; padding: 14px 0 10px; }
   .marquee {
     background: var(--accent); color: #fff; overflow: hidden;
-    transform: rotate(-1.2deg) scale(1.02); margin: 10px 0 0;
+    transform: rotate(-1.2deg) scale(1.02); margin: 0;
     border-top: 2px solid rgba(255,255,255,0.25); border-bottom: 2px solid rgba(255,255,255,0.25);
   }
   .marquee-track {
@@ -384,11 +385,12 @@
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true">
+<div class="marquee-wrap"><div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <span>STAND-UP</span><span>&#10022;</span><span>ACTRESS</span><span>&#10022;</span><span>DETROIT</span><span>&#10022;</span><span>LOS ANGELES</span><span>&#10022;</span><span>LAUGHTER IS KEY</span><span>&#10022;</span>
     <span>STAND-UP</span><span>&#10022;</span><span>ACTRESS</span><span>&#10022;</span><span>DETROIT</span><span>&#10022;</span><span>LOS ANGELES</span><span>&#10022;</span><span>LAUGHTER IS KEY</span><span>&#10022;</span>
   </div>
+</div>
 </div>
 
 <section id="about">
