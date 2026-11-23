@@ -46,9 +46,21 @@
     100%{transform:translateY(110vh) rotate(340deg)}
   }
 
+  /* ---------- demo strip ---------- */
+  .demo-strip{
+    position:fixed;top:0;left:0;right:0;z-index:101;
+    height:34px;
+    background:var(--orange);color:#fff;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    padding:0 5vw;text-align:center;
+  }
+  .demo-strip .demo-strip-sub{font-weight:500;letter-spacing:1px;text-transform:none;opacity:.9}
+  @media (max-width:560px){.demo-strip .demo-strip-sub{display:none}}
+
   /* ---------- nav ---------- */
   nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
+    position:fixed;top:34px;left:0;right:0;z-index:100;
     display:flex;justify-content:space-between;align-items:center;
     padding:18px 5vw;
     background:rgba(10,10,10,.88);
@@ -68,6 +80,13 @@
     flex-shrink:0;
   }
   .logo span{color:var(--orange)}
+  .logo .demo-badge{
+    background:var(--orange);color:#fff;
+    font-family:'DM Sans',sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:2px;
+    padding:5px 10px;border-radius:999px;
+    text-transform:uppercase;
+  }
   .nav-links{display:flex;gap:34px;align-items:center}
   .nav-links a{
     font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);
@@ -86,7 +105,7 @@
     position:relative;
     min-height:100vh;
     display:flex;flex-direction:column;justify-content:flex-end;
-    padding:140px 5vw 70px;
+    padding:174px 5vw 70px;
     overflow:hidden;
   }
   .hero-panel{
@@ -393,7 +412,7 @@
     font-family:'Anton',sans-serif;
     font-size:clamp(90px,15vw,220px);
     line-height:.85;text-transform:uppercase;
-    position:sticky;top:120px;
+    position:sticky;top:154px;
   }
   .about-big .outline{
     display:block;
@@ -477,7 +496,7 @@
   @media (max-width:560px){
     section{padding:80px 5vw}
     .svc-card{flex-basis:280px;min-height:230px}
-    .hero{padding-top:120px}
+    .hero{padding-top:154px}
     .hero-meta{gap:28px}
     .masonry{grid-auto-rows:150px}
     .tile.wide{grid-column:span 2}
@@ -488,8 +507,10 @@
 </head>
 <body>
 
+<div class="demo-strip">Demo Site <span class="demo-strip-sub">Fictional braider website built by Lexis Sapphire Studio</span></div>
+
 <nav>
-  <a href="#" class="logo"><span class="logo-mark">CK</span>Crowned <span>by Kay</span></a>
+  <a href="#" class="logo"><span class="logo-mark">CK</span>Crowned <span>by Kay</span><span class="demo-badge">Demo</span></a>
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#work">Work</a>

@@ -41,8 +41,19 @@
     100%{transform:translateY(110vh) rotate(340deg)}
   }
 
+  .demo-strip{
+    position:fixed;top:0;left:0;right:0;z-index:101;
+    height:34px;
+    background:var(--orange);color:#fff;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    padding:0 5vw;text-align:center;
+  }
+  .demo-strip .demo-strip-sub{font-weight:500;letter-spacing:1px;text-transform:none;opacity:.9}
+  @media (max-width:560px){.demo-strip .demo-strip-sub{display:none}}
+
   nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
+    position:fixed;top:34px;left:0;right:0;z-index:100;
     display:flex;justify-content:space-between;align-items:center;
     padding:18px 5vw;
     background:rgba(10,10,10,.88);
@@ -62,6 +73,13 @@
     flex-shrink:0;
   }
   .logo span{color:var(--orange)}
+  .logo .demo-badge{
+    background:var(--orange);color:#fff;
+    font-family:'DM Sans',sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:2px;
+    padding:5px 10px;border-radius:999px;
+    text-transform:uppercase;
+  }
   .nav-back{
     font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);
   }
@@ -70,7 +88,7 @@
   .booking-wrap{
     max-width:640px;
     margin:0 auto;
-    padding:150px 5vw 100px;
+    padding:184px 5vw 100px;
   }
   .booking-wrap h1{
     font-family:'Anton',sans-serif;
@@ -162,8 +180,10 @@
 </head>
 <body>
 
+<div class="demo-strip">Demo Site <span class="demo-strip-sub">Fictional braider website built by Lexis Sapphire Studio</span></div>
+
 <nav>
-  <a href="index.html" class="logo"><span class="logo-mark">CK</span>Crowned <span>by Kay</span></a>
+  <a href="index.html" class="logo"><span class="logo-mark">CK</span>Crowned <span>by Kay</span><span class="demo-badge">Demo</span></a>
   <a class="nav-back" href="index.html">&larr; Back to Site</a>
 </nav>
 
