@@ -181,7 +181,7 @@
     display: grid; gap: 14px; margin-top: 34px;
     grid-template-columns: 1fr 1fr;
   }
-  @media (min-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 900px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 899px) {
     .gallery-grid figure:last-child:nth-child(odd) {
       grid-column: 1 / -1;
@@ -200,6 +200,21 @@
     padding: 12px 14px 14px; font-size: 0.92rem; font-weight: 600; color: var(--muted);
   }
   .gallery figcaption span { color: var(--amber); }
+  .gallery .placeholder-tile {
+    aspect-ratio: 3 / 4; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 10px;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 176, 66, 0.28), transparent 65%),
+      var(--surface2);
+  }
+  .gallery .placeholder-tile .mono {
+    font-family: "Anton", sans-serif; font-size: 3.4rem; line-height: 1;
+    color: var(--amber); letter-spacing: 0.04em;
+  }
+  .gallery .placeholder-tile p {
+    color: var(--muted); font-size: 0.9rem; font-weight: 600;
+    padding: 0 18px; text-align: center;
+  }
 
   /* ---------- watch ---------- */
   .watch { background: var(--bg); border-bottom: 1px solid var(--line); }
@@ -442,6 +457,13 @@
       <figure>
         <img src="images/keysha-headshot-plaid.jpg" alt="Keysha E. headshot, blue plaid flannel shirt over a white top" loading="lazy">
         <figcaption><span>Headshot</span> &middot; Studio portrait</figcaption>
+      </figure>
+      <figure>
+        <div class="placeholder-tile">
+          <span class="mono">KE</span>
+          <p>Your next photo goes here.</p>
+        </div>
+        <figcaption><span>Coming soon</span> &middot; Your favorite shot</figcaption>
       </figure>
     </div>
   </div>
