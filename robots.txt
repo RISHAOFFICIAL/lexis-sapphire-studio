@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rishaofficial.github.io/lexis-sapphire-studio/sitemap.xml
+Sitemap: https://lexissapphirestudio.com/sitemap.xml
