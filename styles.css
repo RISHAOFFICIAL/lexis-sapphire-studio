@@ -1033,8 +1033,8 @@ h1, h2, h3, .founder-name {
   .pay-badge { justify-content: center; }
 }
 
-/* ---------- Lexi chatbot ---------- */
-.lexi-btn {
+/* ---------- Bella chatbot ---------- */
+.bella-btn {
   position: fixed; left: 18px; bottom: 18px; z-index: 96;
   width: 56px; height: 56px; border-radius: 50%; border: none;
   background: var(--gold); color: #0f1f38; cursor: pointer;
@@ -1042,22 +1042,22 @@ h1, h2, h3, .founder-name {
   box-shadow: 0 6px 20px rgba(0,0,0,.45);
   transition: background .2s, transform .2s;
 }
-.lexi-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
-.lexi-btn svg { width: 26px; height: 26px; }
-.lexi-btn-icon-close { display: none; }
-.lexi-btn.open .lexi-btn-icon-chat { display: none; }
-.lexi-btn.open .lexi-btn-icon-close { display: block; }
-.lexi-btn::after {
+.bella-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+.bella-btn svg { width: 26px; height: 26px; }
+.bella-btn-icon-close { display: none; }
+.bella-btn.open .bella-btn-icon-chat { display: none; }
+.bella-btn.open .bella-btn-icon-close { display: block; }
+.bella-btn::after {
   content: ""; position: absolute; inset: -4px; border-radius: 50%;
   border: 2px solid var(--gold); opacity: 0; pointer-events: none;
-  animation: lexi-ping 2.4s ease-out infinite;
+  animation: bella-ping 2.4s ease-out infinite;
 }
-.lexi-btn.open::after { display: none; }
-@keyframes lexi-ping {
+.bella-btn.open::after { display: none; }
+@keyframes bella-ping {
   0% { transform: scale(.9); opacity: .7; }
   70%, 100% { transform: scale(1.25); opacity: 0; }
 }
-.lexi-window {
+.bella-window {
   position: fixed; left: 18px; bottom: 86px; z-index: 120;
   width: 350px; max-width: calc(100vw - 36px); height: 500px; max-height: calc(100vh - 120px);
   background: var(--card); border: 1px solid var(--border); border-radius: 16px;
@@ -1066,84 +1066,84 @@ h1, h2, h3, .founder-name {
   transform: translateY(12px); opacity: 0; pointer-events: none;
   transition: transform .25s ease, opacity .25s ease;
 }
-.lexi-window.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-.lexi-header {
+.bella-window.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.bella-header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 14px; flex-shrink: 0;
   background: linear-gradient(135deg, var(--navy) 0%, var(--sapphire) 100%);
   border-bottom: 1px solid var(--border);
 }
-.lexi-header-info { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.lexi-avatar {
+.bella-header-info { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.bella-avatar {
   width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
   background: var(--gold); color: #0f1f38;
   display: inline-flex; align-items: center; justify-content: center;
   font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 19px;
 }
-.lexi-name { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.2; }
-.lexi-status { font-size: 12px; color: #c9d6e8; line-height: 1.3; display: flex; align-items: center; gap: 5px; }
-.lexi-dot { width: 8px; height: 8px; border-radius: 50%; background: #30d158; display: inline-block; }
-.lexi-close {
+.bella-name { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.2; }
+.bella-status { font-size: 12px; color: #c9d6e8; line-height: 1.3; display: flex; align-items: center; gap: 5px; }
+.bella-dot { width: 8px; height: 8px; border-radius: 50%; background: #30d158; display: inline-block; }
+.bella-close {
   background: none; border: none; color: var(--text); cursor: pointer;
   font-size: 26px; line-height: 1; padding: 2px 6px; opacity: .8;
 }
-.lexi-close:hover { opacity: 1; }
-.lexi-messages {
+.bella-close:hover { opacity: 1; }
+.bella-messages {
   flex: 1; overflow-y: auto; padding: 14px;
   display: flex; flex-direction: column; gap: 10px;
 }
-.lexi-msg {
+.bella-msg {
   max-width: 85%; padding: 10px 13px; border-radius: 16px;
   font-size: 14px; line-height: 1.5; white-space: pre-line; word-wrap: break-word;
 }
-.lexi-msg a { color: var(--gold-light); font-weight: 600; }
-.lexi-msg-bot {
+.bella-msg a { color: var(--gold-light); font-weight: 600; }
+.bella-msg-bot {
   background: #2d2d2f; color: var(--text);
   border-bottom-left-radius: 4px; align-self: flex-start;
 }
-.lexi-msg-user {
+.bella-msg-user {
   background: var(--sapphire); color: #fff;
   border-bottom-right-radius: 4px; align-self: flex-end;
 }
-.lexi-typing { display: inline-flex; gap: 5px; align-items: center; padding: 12px 14px; }
-.lexi-typing span {
+.bella-typing { display: inline-flex; gap: 5px; align-items: center; padding: 12px 14px; }
+.bella-typing span {
   width: 7px; height: 7px; border-radius: 50%; background: var(--muted);
-  animation: lexi-bounce 1.2s ease-in-out infinite;
+  animation: bella-bounce 1.2s ease-in-out infinite;
 }
-.lexi-typing span:nth-child(2) { animation-delay: .15s; }
-.lexi-typing span:nth-child(3) { animation-delay: .3s; }
-@keyframes lexi-bounce {
+.bella-typing span:nth-child(2) { animation-delay: .15s; }
+.bella-typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes bella-bounce {
   0%, 60%, 100% { transform: translateY(0); opacity: .5; }
   30% { transform: translateY(-4px); opacity: 1; }
 }
-.lexi-quick {
+.bella-quick {
   display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; flex-shrink: 0;
 }
-.lexi-quick:empty { display: none; }
-.lexi-chip {
+.bella-quick:empty { display: none; }
+.bella-chip {
   background: transparent; border: 1px solid var(--gold); color: var(--gold-light);
   border-radius: 999px; padding: 6px 12px; font-size: 13px; cursor: pointer;
   font-family: inherit; transition: background .2s, color .2s;
 }
-.lexi-chip:hover { background: var(--gold); color: #0f1f38; }
-.lexi-form {
+.bella-chip:hover { background: var(--gold); color: #0f1f38; }
+.bella-form {
   display: flex; gap: 8px; padding: 10px 12px; flex-shrink: 0;
   border-top: 1px solid var(--border); background: var(--bg-alt);
 }
-.lexi-input {
+.bella-input {
   flex: 1; min-width: 0; padding: 10px 14px; border-radius: 999px;
   border: 1px solid var(--border); background: var(--card); color: var(--text);
   font-size: 14px; font-family: inherit; outline: none;
 }
-.lexi-input:focus { border-color: var(--gold); }
-.lexi-send {
+.bella-input:focus { border-color: var(--gold); }
+.bella-send {
   width: 40px; height: 40px; border-radius: 50%; border: none; flex-shrink: 0;
   background: var(--blue); color: #fff; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
   transition: background .2s;
 }
-.lexi-send:hover { background: var(--blue-hover); }
-.lexi-send svg { width: 18px; height: 18px; }
+.bella-send:hover { background: var(--blue-hover); }
+.bella-send svg { width: 18px; height: 18px; }
 @media (max-width: 480px) {
-  .lexi-window { height: 70vh; }
+  .bella-window { height: 70vh; }
 }

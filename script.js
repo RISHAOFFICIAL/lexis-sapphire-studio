@@ -428,3 +428,238 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// Bella chatbot: floating assistant for the Studio homepage
+document.addEventListener("DOMContentLoaded", function () {
+  var btn = document.getElementById("bella-btn");
+  var win = document.getElementById("bella-window");
+  var closeBtn = document.getElementById("bella-close");
+  var messages = document.getElementById("bella-messages");
+  var quick = document.getElementById("bella-quick");
+  var form = document.getElementById("bella-form");
+  var input = document.getElementById("bella-input");
+  if (!btn || !win || !messages || !form || !input) return;
+
+  var INTAKE = "https://lexissapphirestudio.com/intake/";
+  var welcomed = false;
+  var leadStep = null; // null, "name", "email", "service", "details"
+  var lead = { name: "", email: "", service: "", details: "" };
+
+  var DEFAULT_QUICK = [
+    "What services do you offer?",
+    "How much does a website cost?",
+    "How much does an app cost?",
+    "Do you offer payment plans?",
+    "How long does a project take?",
+    "I want to start a project",
+    "Talk to a human"
+  ];
+  var SERVICE_QUICK = ["Website", "iOS App", "PopOut Video", "Social Media"];
+
+  function scrollBottom() {
+    messages.scrollTop = messages.scrollHeight;
+  }
+  function addBot(html) {
+    var div = document.createElement("div");
+    div.className = "bella-msg bella-msg-bot";
+    div.innerHTML = html;
+    messages.appendChild(div);
+    scrollBottom();
+  }
+  function addUser(text) {
+    var div = document.createElement("div");
+    div.className = "bella-msg bella-msg-user";
+    div.textContent = text;
+    messages.appendChild(div);
+    scrollBottom();
+  }
+  function showTyping() {
+    var div = document.createElement("div");
+    div.className = "bella-msg bella-msg-bot bella-typing";
+    div.id = "bella-typing";
+    div.innerHTML = "<span></span><span></span><span></span>";
+    messages.appendChild(div);
+    scrollBottom();
+  }
+  function hideTyping() {
+    var t = document.getElementById("bella-typing");
+    if (t) t.remove();
+  }
+  function botReply(html, chips) {
+    showTyping();
+    setTimeout(function () {
+      hideTyping();
+      addBot(html);
+      renderQuick(chips === undefined ? DEFAULT_QUICK : chips);
+    }, 700);
+  }
+  function renderQuick(items) {
+    quick.innerHTML = "";
+    if (!items || !items.length) return;
+    items.forEach(function (label) {
+      var chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "bella-chip";
+      chip.textContent = label;
+      chip.addEventListener("click", function () {
+        handleUserText(label);
+      });
+      quick.appendChild(chip);
+    });
+  }
+  function intakeLink(text) {
+    return '<a href="' + INTAKE + '" target="_blank" rel="noopener">' + (text || "intake form") + "</a>";
+  }
+
+  function answerFor(text) {
+    var t = text.toLowerCase();
+    var has = function () {
+      for (var i = 0; i < arguments.length; i++) {
+        if (t.indexOf(arguments[i]) !== -1) return true;
+      }
+      return false;
+    };
+    if (has("start a project", "start my project", "get started", "i want to start", "begin a project", "hire you", "work with you", "book a project", "quote")) return "lead";
+    if (has("human", "real person", "talk to someone", "contact", "phone", "call you", "email")) {
+      return "You can reach Risha directly at <a href=\"mailto:hello@lexissapphirestudio.com\">hello@lexissapphirestudio.com</a> or (248) 722-8198. Every serious inquiry gets a reply. You can also tell us about your project on the " + intakeLink() + ".";
+    }
+    if (has("payment plan", "payment options", "pay over time", "klarna", "afterpay", "financing", "installment", "pay in parts")) {
+      return "Yes! Payment plans are available on every service through Klarna and Afterpay. We also accept Apple Pay, Google Pay, and all major credit and debit cards.";
+    }
+    if (has("black friday", "sale", "deal", "discount", "promo", "gta6", "coupon")) {
+      return "Our Black Friday sale runs through Sunday, November 29 at midnight ET. Get 20% off any website or app with a $150 deposit, or 3 PopOut Videos for $150 (normally $225). Use code GTA6 at checkout for 6% more off. Payment plans available.";
+    }
+    if (has("website") && has("cost", "price", "much", "charge")) {
+      return "Websites start at $1,500 and are typically done in 2 weeks. Payment plans are available through Klarna and Afterpay. Want to start one? Tell us about your project on the " + intakeLink() + ".";
+    }
+    if ((has("app") || has("ios") || has("iphone")) && has("cost", "price", "much", "charge")) {
+      return "iOS apps start at $3,000 and typically take 4 to 6 weeks. That includes design, development, TestFlight, and App Store release. Payment plans are available. Tell us about your app idea on the " + intakeLink() + ".";
+    }
+    if (has("popout", "pop out", "video")) {
+      return "PopOut Videos are $75 for one video or $110 for two. Your product breaks right out of the post, made from your real photos, delivered in 48 hours. Want one? Tell us about it on the " + intakeLink() + ".";
+    }
+    if (has("social media", "content pack", "posting", "manage my instagram", "manage my social")) {
+      return "Social media management starts with a Content Pack from $45, and monthly management starts at $300 per month. That covers posts, reels, and captions planned around your goals. Tell us about your business on the " + intakeLink() + ".";
+    }
+    if (has("how long", "timeline", "how fast", "turnaround", "take to build", "delivery time")) {
+      return "Websites take about 2 weeks, iOS apps take 4 to 6 weeks, and PopOut Videos are delivered in 48 hours.";
+    }
+    if (has("service", "what do you offer", "what do you do", "offerings", "help with")) {
+      return "We build iOS apps (from $3,000), websites (from $1,500), PopOut Videos ($75), and social media management (from $300 per month). Payment plans are available on everything. What are you looking for?";
+    }
+    if (has("process", "how does it work", "how do we start", "steps", "what happens")) {
+      return "It is simple: fill out the " + intakeLink() + ", we talk through your project, then we design, build, and launch it. Websites are usually live in 2 weeks.";
+    }
+    if (has("hiring", "job", "apply", "work for", "career", "position", "opening")) {
+      return "Yes, we are hiring! We have 2 Web Developer roles and 2 Social Media Manager roles, both contract. Email your portfolio and resume to <a href=\"mailto:hello@lexissapphirestudio.com\">hello@lexissapphirestudio.com</a> with the role in the subject line.";
+    }
+    if (has("where", "located", "location", "detroit")) {
+      return "We are based in Detroit, Michigan and work with businesses locally and remotely.";
+    }
+    if (has("hello", "hi ", "hi!", "hey", "good morning", "good afternoon")) {
+      return "Hi there! Great to meet you. I can answer questions about our services, pricing, timelines, and payment plans, or help you start a project. What can I do for you?";
+    }
+    if (has("thank")) {
+      return "You are welcome! Anything else I can help with?";
+    }
+    if (has("bye", "goodbye", "see you")) {
+      return "Thanks for stopping by! You can always reach us at hello@lexissapphirestudio.com. Have a great day!";
+    }
+    return null;
+  }
+
+  function startLead() {
+    leadStep = "name";
+    lead = { name: "", email: "", service: "", details: "" };
+    botReply("Wonderful, let us get your project started! What is your name? You can also skip ahead and fill out the " + intakeLink() + " directly.", []);
+  }
+
+  function handleLead(text) {
+    if (leadStep === "name") {
+      lead.name = text;
+      leadStep = "email";
+      botReply("Nice to meet you, " + text + "! What email should we use to reach you?", []);
+      return true;
+    }
+    if (leadStep === "email") {
+      if (text.indexOf("@") === -1 || text.indexOf(".") === -1) {
+        botReply("That email does not look quite right. Could you double check it?", []);
+        return true;
+      }
+      lead.email = text;
+      leadStep = "service";
+      botReply("Thanks! What do you need help with?", SERVICE_QUICK);
+      return true;
+    }
+    if (leadStep === "service") {
+      lead.service = text;
+      leadStep = "details";
+      botReply("Got it, a " + text.toLowerCase() + ". Tell me a little about your project, your business, and anything else that would help.", []);
+      return true;
+    }
+    if (leadStep === "details") {
+      lead.details = text;
+      leadStep = null;
+      botReply("Thank you, " + lead.name + "! Here is what I have:<br><br>Service: " + lead.service + "<br>Project: " + text + "<br><br>To finish up, please send your details through the " + intakeLink() + " or email <a href=\"mailto:hello@lexissapphirestudio.com\">hello@lexissapphirestudio.com</a> and Risha will get back to you. Every serious inquiry gets a reply.");
+      return true;
+    }
+    return false;
+  }
+
+  function handleUserText(text) {
+    var clean = text.trim();
+    if (!clean) return;
+    addUser(clean);
+    renderQuick([]);
+    if (leadStep) {
+      showTyping();
+      setTimeout(function () { hideTyping(); handleLead(clean); }, 600);
+      return;
+    }
+    var answer = answerFor(clean);
+    if (answer === "lead") {
+      showTyping();
+      setTimeout(function () { hideTyping(); startLead(); }, 600);
+      return;
+    }
+    if (answer) {
+      botReply(answer);
+      return;
+    }
+    botReply("Great question! Let me connect you with Risha. You can email <a href=\"mailto:hello@lexissapphirestudio.com\">hello@lexissapphirestudio.com</a>, call (248) 722-8198, or fill out our " + intakeLink() + " and she will get back to you.");
+  }
+
+  function openChat() {
+    win.hidden = false;
+    requestAnimationFrame(function () { win.classList.add("open"); });
+    btn.classList.add("open");
+    btn.setAttribute("aria-expanded", "true");
+    if (!welcomed) {
+      welcomed = true;
+      showTyping();
+      setTimeout(function () {
+        hideTyping();
+        addBot("Hi! I am Bella, your Lexis Sapphire Studio assistant. How can I help you today?");
+        renderQuick(DEFAULT_QUICK);
+      }, 700);
+    }
+    setTimeout(function () { input.focus(); }, 300);
+  }
+  function closeChat() {
+    win.classList.remove("open");
+    btn.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+    setTimeout(function () { if (!win.classList.contains("open")) win.hidden = true; }, 250);
+  }
+
+  btn.addEventListener("click", function () {
+    if (win.classList.contains("open")) { closeChat(); } else { openChat(); }
+  });
+  closeBtn.addEventListener("click", closeChat);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var text = input.value;
+    input.value = "";
+    handleUserText(text);
+  });
+});
