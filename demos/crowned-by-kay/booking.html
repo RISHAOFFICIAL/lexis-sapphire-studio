@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book an Appointment | Crowned by Kay</title>
+<meta name="description" content="Book your braiding appointment with Crowned by Kay in Detroit. Pick your style, choose your date, and lock it in online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0A0A0A;
+    --card:#1A1A1A;
+    --white:#FFFFFF;
+    --muted:#B8B8B8;
+    --orange:#FF5C00;
+    --orange-dark:#E04E00;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'DM Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--orange);color:#fff}
+
+  .leaf{
+    position:fixed;
+    top:-40px;
+    z-index:200;
+    pointer-events:none;
+    animation:fall linear infinite;
+    opacity:.85;
+    user-select:none;
+  }
+  @keyframes fall{
+    0%{transform:translateY(-40px) rotate(0deg)}
+    100%{transform:translateY(110vh) rotate(340deg)}
+  }
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 5vw;
+    background:rgba(10,10,10,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .logo{
+    font-family:'Anton',sans-serif;
+    font-size:22px;letter-spacing:1px;text-transform:uppercase;
+    display:flex;align-items:center;gap:12px;
+  }
+  .logo-mark{
+    display:inline-flex;align-items:center;justify-content:center;
+    height:40px;width:40px;border-radius:10px;
+    background:var(--orange);color:#fff;
+    font-size:18px;letter-spacing:0;
+    flex-shrink:0;
+  }
+  .logo span{color:var(--orange)}
+  .nav-back{
+    font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);
+  }
+  .nav-back:hover{color:var(--white)}
+
+  .booking-wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:150px 5vw 100px;
+  }
+  .booking-wrap h1{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(48px,8vw,84px);
+    line-height:.95;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .booking-wrap h1 em{font-style:normal;color:var(--orange)}
+  .booking-wrap .intro{
+    color:var(--muted);
+    font-size:17px;line-height:1.6;
+    margin-bottom:40px;
+  }
+  .demo-note{
+    background:rgba(255,92,0,.12);
+    border:1px solid rgba(255,92,0,.5);
+    border-radius:12px;
+    padding:16px 20px;
+    font-size:15px;line-height:1.6;color:#FFD9C4;
+    margin-bottom:36px;
+  }
+  form{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+    padding:36px 30px;
+    display:flex;flex-direction:column;gap:22px;
+  }
+  label{
+    display:block;
+    font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  input, select, textarea{
+    width:100%;
+    background:#111;
+    border:1.5px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    color:#fff;
+    font-family:'DM Sans',sans-serif;
+    font-size:16px;
+    padding:14px 16px;
+    outline:none;
+  }
+  input:focus, select:focus, textarea:focus{border-color:var(--orange)}
+  select{appearance:none}
+  textarea{resize:vertical;min-height:90px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-weight:700;font-size:15px;letter-spacing:1px;text-transform:uppercase;
+    padding:18px 34px;border-radius:999px;border:none;cursor:pointer;
+    background:var(--orange);color:#fff;
+    transition:transform .2s,background .2s;
+    font-family:'DM Sans',sans-serif;
+  }
+  .btn:hover{transform:translateY(-2px);background:var(--orange-dark)}
+  .confirmation{
+    display:none;
+    background:var(--card);
+    border:1px solid rgba(255,92,0,.6);
+    border-radius:18px;
+    padding:44px 30px;
+    text-align:center;
+  }
+  .confirmation h2{
+    font-family:'Anton',sans-serif;
+    font-size:38px;text-transform:uppercase;
+    color:var(--orange);
+    margin-bottom:16px;
+  }
+  .confirmation p{color:var(--muted);font-size:17px;line-height:1.6;margin-bottom:12px}
+  .confirmation p strong{color:#fff}
+  .confirmation .btn{margin-top:20px}
+  footer{
+    padding:36px 5vw 44px;
+    border-top:1px solid rgba(255,255,255,.1);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-size:14px;color:var(--muted);
+  }
+  footer a{color:#fff}
+  footer a:hover{color:var(--orange)}
+  @media (max-width:560px){
+    .row{grid-template-columns:1fr}
+    form{padding:28px 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><span class="logo-mark">CK</span>Crowned <span>by Kay</span></a>
+  <a class="nav-back" href="index.html">&larr; Back to Site</a>
+</nav>
+
+<div class="booking-wrap">
+  <h1>Book Your <em>Appointment</em></h1>
+  <p class="intro">Pick your style, choose your date, and lock it in. Braiding hair is included.</p>
+  <p class="demo-note">This is a demo booking form. No appointment is actually booked and no information is sent anywhere.</p>
+
+  <form id="booking-form">
+    <div>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="First and last name" required>
+    </div>
+    <div class="row">
+      <div>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="(313) 555-0123" required>
+      </div>
+      <div>
+        <label for="date">Preferred Date</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+    </div>
+    <div>
+      <label for="style">Style</label>
+      <select id="style" name="style" required>
+        <option value="" disabled selected>Choose a style</option>
+        <optgroup label="Stitch Braids">
+          <option>5 Stitch Braids w/ Bun, $145, 1.5 hrs</option>
+          <option>6 Stitch Braids w/ Design, $180, 2 hrs</option>
+          <option>4 Stitch Braids w/ Freestyle, $155, 1.5 hrs</option>
+          <option>5 Stitch w/ Wavy Parts, $140, 1.5 hrs</option>
+          <option>8 Stitch w/ Design, $205, 2.5 hrs</option>
+        </optgroup>
+        <optgroup label="Feed-Ins">
+          <option>6 Feed Ins, $165, 2 hrs</option>
+          <option>5 Feedins, $155, 1.5 hrs</option>
+          <option>2 Feed Ins, $90, 1 hr</option>
+          <option>5 Zig Zag Feed Ins, $155, 1.5 hrs</option>
+          <option>4 Nipsey Feed Ins, $130, 1.5 hrs</option>
+        </optgroup>
+        <optgroup label="Knotless and Fulani">
+          <option>Stitch x Knotless w/ Barrel End, $240, 3 hrs</option>
+          <option>Freestyle Fulani w/ Large Knotless, $290, 4 hrs</option>
+          <option>Snake Braids w/ Large Knotless, $255, 3 hrs</option>
+        </optgroup>
+        <optgroup label="Buns and Ponytails">
+          <option>Feed In Ponytail, $195, 2.5 hrs</option>
+          <option>Feed in Bun, $175, 2 hrs</option>
+          <option>2 Stitch Braids w/ Pony, $95, 1.5 hrs</option>
+          <option>Extended Feed In Pony, $270, 3 hrs</option>
+        </optgroup>
+      </select>
+    </div>
+    <div>
+      <label for="addons">Add-Ons (Optional)</label>
+      <select id="addons" name="addons">
+        <option value="" selected>No add-ons</option>
+        <option>Boho, $10</option>
+        <option>Butt length, $10</option>
+        <option>Zig zag part, $20</option>
+        <option>Freestyle design, $35</option>
+        <option>Knotless instead of quick weave, $50</option>
+      </select>
+    </div>
+    <div>
+      <label for="notes">Notes (Optional)</label>
+      <textarea id="notes" name="notes" placeholder="Hair length, inspo, anything Kay should know"></textarea>
+    </div>
+    <button type="submit" class="btn">Request Appointment</button>
+  </form>
+
+  <div class="confirmation" id="confirmation">
+    <h2>Request Received</h2>
+    <p><strong id="confirm-name"></strong>, your request for <strong id="confirm-style"></strong> on <strong id="confirm-date"></strong> is in.</p>
+    <p>This is a demo, so nothing was actually booked. On a live site, this is where a confirmation text and email would go out.</p>
+    <a class="btn" href="index.html">Back to Site</a>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 Crowned by Kay &bull; Detroit, MI</span>
+  <span>Fictional demo site built by <a href="https://lexissapphirestudio.com/" target="_blank" rel="noopener">Lexis Sapphire Studio</a>. Not a real business.</span>
+</footer>
+
+<script>
+  // Falling autumn leaves
+  (function () {
+    var leaves = ['\uD83C\uDF42', '\uD83C\uDF41', '\uD83C\uDF43'];
+    var count = window.innerWidth < 600 ? 10 : 18;
+    for (var i = 0; i < count; i++) {
+      var leaf = document.createElement('span');
+      leaf.className = 'leaf';
+      leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
+      leaf.style.left = Math.random() * 100 + 'vw';
+      leaf.style.fontSize = (14 + Math.random() * 16) + 'px';
+      leaf.style.animationDuration = (9 + Math.random() * 9) + 's';
+      leaf.style.animationDelay = (-Math.random() * 18) + 's';
+      document.body.appendChild(leaf);
+    }
+  })();
+
+  // Demo form: show a confirmation, send nothing anywhere
+  document.getElementById('booking-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var style = document.getElementById('style').value;
+    var dateVal = document.getElementById('date').value;
+    var dateText = dateVal;
+    try {
+      var d = new Date(dateVal + 'T12:00:00');
+      dateText = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    } catch (err) { /* keep the raw value */ }
+    document.getElementById('confirm-name').textContent = name;
+    document.getElementById('confirm-style').textContent = style;
+    document.getElementById('confirm-date').textContent = dateText;
+    document.getElementById('booking-form').style.display = 'none';
+    document.getElementById('confirmation').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
