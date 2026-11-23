@@ -182,6 +182,13 @@
     grid-template-columns: 1fr 1fr;
   }
   @media (min-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 899px) {
+    .gallery-grid figure:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc(50% - 7px);
+    }
+  }
   .gallery figure {
     background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
     overflow: hidden;
