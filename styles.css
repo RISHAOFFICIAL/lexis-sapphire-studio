@@ -634,6 +634,16 @@ h1, h2, h3, .founder-name {
 .founder-title {
   font-size: 15px; color: var(--muted); margin: 0;
 }
+.credential-badge {
+  display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin: 10px 0 0;
+  background: rgba(201, 162, 39, 0.14);
+  border: 1px solid rgba(201, 162, 39, 0.6);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4;
+}
+.credential-star { color: var(--gold-light); }
 @media (max-width: 600px) {
   .founder { flex-direction: column; text-align: center; gap: 16px; }
 }
