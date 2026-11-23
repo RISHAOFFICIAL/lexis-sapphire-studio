@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Keysha E.</title>
+<meta name="description" content="Your booking inquiry for Keysha E. is on its way.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0b09;
+    --ink: #fff6ec;
+    --muted: #cbbcb0;
+    --accent: #ff4a3d;
+    --amber: #ffb042;
+    --line: rgba(255, 246, 236, 0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -8%, rgba(255, 176, 66, 0.34), rgba(255, 176, 66, 0.10) 45%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255, 74, 61, 0.14), transparent 65%);
+  }
+  .wrap { position: relative; z-index: 1; max-width: 560px; }
+  .mark {
+    font-family: "Anton", sans-serif; font-size: 1.35rem; letter-spacing: 0.04em;
+    margin-bottom: 32px; display: block; text-decoration: none; color: var(--ink);
+  }
+  .mark span { color: var(--accent); }
+  h1 {
+    font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: clamp(2.6rem, 10vw, 4.2rem); line-height: 1.02;
+    letter-spacing: 0.01em; margin-bottom: 18px;
+  }
+  h1 span { color: var(--accent); }
+  p { color: var(--muted); font-size: 1.05rem; margin-bottom: 32px; }
+  .btn {
+    display: inline-block; background: var(--accent); color: #fff;
+    text-decoration: none; font-weight: 700; font-size: 1rem;
+    padding: 14px 28px; border-radius: 999px;
+  }
+  .fine {
+    margin-top: 48px; font-size: 0.82rem; color: var(--muted);
+  }
+  .fine a { color: inherit; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="mark" href="./">KEYSHA <span>E.</span></a>
+    <h1>INQUIRY <span>SENT.</span></h1>
+    <p>Thank you. Your booking inquiry is on its way to Keysha's bookings inbox. She will be in touch if the date works.</p>
+    <a class="btn" href="./">Back to Keysha's site</a>
+    <p class="fine">Concept demo designed by <a href="https://lexissapphirestudio.com/">Lexis Sapphire Studio</a></p>
+  </div>
+</body>
+</html>

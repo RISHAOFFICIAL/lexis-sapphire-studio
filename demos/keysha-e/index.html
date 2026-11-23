@@ -581,9 +581,13 @@
   <div class="wrap">
     <p class="kicker">Booking</p>
     <h2>Book Keysha for your stage.</h2>
-    <p class="lead">Stand-up bookings for clubs and special events. Tell Keysha about your event and the form will open your email app with everything ready to send.</p>
+    <p class="lead">Stand-up bookings for clubs and special events. Tell Keysha about your event and your inquiry goes straight to her bookings inbox.</p>
 
-    <form class="booking-form" id="booking-form">
+    <form class="booking-form" id="booking-form" action="https://formsubmit.co/lexissapphire@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New booking inquiry for Keysha E.">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://lexissapphirestudio.com/demos/keysha-e/thank-you.html">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <div class="form-row two">
         <div class="field">
           <label for="bk-name">Your name</label>
@@ -636,7 +640,6 @@
         <textarea id="bk-message" name="message" required placeholder="What kind of event is it, how big is the audience, anything else she should know?"></textarea>
       </div>
       <button type="submit" class="form-submit">Send booking inquiry</button>
-      <p class="form-note" id="form-note" hidden>Your email app should have opened with your inquiry ready to send. Press send in your email app to deliver it.</p>
     </form>
 
     <p class="or-line">or reach out directly</p>
@@ -661,41 +664,6 @@
     <p class="fine">This is a concept preview, not Keysha E.'s official site. Photos and credits belong to Keysha E.</p>
   </div>
 </footer>
-
-<script>
-document.getElementById('booking-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var name = document.getElementById('bk-name').value.trim();
-  var email = document.getElementById('bk-email').value.trim();
-  var phone = document.getElementById('bk-phone').value.trim() || 'Not provided';
-  var type = document.getElementById('bk-type').value;
-  var dateRaw = document.getElementById('bk-date').value;
-  var date = 'Not set yet';
-  if (dateRaw) {
-    var d = new Date(dateRaw + 'T12:00:00');
-    date = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-  }
-  var venue = document.getElementById('bk-venue').value.trim() || 'Not provided';
-  var budget = document.getElementById('bk-budget').value;
-  var message = document.getElementById('bk-message').value.trim();
-  var subject = 'Booking inquiry: ' + type;
-  if (dateRaw) { subject += ' - ' + date; }
-  var body = [
-    'Name: ' + name,
-    'Email: ' + email,
-    'Phone: ' + phone,
-    'Event type: ' + type,
-    'Event date: ' + date,
-    'City and venue: ' + venue,
-    'Budget range: ' + budget,
-    '',
-    'About the event:',
-    message
-  ].join('\n');
-  window.location.href = 'mailto:comediankeysha.e@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  document.getElementById('form-note').hidden = false;
-});
-</script>
 
 </body>
 </html>
