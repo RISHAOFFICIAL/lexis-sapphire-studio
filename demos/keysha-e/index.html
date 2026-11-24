@@ -38,9 +38,21 @@
   a { color: inherit; }
   .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
 
+  /* ---------- demo strip ---------- */
+  .demo-strip{
+    position:sticky;top:0;z-index:101;
+    height:34px;
+    background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    padding:0 5vw;text-align:center;
+  }
+  .demo-strip .demo-strip-sub{font-weight:500;letter-spacing:1px;text-transform:none;opacity:.9}
+  @media (max-width:560px){.demo-strip .demo-strip-sub{display:none}}
+
   /* ---------- nav ---------- */
   nav {
-    position: sticky; top: 0; z-index: 50;
+    position: sticky; top: 34px; z-index: 50;
     background: rgba(15, 11, 9, 0.88);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
@@ -380,6 +392,8 @@
 </style>
 </head>
 <body>
+
+<div class="demo-strip">Demo Site <span class="demo-strip-sub">Concept demo website built by Lexis Sapphire Studio</span></div>
 
 <nav>
   <div class="nav-inner">
