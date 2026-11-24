@@ -191,7 +191,7 @@ h1, h2, h3, .founder-name {
 /* ---------- Services: Apple product showcase ---------- */
 /* ---------- Black Friday Sale ---------- */
 .black-friday {
-  padding: 28px 22px;
+  padding: 20px 22px;
   background: linear-gradient(135deg, #1a0a00 0%, #2d1a0a 50%, #1a0a00 100%);
   border-top: 1px solid #c9a227;
   border-bottom: 1px solid #c9a227;
@@ -202,28 +202,28 @@ h1, h2, h3, .founder-name {
   color: var(--gold); font-weight: 700; margin-bottom: 12px;
 }
 .black-friday h2 {
-  font-size: clamp(24px, 4vw, 32px); margin-bottom: 20px;
+  font-size: clamp(20px, 3.5vw, 26px); margin-bottom: 12px;
   color: var(--text);
 }
 .bf-deals {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px; max-width: 820px; margin: 0 auto 16px; text-align: left;
+  gap: 12px; max-width: 820px; margin: 0 auto 12px; text-align: left;
 }
 .bf-deal {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(201, 162, 39, 0.4);
-  border-radius: 16px; padding: 20px;
+  border-radius: 12px; padding: 14px;
 }
-.bf-deal h3 { font-size: 20px; color: var(--gold-light); margin-bottom: 8px; }
-.bf-deal p { color: var(--muted); font-size: 15px; margin-bottom: 12px; line-height: 1.5; }
-.bf-price { font-size: 17px; color: var(--text); font-weight: 600; }
+.bf-deal h3 { font-size: 17px; color: var(--gold-light); margin-bottom: 6px; }
+.bf-deal p { color: var(--muted); font-size: 14px; margin-bottom: 10px; line-height: 1.45; }
+.bf-price { font-size: 15px; color: var(--text); font-weight: 600; }
 .bf-was { text-decoration: line-through; color: var(--muted); font-weight: 400; }
-.bf-deal .btn { margin-top: 8px; }
-.bf-note { font-size: 14px; color: var(--muted); max-width: 600px; margin: 0 auto; }
+.bf-deal .btn { margin-top: 6px; padding: 8px 20px; font-size: 14px; }
+.bf-note { font-size: 13px; color: var(--muted); max-width: 600px; margin: 0 auto; }
 
 /* ---------- Now Hiring ---------- */
 .hiring {
-  padding: 28px 22px;
+  padding: 20px 22px;
   background: linear-gradient(135deg, #0f1f38 0%, #16294d 50%, #0f1f38 100%);
   border-top: 1px solid var(--sapphire);
   border-bottom: 1px solid var(--sapphire);
@@ -234,24 +234,24 @@ h1, h2, h3, .founder-name {
   color: var(--gold); font-weight: 700; margin-bottom: 12px;
 }
 .hiring h2 {
-  font-size: clamp(24px, 4vw, 32px); margin-bottom: 8px;
+  font-size: clamp(20px, 3.5vw, 26px); margin-bottom: 6px;
   color: var(--text);
 }
-.hiring-sub { font-size: 17px; color: var(--muted); margin-bottom: 20px; }
+.hiring-sub { font-size: 15px; color: var(--muted); margin-bottom: 14px; }
 .hiring-roles {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px; max-width: 820px; margin: 0 auto 16px; text-align: left;
+  gap: 12px; max-width: 820px; margin: 0 auto 12px; text-align: left;
 }
 .hiring-role {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(30, 90, 168, 0.6);
-  border-radius: 16px; padding: 20px;
+  border-radius: 12px; padding: 14px;
 }
-.hiring-role h3 { font-size: 20px; color: var(--gold-light); margin-bottom: 6px; }
-.hiring-meta { font-size: 14px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-.hiring-role p { color: var(--muted); font-size: 15px; margin-bottom: 12px; line-height: 1.5; }
-.hiring-role .btn { margin-top: 8px; }
-.hiring-note { font-size: 14px; color: var(--muted); max-width: 600px; margin: 0 auto; }
+.hiring-role h3 { font-size: 17px; color: var(--gold-light); margin-bottom: 4px; }
+.hiring-meta { font-size: 12px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.hiring-role p { color: var(--muted); font-size: 14px; margin-bottom: 10px; line-height: 1.45; }
+.hiring-role .btn { margin-top: 6px; padding: 8px 20px; font-size: 14px; }
+.hiring-note { font-size: 13px; color: var(--muted); max-width: 600px; margin: 0 auto; }
 .hiring-note a { color: var(--blue); text-decoration: none; font-weight: 600; }
 .hiring-note a:hover { text-decoration: underline; }
 
@@ -811,7 +811,7 @@ h1, h2, h3, .founder-name {
   .service-card { gap: 6px; }
   .service-card { padding: 18px 16px; }
   .service-card h3 { font-size: 19px; }
-  .bf-deal, .hiring-role { padding: 16px; }
+  .bf-deal, .hiring-role { padding: 12px; }
   .refer-reward { padding: 16px 14px; }
   .cta { padding: 28px 22px; }
   .hero-sub { font-size: 19px; }
