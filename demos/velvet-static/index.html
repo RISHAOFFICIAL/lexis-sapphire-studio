@@ -71,7 +71,7 @@ section.alt{background:var(--bg2)}
 /* Members */
 .members{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .member{border:1px solid var(--line);background:var(--bg)}
-.member img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(35%) contrast(1.05)}
+.member img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 25%;filter:grayscale(35%) contrast(1.05)}
 .member-body{padding:16px}
 .member-body h3{font-size:22px;font-weight:600}
 .member-role{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--volt);margin:4px 0 10px}
@@ -123,6 +123,8 @@ section.alt{background:var(--bg2)}
 .video{border:1px solid var(--line);background:var(--bg)}
 .video-thumb{position:relative}
 .video-thumb img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.video-thumb img.tall-up{object-position:center 25%}
+.video-thumb img.tall-mid{object-position:center 35%}
 .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .play span{width:58px;height:58px;border:2px solid var(--volt);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--volt);font-size:22px;padding-left:4px;background:rgba(16,16,16,.55)}
 .video-dur{position:absolute;right:10px;bottom:10px;background:#101010;color:var(--ink);font-family:var(--mono);font-size:12px;padding:3px 8px}
@@ -134,6 +136,7 @@ section.alt{background:var(--bg2)}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .g-item{border:1px solid var(--line);background:var(--bg)}
 .g-item img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.g-item img.contain{object-fit:contain;background:var(--bg)}
 .g-item p{padding:12px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
 /* Press */
@@ -146,6 +149,7 @@ section.alt{background:var(--bg2)}
 .merch{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .product{border:1px solid var(--line);background:var(--bg)}
 .product img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.product img.contain{object-fit:contain;background:var(--bg)}
 .product-typo{aspect-ratio:1/1;background:var(--volt);color:#101010;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
 .product-typo .big{font-family:"Oswald",sans-serif;font-size:44px;font-weight:700;line-height:1;text-transform:uppercase}
 .product-typo .small{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:10px}
@@ -306,7 +310,7 @@ footer p.fic{color:var(--volt);font-family:var(--mono);font-size:12px;letter-spa
         <div class="member-body">
           <h3>Andre "Dre" Calloway</h3>
           <p class="member-role">Lead Guitar</p>
-          <p>Started on his uncle's beat-up Strat at 13. Ran sound at DIY shows across the Cass Corridor before joining the band.</p>
+          <p>Started on his uncle's beat-up electric guitar at 13. Ran sound at DIY shows across the Cass Corridor before joining the band.</p>
         </div>
       </article>
       <article class="member">
@@ -484,7 +488,7 @@ footer p.fic{color:var(--volt);font-family:var(--mono);font-size:12px;letter-spa
       </article>
       <article class="video">
         <div class="video-thumb">
-          <img src="images/member-mara.jpg" alt="Mara Voss performing an acoustic session">
+          <img class="tall-mid" src="images/member-mara.jpg" alt="Mara Voss performing an acoustic session">
           <div class="play"><span>&#9654;</span></div>
           <span class="video-dur">3:31</span>
         </div>
@@ -492,7 +496,7 @@ footer p.fic{color:var(--volt);font-family:var(--mono);font-size:12px;letter-spa
       </article>
       <article class="video">
         <div class="video-thumb">
-          <img src="images/member-dre.jpg" alt="Dre Calloway performing Rust Belt Heart">
+          <img class="tall-up" src="images/member-dre.jpg" alt="Dre Calloway performing Rust Belt Heart">
           <div class="play"><span>&#9654;</span></div>
           <span class="video-dur">3:55</span>
         </div>
@@ -515,11 +519,11 @@ footer p.fic{color:var(--volt);font-family:var(--mono);font-size:12px;letter-spa
         <p>Live at Thalia Hall, Chicago</p>
       </div>
       <div class="g-item">
-        <img src="images/album-neon-rust.jpg" alt="Neon Rust album artwork">
+        <img class="contain" src="images/album-neon-rust.jpg" alt="Neon Rust album artwork">
         <p>Neon Rust, 2021</p>
       </div>
       <div class="g-item">
-        <img src="images/album-half-light.jpg" alt="Half-Light Motel album artwork">
+        <img class="contain" src="images/album-half-light.jpg" alt="Half-Light Motel album artwork">
         <p>Half-Light Motel, 2023</p>
       </div>
       <div class="g-item">
@@ -527,7 +531,7 @@ footer p.fic{color:var(--volt);font-family:var(--mono);font-size:12px;letter-spa
         <p>Static Bloom tee</p>
       </div>
       <div class="g-item">
-        <img src="images/merch-poster.jpg" alt="Static Bloom Tour 2026 poster">
+        <img class="contain" src="images/merch-poster.jpg" alt="Static Bloom Tour 2026 poster">
         <p>Static Bloom Tour poster, 2026</p>
       </div>
     </div>
@@ -568,7 +572,7 @@ footer p.fic{color:var(--volt);font-family:var(--mono);font-size:12px;letter-spa
         <div class="product-body"><div><h3>Static Bloom Tee</h3><p>Black, heavyweight cotton. S to 3XL.</p></div><span class="price">$35</span></div>
       </article>
       <article class="product">
-        <img src="images/merch-poster.jpg" alt="Static Bloom Tour 2026 screen-printed poster">
+        <img class="contain" src="images/merch-poster.jpg" alt="Static Bloom Tour 2026 screen-printed poster">
         <div class="product-body"><div><h3>Tour Poster 2026</h3><p>18x24 screen print, numbered run of 200.</p></div><span class="price">$25</span></div>
       </article>
       <article class="product">
