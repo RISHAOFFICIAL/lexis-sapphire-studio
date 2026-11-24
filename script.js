@@ -702,3 +702,62 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   if (window.location.hash === "#process") { openAccordion(); }
 });
+
+// Selected Work carousel: arrows, dots, and swipe-safe lightbox
+document.addEventListener("DOMContentLoaded", function () {
+  var track = document.querySelector(".work-grid");
+  var dotsWrap = document.getElementById("work-dots");
+  var prevBtn = document.getElementById("work-prev");
+  var nextBtn = document.getElementById("work-next");
+  if (!track || !dotsWrap) return;
+  var cards = track.querySelectorAll(".work-card");
+  var count = cards.length;
+  if (!count) return;
+
+  for (var i = 0; i < count; i++) {
+    (function (index) {
+      var dot = document.createElement("button");
+      dot.className = "work-dot";
+      dot.setAttribute("aria-label", "Go to work " + (index + 1));
+      dot.addEventListener("click", function () {
+        var max = track.scrollWidth - track.clientWidth;
+        track.scrollTo({ left: max * index / (count - 1), behavior: "smooth" });
+      });
+      dotsWrap.appendChild(dot);
+    })(i);
+  }
+  var dots = dotsWrap.querySelectorAll(".work-dot");
+
+  function cardStep() {
+    return cards[0].offsetWidth + 16;
+  }
+  function update() {
+    var max = track.scrollWidth - track.clientWidth;
+    var progress = max > 0 ? track.scrollLeft / max : 0;
+    var active = Math.round(progress * (count - 1));
+    dots.forEach(function (d, idx) { d.classList.toggle("active", idx === active); });
+    if (prevBtn) prevBtn.disabled = track.scrollLeft <= 4;
+    if (nextBtn) nextBtn.disabled = track.scrollLeft >= max - 4;
+  }
+  track.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  if (prevBtn) prevBtn.addEventListener("click", function () {
+    track.scrollBy({ left: -cardStep(), behavior: "smooth" });
+  });
+  if (nextBtn) nextBtn.addEventListener("click", function () {
+    track.scrollBy({ left: cardStep(), behavior: "smooth" });
+  });
+
+  // Swiping the carousel must not open the lightbox
+  var startX = 0, dragging = false;
+  track.addEventListener("pointerdown", function (e) {
+    startX = e.clientX; dragging = false;
+  });
+  track.addEventListener("pointermove", function (e) {
+    if (Math.abs(e.clientX - startX) > 8) dragging = true;
+  });
+  track.addEventListener("click", function (e) {
+    if (dragging) { e.preventDefault(); e.stopPropagation(); dragging = false; }
+  }, true);
+  update();
+});
