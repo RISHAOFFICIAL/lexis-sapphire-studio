@@ -71,7 +71,7 @@ h1, h2, h3, .founder-name {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .nav-inner {
-  max-width: 1024px; height: 44px; margin: 0 auto; padding: 0 22px;
+  max-width: 1200px; height: 44px; margin: 0 auto; padding: 0 22px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .logo {
@@ -82,16 +82,31 @@ h1, h2, h3, .founder-name {
 .logo-mark { flex-shrink: 0; }
 .nav-links { display: flex; gap: 28px; align-items: center; }
 .nav-links a {
-  color: var(--text); text-decoration: none; font-size: 12px;
-  opacity: 0.8; transition: opacity 0.2s;
+  color: var(--text); text-decoration: none; font-size: 13px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  transition: color 0.2s;
 }
-.nav-links a:hover { opacity: 1; }
+.nav-links a:hover { color: var(--gold-light); }
 .nav-cta {
   background: var(--blue) !important; color: #fff !important;
   padding: 4px 12px !important; border-radius: 999px;
   font-size: 12px !important; opacity: 1 !important;
 }
 .nav-cta:hover { background: var(--blue-hover) !important; }
+
+/* Megan-style nav: below 1200px the links wrap to a swipeable row
+   under the logo bar instead of disappearing. Hire Me stays top right. */
+@media (max-width: 1200px) {
+  .nav { height: auto; }
+  .nav-inner { height: auto; flex-wrap: wrap; padding-top: 8px; }
+  .nav-links {
+    order: 3; width: 100%;
+    overflow-x: auto; gap: 22px; padding: 10px 0 12px;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { flex-shrink: 0; white-space: nowrap; }
+}
 
 /* ---------- Hero ---------- */
 .hero {
@@ -871,7 +886,6 @@ h1, h2, h3, .founder-name {
   .work-body h3 { font-size: 19px; }
 }
 @media (max-width: 560px) {
-  .nav-links a:not(.nav-cta) { display: none; }
   .process-list { grid-template-columns: 1fr 1fr; gap: 24px 8px; }
   .process-list li::before { display: none; }
   .process-num { width: 40px; height: 40px; font-size: 14px; }
