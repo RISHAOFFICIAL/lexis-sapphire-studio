@@ -188,6 +188,11 @@ h1, h2, h3, .founder-name {
 }
 .section-head p { font-size: 17px; color: var(--muted); letter-spacing: -0.01em; }
 
+/* ---------- Agencies and managers ---------- */
+.agencies-copy { text-align: center; max-width: 700px; margin: 0 auto 8px; padding: 0 22px; font-size: 18px; line-height: 1.7; color: var(--text); }
+.agencies-cta .btn { margin: 4px 6px; }
+.agencies-note { text-align: center; color: var(--muted); font-size: 15px; margin-top: 22px; }
+
 /* ---------- Services: Apple product showcase ---------- */
 /* ---------- Black Friday Sale ---------- */
 .black-friday {
