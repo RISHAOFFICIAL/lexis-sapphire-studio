@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Velvet Static | Fictional Demo Band Site by Lexis Sapphire Studio</title>
+<meta name="description" content="The Velvet Static is a fictional four-piece indie soul band from Detroit. This is a fictional demo website built by Lexis Sapphire Studio. Not a real band.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#101010;
+  --bg2:#171717;
+  --volt:#F2D600;
+  --ink:#F2EFE6;
+  --muted:#8A8A8A;
+  --line:rgba(242,239,230,.14);
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--volt)}
+h1,h2,h3,.oswald{font-family:"Oswald",sans-serif;text-transform:uppercase;line-height:1.02;letter-spacing:.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono)}
+
+/* Fictional strip */
+.strip{background:var(--volt);color:#101010;text-align:center;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.06em;padding:9px 12px;text-transform:uppercase}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(16,16,16,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:"Oswald",sans-serif;font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand b{color:var(--volt);font-weight:700}
+.nav-links{display:flex;gap:18px;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.nav-links a:hover{color:var(--volt)}
+
+/* Hero */
+.hero{padding:52px 0 0}
+.hero-kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--volt);margin-bottom:14px}
+.hero h1{font-size:clamp(64px,14vw,150px);font-weight:700;letter-spacing:-.01em}
+.hero h1 span{display:block;color:var(--volt)}
+.hero-sub{font-size:18px;color:var(--muted);max-width:640px;margin:16px 0 8px}
+.hero-sub strong{color:var(--ink)}
+.hero-img{margin-top:28px;border:1px solid var(--line)}
+.hero-img img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.hero-caption{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:10px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-top:none}
+.stat{padding:20px 12px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:"Oswald",sans-serif;font-size:clamp(26px,5vw,40px);font-weight:600;color:var(--volt);line-height:1}
+.stat-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* Ticker */
+.ticker{background:var(--volt);color:#101010;overflow:hidden;white-space:nowrap;margin-top:44px}
+.ticker-track{display:inline-block;padding:10px 0;font-family:"Oswald",sans-serif;font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;animation:tick 22s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Sections */
+section{padding:72px 0}
+section.alt{background:var(--bg2)}
+.sec-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--volt);padding-bottom:12px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(32px,6vw,48px);font-weight:600}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--volt);letter-spacing:.1em}
+.sec-sub{color:var(--muted);font-size:16px;margin:-18px 0 32px;max-width:720px}
+
+/* Members */
+.members{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.member{border:1px solid var(--line);background:var(--bg)}
+.member img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(35%) contrast(1.05)}
+.member-body{padding:16px}
+.member-body h3{font-size:22px;font-weight:600}
+.member-role{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--volt);margin:4px 0 10px}
+.member-body p{font-size:14px;color:var(--muted);line-height:1.55}
+
+/* Music */
+.albums{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.album{border:1px solid var(--line);background:var(--bg)}
+.album img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.album-body{padding:16px}
+.album-body h3{font-size:24px;font-weight:600}
+.album-meta{font-family:var(--mono);font-size:12px;color:var(--volt);letter-spacing:.06em;margin:6px 0 10px}
+.album-body p{font-size:14px;color:var(--muted);line-height:1.55}
+.album-body p strong{color:var(--ink);font-weight:600}
+.single-box{margin-top:16px;border:2px solid var(--volt);padding:24px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:var(--bg)}
+.single-box h3{font-size:30px;font-weight:600}
+.single-box h3 span{color:var(--volt)}
+.single-box p{color:var(--muted);font-size:15px;max-width:560px;margin-top:6px}
+.stream-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:7px 12px;color:var(--ink);background:var(--bg2)}
+.tracklist{margin-top:16px;border:1px solid var(--line);background:var(--bg)}
+.tracklist-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.tracklist-head h3{font-size:22px}
+.tracklist-head span{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.track{display:flex;gap:16px;padding:12px 20px;border-bottom:1px solid var(--line);align-items:baseline}
+.track:last-child{border-bottom:none}
+.track-no{font-family:var(--mono);font-size:13px;color:var(--volt);min-width:26px}
+.track-name{flex:1;font-weight:600;font-size:15px}
+.track-name em{font-style:normal;color:var(--volt);font-family:var(--mono);font-size:11px;letter-spacing:.1em;margin-left:8px}
+.track-len{font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+/* Tour */
+.tour-list{border-top:1px solid var(--line)}
+.show{display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;padding:18px 0;border-bottom:1px dashed var(--line)}
+.show-date{font-family:var(--mono);text-align:left}
+.show-date .dow{font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.show-date .date{font-family:"Oswald",sans-serif;font-size:26px;font-weight:600;line-height:1.1;color:var(--volt);text-transform:uppercase}
+.show-venue h3{font-size:21px;font-weight:500;text-transform:none;letter-spacing:0}
+.show-venue p{font-size:14px;color:var(--muted)}
+.show-venue p b{color:var(--ink);font-weight:600}
+.status{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--volt);color:var(--volt);padding:8px 14px;white-space:nowrap}
+.status.soldout{border-color:#555;color:var(--muted);text-decoration:line-through}
+.status.low{border-color:var(--volt);background:var(--volt);color:#101010;font-weight:700}
+.tour-note{margin-top:20px;font-size:14px;color:var(--muted)}
+.tour-note b{color:var(--ink)}
+
+/* Videos */
+.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.video{border:1px solid var(--line);background:var(--bg)}
+.video-thumb{position:relative}
+.video-thumb img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.play span{width:58px;height:58px;border:2px solid var(--volt);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--volt);font-size:22px;padding-left:4px;background:rgba(16,16,16,.55)}
+.video-dur{position:absolute;right:10px;bottom:10px;background:#101010;color:var(--ink);font-family:var(--mono);font-size:12px;padding:3px 8px}
+.video-body{padding:14px 16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.video-body h3{font-size:19px;font-weight:500;text-transform:none;letter-spacing:0}
+.video-body span{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g-item{border:1px solid var(--line);background:var(--bg)}
+.g-item img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.g-item p{padding:12px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* Press */
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.quote{border:1px solid var(--line);border-left:4px solid var(--volt);padding:24px;background:var(--bg)}
+.quote p{font-family:"Oswald",sans-serif;font-size:24px;font-weight:500;line-height:1.25;text-transform:none;letter-spacing:0}
+.quote cite{display:block;font-family:var(--mono);font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--volt);margin-top:14px}
+
+/* Merch */
+.merch{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.product{border:1px solid var(--line);background:var(--bg)}
+.product img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.product-typo{aspect-ratio:1/1;background:var(--volt);color:#101010;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.product-typo .big{font-family:"Oswald",sans-serif;font-size:44px;font-weight:700;line-height:1;text-transform:uppercase}
+.product-typo .small{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:10px}
+.product-body{padding:14px 16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.product-body h3{font-size:18px;font-weight:500;text-transform:none;letter-spacing:0}
+.price{font-family:"Oswald",sans-serif;font-size:22px;font-weight:600;color:var(--volt);white-space:nowrap}
+.product-body p{font-size:13px;color:var(--muted)}
+
+/* Bio */
+.bio-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start}
+.bio-text p{font-size:16px;color:#cfcbc0;margin-bottom:16px;line-height:1.7}
+.bio-text p strong{color:var(--ink)}
+.timeline{border:1px solid var(--line);background:var(--bg);padding:8px 0}
+.tl-item{padding:14px 20px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:64px 1fr;gap:14px}
+.tl-item:last-child{border-bottom:none}
+.tl-year{font-family:"Oswald",sans-serif;font-size:20px;font-weight:600;color:var(--volt)}
+.tl-item p{font-size:14px;color:var(--muted);line-height:1.55}
+.tl-item p b{color:var(--ink)}
+
+/* Social */
+.social-row{display:flex;gap:10px;flex-wrap:wrap}
+.social-badge{font-family:var(--mono);font-size:14px;border:1px solid var(--line);padding:12px 18px;background:var(--bg2)}
+.social-badge b{color:var(--volt);font-weight:700}
+
+/* CTA */
+.cta{background:var(--volt);color:#101010;text-align:center;padding:64px 20px}
+.cta h2{font-size:clamp(32px,6vw,52px);font-weight:700}
+.cta p{max-width:620px;margin:14px auto 26px;font-size:17px;color:#2b2b2b}
+.cta a.btn{display:inline-block;background:#101010;color:var(--volt);font-family:"Oswald",sans-serif;font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:14px 32px}
+.cta a.btn:hover{background:#000}
+.cta .cta-sub{margin-top:16px;font-size:14px}
+.cta .cta-sub a{color:#101010;font-weight:700}
+
+/* Footer */
+footer{padding:36px 0 48px;text-align:center;border-top:1px solid var(--line)}
+footer .f-brand{font-family:"Oswald",sans-serif;font-size:26px;font-weight:700;text-transform:uppercase}
+footer .f-brand b{color:var(--volt)}
+footer p{font-size:14px;color:var(--muted);margin-top:8px}
+footer p.fic{color:var(--volt);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-top:14px}
+
+/* Falling leaves */
+#leaves{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden}
+.leaf{position:absolute;top:-40px;font-size:20px;opacity:.85;animation:fall linear infinite}
+@keyframes fall{
+  0%{transform:translateY(-40px) rotate(0deg)}
+  100%{transform:translateY(110vh) rotate(340deg)}
+}
+.leaf:nth-child(1){left:4%;animation-duration:11s;animation-delay:0s;font-size:18px}
+.leaf:nth-child(2){left:12%;animation-duration:14s;animation-delay:2s;font-size:24px}
+.leaf:nth-child(3){left:20%;animation-duration:10s;animation-delay:5s;font-size:16px}
+.leaf:nth-child(4){left:28%;animation-duration:16s;animation-delay:1s;font-size:22px}
+.leaf:nth-child(5){left:36%;animation-duration:12s;animation-delay:7s;font-size:18px}
+.leaf:nth-child(6){left:44%;animation-duration:15s;animation-delay:3s;font-size:26px}
+.leaf:nth-child(7){left:52%;animation-duration:11s;animation-delay:6s;font-size:17px}
+.leaf:nth-child(8){left:60%;animation-duration:13s;animation-delay:0s;font-size:22px}
+.leaf:nth-child(9){left:68%;animation-duration:17s;animation-delay:4s;font-size:19px}
+.leaf:nth-child(10){left:76%;animation-duration:10s;animation-delay:8s;font-size:24px}
+.leaf:nth-child(11){left:84%;animation-duration:14s;animation-delay:2s;font-size:16px}
+.leaf:nth-child(12){left:92%;animation-duration:12s;animation-delay:5s;font-size:21px}
+.leaf:nth-child(13){left:8%;animation-duration:15s;animation-delay:9s;font-size:15px}
+.leaf:nth-child(14){left:48%;animation-duration:13s;animation-delay:10s;font-size:20px}
+.leaf:nth-child(15){left:72%;animation-duration:11s;animation-delay:11s;font-size:17px}
+.leaf:nth-child(16){left:96%;animation-duration:16s;animation-delay:6s;font-size:23px}
+@media (prefers-reduced-motion:reduce){
+  #leaves{display:none}
+  .ticker-track{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* Responsive */
+@media (max-width:900px){
+  .members{grid-template-columns:repeat(2,1fr)}
+  .albums{grid-template-columns:1fr 1fr}
+  .merch{grid-template-columns:repeat(2,1fr)}
+  .bio-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media (max-width:600px){
+  section{padding:52px 0}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+  .members{grid-template-columns:1fr}
+  .albums{grid-template-columns:1fr}
+  .videos{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+  .merch{grid-template-columns:1fr}
+  .show{grid-template-columns:1fr;gap:6px}
+  .show-date .date{font-size:22px}
+  .status{align-self:start}
+  .hero-sub{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div id="leaves" aria-hidden="true">
+  <span class="leaf">&#127809;</span><span class="leaf">&#127810;</span><span class="leaf">&#127809;</span><span class="leaf">&#127810;</span>
+  <span class="leaf">&#127809;</span><span class="leaf">&#127810;</span><span class="leaf">&#127809;</span><span class="leaf">&#127810;</span>
+  <span class="leaf">&#127809;</span><span class="leaf">&#127810;</span><span class="leaf">&#127809;</span><span class="leaf">&#127810;</span>
+  <span class="leaf">&#127809;</span><span class="leaf">&#127810;</span><span class="leaf">&#127809;</span><span class="leaf">&#127810;</span>
+</div>
+
+<div class="strip">Fictional demo concept by Lexis Sapphire Studio - Not a real band</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">The Velvet <b>Static</b></a>
+    <div class="nav-links">
+      <a href="#members">Members</a>
+      <a href="#music">Music</a>
+      <a href="#tour">Tour</a>
+      <a href="#videos">Videos</a>
+      <a href="#press">Press</a>
+      <a href="#merch">Merch</a>
+      <a href="#bio">Bio</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="hero-kicker">Indie Soul - Four Piece - Detroit, Michigan</p>
+    <h1>The Velvet <span>Static</span></h1>
+    <p class="hero-sub">Four people, one storage unit rehearsal room, and a sound built out of <strong>Detroit soul, garage grit, and three-part harmony.</strong> New single "Power Lines" out now. Static Bloom Tour hits 12 cities this winter.</p>
+    <div class="hero-img">
+      <img src="images/hero-live.jpg" alt="The Velvet Static performing live on a dark club stage under yellow lights">
+    </div>
+    <p class="hero-caption">Live at Saint Andrew's Hall, Detroit - October 2026</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">4.2M</div><div class="stat-label">Streams</div></div>
+      <div class="stat"><div class="stat-num">312</div><div class="stat-label">Shows Played</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Albums</div></div>
+      <div class="stat"><div class="stat-num">87K</div><div class="stat-label">Followers</div></div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">Static Bloom Tour 2026-2027 &#9733; 12 Cities &#9733; Detroit Dec 4 Sold Out &#9733; New Single "Power Lines" Out Now &#9733; Static Bloom Tour 2026-2027 &#9733; 12 Cities &#9733; Detroit Dec 4 Sold Out &#9733; New Single "Power Lines" Out Now &#9733;&nbsp;</div></div>
+</header>
+
+<main>
+
+<section id="members">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The Band</h2></div>
+    <p class="sec-sub">Four people who met in Corktown and never left. Every song is written in the same room, usually loud, usually late.</p>
+    <div class="members">
+      <article class="member">
+        <img src="images/member-mara.jpg" alt="Mara Voss, lead singer of The Velvet Static">
+        <div class="member-body">
+          <h3>Mara Voss</h3>
+          <p class="member-role">Lead Vocals, Rhythm Guitar</p>
+          <p>Grew up singing in her grandmother's church choir on the east side. Writes most of the songs at her kitchen table in Corktown.</p>
+        </div>
+      </article>
+      <article class="member">
+        <img src="images/member-dre.jpg" alt="Andre Calloway, lead guitarist of The Velvet Static">
+        <div class="member-body">
+          <h3>Andre "Dre" Calloway</h3>
+          <p class="member-role">Lead Guitar</p>
+          <p>Started on his uncle's beat-up Strat at 13. Ran sound at DIY shows across the Cass Corridor before joining the band.</p>
+        </div>
+      </article>
+      <article class="member">
+        <img src="images/member-june.jpg" alt="June Okafor, bassist of The Velvet Static">
+        <div class="member-body">
+          <h3>June Okafor</h3>
+          <p class="member-role">Bass, Backing Vocals</p>
+          <p>Classically trained on upright bass, switched to electric in college. Her harmonies are the band's secret weapon.</p>
+        </div>
+      </article>
+      <article class="member">
+        <img src="images/member-marcus.jpg" alt="Marcus Webb, drummer of The Velvet Static">
+        <div class="member-body">
+          <h3>Marcus "Mars" Webb</h3>
+          <p class="member-role">Drums</p>
+          <p>Learned drums in the marching band at Cass Tech. Keeps the pocket deep and the tempos honest.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="music" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Music</h2></div>
+    <p class="sec-sub">Three albums in five years, all recorded within ten miles of where the band rehearses. 33 songs, zero filler, one storage unit.</p>
+    <div class="albums">
+      <article class="album">
+        <img src="images/album-neon-rust.jpg" alt="Neon Rust album cover by The Velvet Static">
+        <div class="album-body">
+          <h3>Neon Rust</h3>
+          <p class="album-meta">2021 - Corktown Records - 10 Tracks</p>
+          <p>The debut, recorded in 9 days at a studio in Hamtramck. Sold out its first 500 vinyl pressing in three weeks. <strong>Standouts:</strong> "Neon Rust", "Cass Avenue", "Porch Light".</p>
+        </div>
+      </article>
+      <article class="album">
+        <img src="images/album-half-light.jpg" alt="Half-Light Motel album cover by The Velvet Static">
+        <div class="album-body">
+          <h3>Half-Light Motel</h3>
+          <p class="album-meta">2023 - Static House Records - 12 Tracks</p>
+          <p>Written on the road during their first headline tour, 24 cities in 31 days. The one that put them on the map. <strong>Standouts:</strong> "Half-Light Motel", "Room 9", "Checkout Time".</p>
+        </div>
+      </article>
+      <article class="album">
+        <img src="images/album-static-bloom.jpg" alt="Static Bloom album cover by The Velvet Static">
+        <div class="album-body">
+          <h3>Static Bloom</h3>
+          <p class="album-meta">2025 - Static House Records - 11 Tracks</p>
+          <p>The latest. 4.2 million streams in its first year and the biggest shows of their career. <strong>Standouts:</strong> "Power Lines", "Copperhead Summer", "Rust Belt Heart".</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="single-box">
+      <div>
+        <h3>Latest Single: <span>"Power Lines"</span></h3>
+        <p>Released October 2026. The first single from the Static Bloom sessions, and the song that opens every show on the tour. 412K views on the official video in its first month.</p>
+        <div class="stream-badges">
+          <span class="badge">Spotify</span>
+          <span class="badge">Apple Music</span>
+          <span class="badge">YouTube</span>
+          <span class="badge">Tidal</span>
+        </div>
+      </div>
+      <p class="mono" style="font-size:13px;color:var(--muted)">3:47<br>Static House Records<br>2026</p>
+    </div>
+
+    <div class="tracklist">
+      <div class="tracklist-head"><h3>Static Bloom - Full Tracklist</h3><span>11 Tracks - 39 Minutes</span></div>
+      <div class="track"><span class="track-no">01</span><span class="track-name">Static Bloom</span><span class="track-len">3:12</span></div>
+      <div class="track"><span class="track-no">02</span><span class="track-name">Power Lines<em>Single</em></span><span class="track-len">3:47</span></div>
+      <div class="track"><span class="track-no">03</span><span class="track-name">Copperhead Summer<em>Single</em></span><span class="track-len">4:02</span></div>
+      <div class="track"><span class="track-no">04</span><span class="track-name">Half Past Midnight</span><span class="track-len">3:28</span></div>
+      <div class="track"><span class="track-no">05</span><span class="track-name">Rust Belt Heart</span><span class="track-len">3:55</span></div>
+      <div class="track"><span class="track-no">06</span><span class="track-name">Yellow Light District</span><span class="track-len">2:58</span></div>
+      <div class="track"><span class="track-no">07</span><span class="track-name">The Long Way Home</span><span class="track-len">4:21</span></div>
+      <div class="track"><span class="track-no">08</span><span class="track-name">Motel Bible</span><span class="track-len">3:33</span></div>
+      <div class="track"><span class="track-no">09</span><span class="track-name">Fever Line</span><span class="track-len">3:09</span></div>
+      <div class="track"><span class="track-no">10</span><span class="track-name">Slow Parade</span><span class="track-len">4:44</span></div>
+      <div class="track"><span class="track-no">11</span><span class="track-name">Bloom (Reprise)</span><span class="track-len">2:36</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="tour">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Tour</h2></div>
+    <p class="sec-sub">Static Bloom Tour, winter 2026 to spring 2027. 12 cities, 12 rooms, all general admission unless noted. Doors at 7 PM, show at 8 PM.</p>
+    <div class="tour-list">
+      <div class="show">
+        <div class="show-date"><div class="dow">Fri</div><div class="date">Dec 4</div><div class="dow">2026</div></div>
+        <div class="show-venue"><h3>Saint Andrew's Hall</h3><p><b>Detroit, MI</b> - Hometown show, with special guests</p></div>
+        <span class="status soldout">Sold Out</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Sat</div><div class="date">Dec 5</div><div class="dow">2026</div></div>
+        <div class="show-venue"><h3>The Pyramid Scheme</h3><p><b>Grand Rapids, MI</b></p></div>
+        <span class="status low">Low Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Fri</div><div class="date">Dec 11</div><div class="dow">2026</div></div>
+        <div class="show-venue"><h3>Thalia Hall</h3><p><b>Chicago, IL</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Sat</div><div class="date">Dec 12</div><div class="dow">2026</div></div>
+        <div class="show-venue"><h3>Turner Hall Ballroom</h3><p><b>Milwaukee, WI</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Fri</div><div class="date">Jan 15</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>Beachland Ballroom</h3><p><b>Cleveland, OH</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Sat</div><div class="date">Jan 16</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>Mr. Smalls Theatre</h3><p><b>Pittsburgh, PA</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Fri</div><div class="date">Jan 22</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>Bowery Ballroom</h3><p><b>New York, NY</b></p></div>
+        <span class="status low">Low Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Sat</div><div class="date">Jan 23</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>Paradise Rock Club</h3><p><b>Boston, MA</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Fri</div><div class="date">Jan 29</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>9:30 Club</h3><p><b>Washington, DC</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Sat</div><div class="date">Jan 30</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>Union Transfer</h3><p><b>Philadelphia, PA</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Fri</div><div class="date">Feb 5</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>The Basement East</h3><p><b>Nashville, TN</b></p></div>
+        <span class="status">Tickets</span>
+      </div>
+      <div class="show">
+        <div class="show-date"><div class="dow">Sat</div><div class="date">Feb 6</div><div class="dow">2027</div></div>
+        <div class="show-venue"><h3>Terminal West</h3><p><b>Atlanta, GA</b> - Tour closer</p></div>
+        <span class="status">Tickets</span>
+      </div>
+    </div>
+    <p class="tour-note"><b>Booking:</b> booking@thevelvetstatic.com &nbsp;|&nbsp; <b>Press:</b> press@thevelvetstatic.com</p>
+  </div>
+</section>
+
+<section id="videos" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Videos</h2></div>
+    <p class="sec-sub">Official videos, live cuts, and one acoustic session recorded in the rehearsal room.</p>
+    <div class="videos">
+      <article class="video">
+        <div class="video-thumb">
+          <img src="images/live-2.jpg" alt="The Velvet Static performing Power Lines live">
+          <div class="play"><span>&#9654;</span></div>
+          <span class="video-dur">3:47</span>
+        </div>
+        <div class="video-body"><h3>"Power Lines" (Official Video)</h3><span>412K views</span></div>
+      </article>
+      <article class="video">
+        <div class="video-thumb">
+          <img src="images/hero-live.jpg" alt="The Velvet Static performing Static Bloom live in Detroit">
+          <div class="play"><span>&#9654;</span></div>
+          <span class="video-dur">4:12</span>
+        </div>
+        <div class="video-body"><h3>"Static Bloom" (Live at Saint Andrew's Hall)</h3><span>268K views</span></div>
+      </article>
+      <article class="video">
+        <div class="video-thumb">
+          <img src="images/member-mara.jpg" alt="Mara Voss performing an acoustic session">
+          <div class="play"><span>&#9654;</span></div>
+          <span class="video-dur">3:31</span>
+        </div>
+        <div class="video-body"><h3>"Copperhead Summer" (Acoustic Session)</h3><span>189K views</span></div>
+      </article>
+      <article class="video">
+        <div class="video-thumb">
+          <img src="images/member-dre.jpg" alt="Dre Calloway performing Rust Belt Heart">
+          <div class="play"><span>&#9654;</span></div>
+          <span class="video-dur">3:55</span>
+        </div>
+        <div class="video-body"><h3>"Rust Belt Heart" (Official Video)</h3><span>743K views</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Gallery</h2></div>
+    <div class="gallery">
+      <div class="g-item">
+        <img src="images/hero-live.jpg" alt="The Velvet Static live on stage in Detroit">
+        <p>Live at Saint Andrew's Hall, Detroit</p>
+      </div>
+      <div class="g-item">
+        <img src="images/live-2.jpg" alt="The Velvet Static live on stage in Chicago">
+        <p>Live at Thalia Hall, Chicago</p>
+      </div>
+      <div class="g-item">
+        <img src="images/album-neon-rust.jpg" alt="Neon Rust album artwork">
+        <p>Neon Rust, 2021</p>
+      </div>
+      <div class="g-item">
+        <img src="images/album-half-light.jpg" alt="Half-Light Motel album artwork">
+        <p>Half-Light Motel, 2023</p>
+      </div>
+      <div class="g-item">
+        <img src="images/merch-tee.jpg" alt="Static Bloom band t-shirt">
+        <p>Static Bloom tee</p>
+      </div>
+      <div class="g-item">
+        <img src="images/merch-poster.jpg" alt="Static Bloom Tour 2026 poster">
+        <p>Static Bloom Tour poster, 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="press" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Press</h2></div>
+    <div class="quotes">
+      <blockquote class="quote">
+        <p>"The best live band in Detroit right now, and it is not close."</p>
+        <cite>The Detroit Sound</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>"Static Bloom is the sound of a band that finally trusts itself. Every track lands."</p>
+        <cite>Motor City Weekly</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>"Mara Voss sings like she has lived every word twice."</p>
+        <cite>Great Lakes Review</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>"A rhythm section that could hold up a building."</p>
+        <cite>The Cass Corridor Gazette</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="merch">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Merch</h2></div>
+    <p class="sec-sub">Printed in small runs in Detroit. When a size sells out, it is gone until the next run.</p>
+    <div class="merch">
+      <article class="product">
+        <img src="images/merch-tee.jpg" alt="Static Bloom black band t-shirt with yellow flower graphic">
+        <div class="product-body"><div><h3>Static Bloom Tee</h3><p>Black, heavyweight cotton. S to 3XL.</p></div><span class="price">$35</span></div>
+      </article>
+      <article class="product">
+        <img src="images/merch-poster.jpg" alt="Static Bloom Tour 2026 screen-printed poster">
+        <div class="product-body"><div><h3>Tour Poster 2026</h3><p>18x24 screen print, numbered run of 200.</p></div><span class="price">$25</span></div>
+      </article>
+      <article class="product">
+        <div class="product-typo"><div class="big">Volt<br>Hoodie</div><div class="small">The Velvet Static</div></div>
+        <div class="product-body"><div><h3>Volt Logo Hoodie</h3><p>Black hoodie, volt chest print. S to 2XL.</p></div><span class="price">$65</span></div>
+      </article>
+      <article class="product">
+        <img src="images/album-neon-rust.jpg" alt="Neon Rust vinyl LP">
+        <div class="product-body"><div><h3>Neon Rust Vinyl LP</h3><p>2021 debut, black vinyl, 10 tracks.</p></div><span class="price">$28</span></div>
+      </article>
+      <article class="product">
+        <img src="images/album-static-bloom.jpg" alt="Static Bloom vinyl LP">
+        <div class="product-body"><div><h3>Static Bloom Vinyl LP</h3><p>2025 album, volt yellow vinyl, 11 tracks.</p></div><span class="price">$30</span></div>
+      </article>
+      <article class="product">
+        <div class="product-typo"><div class="big">Pin<br>Set</div><div class="small">3 Enamel Pins</div></div>
+        <div class="product-body"><div><h3>Enamel Pin Set</h3><p>Flower, lightning bolt, and logo. Set of 3.</p></div><span class="price">$15</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="bio" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Bio</h2></div>
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p>The Velvet Static formed in Corktown in the spring of 2019, when <strong>Mara Voss</strong> and <strong>Dre Calloway</strong> met at an open mic and realized they owned the same three records and the same stubborn idea: a band that sounded like Detroit felt. Loud, warm, and a little rusted around the edges.</p>
+        <p>Their first rehearsal was in a rented storage unit on Michigan Avenue, between a stack of tires and a broken jukebox. Their first gig was a basement house show on Bagley Street. Forty people, five dollars at the door, and a set that ran long because nobody wanted to leave.</p>
+        <p><strong>June Okafor</strong> joined in early 2020 after answering a flyer taped up at a record shop on Cass Avenue. <strong>Mars Webb</strong> came three months later and the lineup has not changed since. Three albums, 312 shows, and 4.2 million streams later, they still rehearse in the same neighborhood and still write every song in the same room.</p>
+        <p>"We sound like this city," Mara says. "You can hear the factories and the churches in it. We just turned the amps up."</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item"><span class="tl-year">2019</span><p><b>Formed in Corktown.</b> First rehearsal in a storage unit on Michigan Avenue.</p></div>
+        <div class="tl-item"><span class="tl-year">2019</span><p><b>First gig.</b> Basement house show on Bagley Street, 40 people, $5 at the door.</p></div>
+        <div class="tl-item"><span class="tl-year">2020</span><p><b>Lineup complete.</b> June answers a flyer at a Cass Avenue record shop. Mars joins three months later.</p></div>
+        <div class="tl-item"><span class="tl-year">2021</span><p><b>Neon Rust.</b> Debut album, recorded in 9 days in Hamtramck. First 500 vinyl gone in three weeks.</p></div>
+        <div class="tl-item"><span class="tl-year">2023</span><p><b>Half-Light Motel.</b> Second album. First headline tour, 24 cities in 31 days.</p></div>
+        <div class="tl-item"><span class="tl-year">2025</span><p><b>Static Bloom.</b> Third album. 4.2 million streams in its first year.</p></div>
+        <div class="tl-item"><span class="tl-year">2026</span><p><b>Static Bloom Tour.</b> 12 cities, winter 2026 to spring 2027. Detroit hometown show sells out.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="social">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Follow</h2></div>
+    <div class="social-row">
+      <span class="social-badge"><b>Instagram</b> @thevelvetstatic</span>
+      <span class="social-badge"><b>TikTok</b> @thevelvetstatic</span>
+      <span class="social-badge"><b>X</b> @velvetstaticdet</span>
+      <span class="social-badge"><b>YouTube</b> The Velvet Static</span>
+      <span class="social-badge"><b>Spotify</b> The Velvet Static</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>Want a website like this one?</h2>
+    <p>Lexis Sapphire Studio builds custom websites for artists, bands, and public figures. No templates. Every site built from scratch for the person it represents.</p>
+    <a class="btn" href="https://lexissapphirestudio.com/artists/">See Artist Websites</a>
+    <p class="cta-sub">Or visit <a href="https://lexissapphirestudio.com/">lexissapphirestudio.com</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="f-brand">The Velvet <b>Static</b></p>
+    <p>Detroit, Michigan. Booking: booking@thevelvetstatic.com</p>
+    <p class="fic">Fictional demo site built by Lexis Sapphire Studio. Not a real band.</p>
+    <p>The Velvet Static is a fictional band. All names, music, dates, and quotes on this page are invented for demonstration.</p>
+  </div>
+</footer>
+
+</body>
+</html>
