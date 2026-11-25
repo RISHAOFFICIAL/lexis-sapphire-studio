@@ -5,6 +5,7 @@
 | # | Date | Title | URL | Words |
 |---|------|-------|-----|-------|
 | 1 | 2026-11-23 | Why Your Detroit Braider Business Needs a Real Website (Not Just a Booking Link) | https://lexissapphirestudio.com/blog/detroit-braider-website.html | 980 |
+| 2 | 2026-11-25 | 5 Signs Your Small Business Website Is Costing You Customers | https://lexissapphirestudio.com/blog/signs-your-website-is-costing-you-customers.html | 1032 |
 
 ## Queued (pre-built)
 
