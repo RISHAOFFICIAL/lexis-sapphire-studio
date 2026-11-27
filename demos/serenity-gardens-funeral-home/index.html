@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serenity Gardens Funeral Home | Detroit, Michigan</title>
+<meta name="description" content="Serenity Gardens Funeral Home is a family owned funeral home in Detroit, Michigan. Traditional funerals, cremation, memorial services, and pre-planning, with a licensed director available 24 hours a day.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Serenity Gardens Funeral Home | Detroit, Michigan">
+<meta property="og:description" content="Family owned since 1962. Traditional funerals, cremation, memorial services, and pre-planning in Detroit.">
+<meta property="og:url" content="https://lexissapphirestudio.com/demos/serenity-gardens-funeral-home/">
+<meta property="og:image" content="https://lexissapphirestudio.com/demos/serenity-gardens-funeral-home/images/chapel-hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16233f;
+    --navy-deep: #101a30;
+    --navy-soft: #24355a;
+    --gold: #c9a45c;
+    --gold-soft: #e3cf9f;
+    --cream: #faf7f1;
+    --cream-2: #f3ecdd;
+    --ink: #2e2a24;
+    --muted: #6f6a5e;
+    --line: #e2d9c6;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Jost", system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; line-height: 1.15; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 10px;
+  }
+  .gold-rule { width: 56px; height: 2px; background: var(--gold); margin: 16px 0 22px; }
+  .center .gold-rule { margin-left: auto; margin-right: auto; }
+  section { padding: 64px 0; }
+  .section-head { max-width: 680px; margin-bottom: 36px; }
+  .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .section-head h2 { font-size: clamp(1.9rem, 5vw, 2.7rem); color: var(--navy); }
+  .section-head p { color: var(--muted); margin-top: 10px; font-size: 1.02rem; }
+  .btn {
+    display: inline-block; text-decoration: none; cursor: pointer;
+    font-family: "Jost", sans-serif; font-size: 14px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 14px 28px; border-radius: 2px; border: 1px solid transparent;
+    transition: background .25s, color .25s, border-color .25s;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy-deep); }
+  .btn-gold:hover { background: var(--gold-soft); }
+  .btn-outline { background: transparent; color: var(--cream); border-color: rgba(250,247,241,.65); }
+  .btn-outline:hover { background: rgba(250,247,241,.12); }
+  .btn-navy { background: var(--navy); color: var(--cream); }
+  .btn-navy:hover { background: var(--navy-soft); }
+  .btn-small { padding: 10px 20px; font-size: 12px; }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    background: var(--navy-deep); color: var(--cream);
+    font-size: 13px; letter-spacing: .4px;
+  }
+  .topbar-inner {
+    max-width: 1120px; margin: 0 auto; padding: 8px 20px;
+    display: flex; flex-wrap: wrap; gap: 4px 22px; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .topbar a { color: var(--gold-soft); text-decoration: none; font-weight: 500; }
+  .topbar .dot { color: var(--gold); }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(22, 35, 63, .96);
+    border-bottom: 1px solid rgba(201, 164, 92, .35);
+  }
+  .nav-inner {
+    max-width: 1120px; margin: 0 auto; padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  }
+  .nav-mark { text-decoration: none; color: var(--cream); line-height: 1.1; }
+  .nav-mark .name { font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600; letter-spacing: .5px; display: block; }
+  .nav-mark .sub { font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); }
+  .nav-links { display: none; gap: 26px; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none; font-size: 13px;
+    letter-spacing: 1.6px; text-transform: uppercase; font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--gold-soft); }
+  .nav-call {
+    color: var(--navy-deep); background: var(--gold); text-decoration: none;
+    font-size: 13px; font-weight: 600; letter-spacing: 1px;
+    padding: 10px 18px; border-radius: 2px; white-space: nowrap;
+  }
+  @media (min-width: 900px) { .nav-links { display: flex; } }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative; color: var(--cream);
+    background: var(--navy-deep) url("images/chapel-hero.jpg") center / cover no-repeat;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(16,26,48,.62) 0%, rgba(16,26,48,.48) 45%, rgba(16,26,48,.78) 100%);
+  }
+  .hero-inner {
+    position: relative; max-width: 1120px; margin: 0 auto;
+    padding: 96px 20px 88px; text-align: center;
+  }
+  .hero .eyebrow { color: var(--gold-soft); }
+  .hero h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); font-weight: 500; max-width: 820px; margin: 0 auto; }
+  .hero h1 em { font-style: italic; color: var(--gold-soft); }
+  .hero p.lede {
+    max-width: 620px; margin: 20px auto 0; font-size: 1.08rem; font-weight: 300;
+    color: rgba(250,247,241,.92);
+  }
+  .hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .hero-note { margin-top: 22px; font-size: 14px; color: rgba(250,247,241,.85); letter-spacing: .4px; }
+  .hero-note strong { color: var(--gold-soft); font-weight: 500; }
+
+  /* ---------- welcome ---------- */
+  .welcome-grid { display: grid; gap: 34px; align-items: center; }
+  .welcome-grid img { border-radius: 3px; box-shadow: 0 18px 40px rgba(22,35,63,.18); }
+  .welcome-text h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); color: var(--navy); }
+  .welcome-text p { color: var(--muted); margin-top: 14px; }
+  .welcome-points { margin-top: 22px; display: grid; gap: 12px; }
+  .welcome-points li { list-style: none; display: flex; gap: 12px; align-items: flex-start; }
+  .welcome-points .mark { color: var(--gold); font-size: 18px; line-height: 1.4; }
+  .welcome-points strong { font-weight: 500; color: var(--navy); }
+  @media (min-width: 860px) { .welcome-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+
+  /* ---------- services ---------- */
+  .services { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .service-grid { display: grid; gap: 20px; }
+  .service-card {
+    background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold);
+    padding: 30px 26px; border-radius: 3px;
+  }
+  .service-card h3 { font-size: 1.55rem; color: var(--navy); margin-bottom: 8px; }
+  .service-card .price { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .service-card p { color: var(--muted); font-size: .98rem; }
+  .service-card ul { margin-top: 14px; }
+  .service-card li { list-style: none; padding: 6px 0 6px 20px; position: relative; font-size: .95rem; color: var(--ink); border-top: 1px solid var(--line); }
+  .service-card li::before { content: "\00B7"; position: absolute; left: 2px; color: var(--gold); font-weight: 700; }
+  @media (min-width: 720px) { .service-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .service-grid { grid-template-columns: repeat(4, 1fr); } }
+  .services-note { margin-top: 26px; text-align: center; color: var(--muted); font-size: .95rem; }
+  .services-note a { color: var(--navy); font-weight: 500; }
+
+  /* ---------- pre-planning ---------- */
+  .preplan { background: var(--navy); color: var(--cream); }
+  .preplan .section-head h2 { color: var(--cream); }
+  .preplan .section-head p { color: rgba(250,247,241,.8); }
+  .preplan-grid { display: grid; gap: 34px; align-items: start; }
+  .preplan-points { display: grid; gap: 18px; }
+  .preplan-points .point { display: flex; gap: 16px; }
+  .preplan-points .num {
+    font-family: "Cormorant Garamond", serif; font-size: 1.6rem; color: var(--gold);
+    border: 1px solid rgba(201,164,92,.5); border-radius: 50%;
+    width: 44px; height: 44px; flex: 0 0 44px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .preplan-points h3 { font-size: 1.3rem; margin-bottom: 4px; }
+  .preplan-points p { color: rgba(250,247,241,.8); font-size: .97rem; }
+  .preplan-form {
+    background: var(--cream); color: var(--ink); border-radius: 3px; padding: 30px 26px;
+    box-shadow: 0 22px 48px rgba(0,0,0,.28);
+  }
+  .preplan-form h3 { font-size: 1.5rem; color: var(--navy); }
+  .preplan-form > p { color: var(--muted); font-size: .95rem; margin: 6px 0 18px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 2px;
+    font-family: "Jost", sans-serif; font-size: 15px; background: var(--white); color: var(--ink);
+  }
+  .field textarea { min-height: 84px; resize: vertical; }
+  .form-row { display: grid; gap: 14px; }
+  @media (min-width: 560px) { .form-row { grid-template-columns: 1fr 1fr; } }
+  .preplan-form .fine { font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+  @media (min-width: 900px) { .preplan-grid { grid-template-columns: 1fr 1fr; gap: 52px; } }
+
+  /* ---------- obituaries ---------- */
+  .obit-grid { display: grid; gap: 20px; }
+  .obit-card {
+    background: var(--white); border: 1px solid var(--line); border-radius: 3px;
+    padding: 28px 26px; text-align: center;
+  }
+  .obit-card .monogram {
+    width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 50%;
+    border: 1px solid var(--gold); color: var(--navy);
+    font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; background: var(--cream);
+  }
+  .obit-card h3 { font-size: 1.5rem; color: var(--navy); }
+  .obit-card .years { font-size: 13px; letter-spacing: 2px; color: var(--gold); font-weight: 500; margin: 4px 0 12px; }
+  .obit-card p { color: var(--muted); font-size: .95rem; }
+  .obit-card .service-line { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .92rem; color: var(--ink); }
+  .obit-card .service-line strong { font-weight: 500; color: var(--navy); }
+  .obit-card .btn { margin-top: 16px; }
+  @media (min-width: 720px) { .obit-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .obit-grid { grid-template-columns: repeat(4, 1fr); } }
+  .obit-note { margin-top: 24px; text-align: center; color: var(--muted); font-size: .95rem; }
+
+  /* ---------- flowers ---------- */
+  .flowers { background: var(--cream-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .flowers-grid { display: grid; gap: 34px; align-items: center; margin-bottom: 40px; }
+  .flowers-grid img { border-radius: 3px; box-shadow: 0 18px 40px rgba(22,35,63,.16); }
+  .flowers-text h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); color: var(--navy); }
+  .flowers-text p { color: var(--muted); margin-top: 14px; }
+  @media (min-width: 860px) { .flowers-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+  .flowers-imgs { display: grid; gap: 16px; }
+  .band-img { width: 100%; max-height: 420px; object-fit: cover; border-radius: 3px; box-shadow: 0 18px 40px rgba(22,35,63,.16); margin-bottom: 40px; }
+  .gift-grid { display: grid; gap: 20px; }
+  .gift-card { background: var(--white); border: 1px solid var(--line); border-radius: 3px; padding: 26px 24px; }
+  .gift-card h3 { font-size: 1.4rem; color: var(--navy); }
+  .gift-card .price { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin: 4px 0 10px; }
+  .gift-card p { color: var(--muted); font-size: .95rem; }
+  @media (min-width: 720px) { .gift-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .gift-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ---------- about ---------- */
+  .about-grid { display: grid; gap: 34px; align-items: center; }
+  .about-grid img { border-radius: 3px; box-shadow: 0 18px 40px rgba(22,35,63,.18); }
+  .about-text h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); color: var(--navy); }
+  .about-text p { color: var(--muted); margin-top: 14px; }
+  .directors { margin-top: 24px; display: grid; gap: 14px; }
+  .director { border-left: 3px solid var(--gold); padding-left: 16px; }
+  .director .dname { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); }
+  .director .drole { font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .director p { margin-top: 4px; font-size: .95rem; }
+  @media (min-width: 860px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+
+  /* ---------- testimonials ---------- */
+  .testimonials { background: var(--navy); color: var(--cream); }
+  .testimonials .section-head h2 { color: var(--cream); }
+  .testimonials .section-head p { color: rgba(250,247,241,.8); }
+  .testi-grid { display: grid; gap: 20px; }
+  .testi-card {
+    background: rgba(250,247,241,.05); border: 1px solid rgba(201,164,92,.35);
+    border-radius: 3px; padding: 28px 26px;
+  }
+  .testi-card .stars { color: var(--gold); letter-spacing: 3px; margin-bottom: 12px; }
+  .testi-card blockquote { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-style: italic; line-height: 1.5; }
+  .testi-card .who { margin-top: 16px; font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold-soft); }
+  @media (min-width: 720px) { .testi-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .testi-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ---------- grief resources ---------- */
+  .grief-grid { display: grid; gap: 20px; }
+  .grief-card { background: var(--white); border: 1px solid var(--line); border-radius: 3px; padding: 28px 26px; }
+  .grief-card h3 { font-size: 1.4rem; color: var(--navy); margin-bottom: 6px; }
+  .grief-card .when { font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+  .grief-card p { color: var(--muted); font-size: .97rem; }
+  @media (min-width: 720px) { .grief-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .grief-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ---------- faq ---------- */
+  .faq { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .faq-list { max-width: 820px; margin: 0 auto; }
+  .faq-item { border-top: 1px solid var(--line); padding: 22px 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-item h3 { font-size: 1.35rem; color: var(--navy); margin-bottom: 8px; }
+  .faq-item p { color: var(--muted); font-size: .98rem; }
+
+  /* ---------- visit ---------- */
+  .visit-grid { display: grid; gap: 34px; align-items: center; }
+  .visit-grid img { border-radius: 3px; box-shadow: 0 18px 40px rgba(22,35,63,.18); }
+  .visit-text h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); color: var(--navy); }
+  .visit-text p { color: var(--muted); margin-top: 14px; }
+  .hours { margin-top: 22px; border-top: 1px solid var(--line); }
+  .hours .row {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 11px 0; border-bottom: 1px solid var(--line); font-size: .98rem;
+  }
+  .hours .row .day { font-weight: 500; color: var(--navy); }
+  .visit-callout {
+    margin-top: 22px; background: var(--navy); color: var(--cream);
+    padding: 20px 22px; border-radius: 3px; font-size: 1rem;
+  }
+  .visit-callout strong { color: var(--gold-soft); font-weight: 500; }
+  .visit-callout a { color: var(--gold-soft); font-weight: 600; text-decoration: none; }
+  @media (min-width: 860px) { .visit-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--navy-deep); color: rgba(250,247,241,.85); padding: 56px 0 34px; }
+  .footer-grid { display: grid; gap: 30px; }
+  .footer-grid .fname { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 600; color: var(--cream); }
+  .footer-grid .fsub { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .footer-grid h4 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-soft); font-weight: 500; margin-bottom: 12px; }
+  .footer-grid p, .footer-grid li { font-size: .95rem; }
+  .footer-grid ul { list-style: none; }
+  .footer-grid li { padding: 3px 0; }
+  .footer-grid a { color: rgba(250,247,241,.85); text-decoration: none; }
+  .footer-grid a:hover { color: var(--gold-soft); }
+  .footer-bottom {
+    margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(201,164,92,.3);
+    display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between;
+    font-size: 13px; color: rgba(250,247,241,.65);
+  }
+  .footer-bottom a { color: var(--gold-soft); text-decoration: none; }
+  @media (min-width: 860px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>15600 Livernois Ave, Detroit, MI 48238</span>
+    <span class="dot">&bull;</span>
+    <span>A licensed director answers 24 hours a day: <a href="tel:+13135550173">(313) 555-0173</a></span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top">
+      <span class="name">Serenity Gardens</span>
+      <span class="sub">Funeral Home</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#preplanning">Pre-Planning</a>
+      <a href="#obituaries">Obituaries</a>
+      <a href="#flowers">Flowers</a>
+      <a href="#about">About</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a class="nav-call" href="tel:+13135550173">(313) 555-0173</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="eyebrow">Family Owned in Detroit Since 1962</p>
+    <h1>A peaceful place to say goodbye, and people who will <em>walk with you</em> through every step.</h1>
+    <p class="lede">For more than sixty years, Detroit families have trusted Serenity Gardens with funerals, cremations, and memorial services arranged with care, honesty, and room to grieve.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="tel:+13135550173">Call (313) 555-0173</a>
+      <a class="btn btn-outline" href="#preplanning">Plan Ahead</a>
+    </div>
+    <p class="hero-note">When a death occurs, day or night, call us first. <strong>A licensed director answers our phone 24 hours a day.</strong></p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap welcome-grid">
+    <img src="images/chapel-pews.jpg" alt="Sunlight across wooden pews in a quiet chapel">
+    <div class="welcome-text">
+      <p class="eyebrow">Welcome</p>
+      <h2>You do not have to carry this alone.</h2>
+      <div class="gold-rule"></div>
+      <p>Losing someone you love brings a hundred decisions at the hardest possible moment. Our directors slow the process down, explain every option in plain language, and handle the details so your family can focus on each other.</p>
+      <ul class="welcome-points">
+        <li><span class="mark">&#10087;</span><span><strong>One call, any hour.</strong> We coordinate with the hospital, hospice, or medical examiner and bring your loved one into our care.</span></li>
+        <li><span class="mark">&#10087;</span><span><strong>Clear prices, in writing.</strong> Every family receives our full price list before choosing anything. No surprises, ever.</span></li>
+        <li><span class="mark">&#10087;</span><span><strong>Room for your traditions.</strong> Faith services, cultural customs, military honors, and personal touches are all welcome here.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Our Services</p>
+      <h2>Services arranged around your family</h2>
+      <div class="gold-rule"></div>
+      <p>Every service can be personalized. The starting prices below cover our professional services and facilities. Merchandise such as caskets and urns is priced separately, and we will walk through every line with you.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <h3>Traditional Funeral</h3>
+        <p class="price">From $4,995</p>
+        <p>A visitation and funeral service in our chapel or your house of worship, followed by burial or cremation.</p>
+        <ul>
+          <li>Visitation with family receiving line</li>
+          <li>Funeral service in our 180 seat chapel</li>
+          <li>Coordination with clergy and cemetery</li>
+          <li>Funeral coach and family car</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <h3>Cremation with Service</h3>
+        <p class="price">From $2,495</p>
+        <p>A full visitation and memorial service, with cremation taking place before or after the gathering.</p>
+        <ul>
+          <li>Visitation and memorial service</li>
+          <li>Cremation at our partner crematory</li>
+          <li>Choice of urns and keepsakes</li>
+          <li>Online tribute page for your family</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <h3>Direct Cremation</h3>
+        <p class="price">From $1,295</p>
+        <p>A simple, dignified cremation without a formal service, for families who prefer to gather on their own terms.</p>
+        <ul>
+          <li>Transfer into our care, day or night</li>
+          <li>All permits and paperwork handled</li>
+          <li>Cremation and return of remains</li>
+          <li>Private family goodbye available</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <h3>Memorial Service</h3>
+        <p class="price">From $1,895</p>
+        <p>A celebration of life held in our garden room or chapel, with photos, music, and stories at the center.</p>
+        <ul>
+          <li>Garden room seating for 120 guests</li>
+          <li>Photo displays and video tribute</li>
+          <li>Reception space for food and fellowship</li>
+          <li>Live streaming for family far away</li>
+        </ul>
+      </article>
+    </div>
+    <p class="services-note">Veterans and their spouses may qualify for burial benefits and honors. Ask us, and we will check eligibility at no charge. <a href="tel:+13135550173">Call (313) 555-0173</a> for a complete price list.</p>
+  </div>
+</section>
+
+<section class="preplan" id="preplanning">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pre-Planning</p>
+      <h2>Plan today, and spare your family the hardest decisions later.</h2>
+      <div class="gold-rule"></div>
+      <p>Pre-planning simply means writing down your wishes ahead of time. There is no cost to meet with us, and no obligation to buy anything.</p>
+    </div>
+    <div class="preplan-grid">
+      <div class="preplan-points">
+        <div class="point">
+          <div class="num">1</div>
+          <div>
+            <h3>Record your wishes</h3>
+            <p>Burial or cremation, service style, music, readings, and the details that matter to you, kept on file with us and shared with the people you choose.</p>
+          </div>
+        </div>
+        <div class="point">
+          <div class="num">2</div>
+          <div>
+            <h3>Know the cost in advance</h3>
+            <p>We price your plan line by line so your family is never guessing. You may pre-pay to lock in today's prices, or simply keep the plan on file.</p>
+          </div>
+        </div>
+        <div class="point">
+          <div class="num">3</div>
+          <div>
+            <h3>Change it anytime</h3>
+            <p>Life changes, and plans can too. Your pre-plan can be updated or transferred at any time with a phone call.</p>
+          </div>
+        </div>
+      </div>
+      <form class="preplan-form" action="#" method="get">
+        <h3>Request a Pre-Planning Guide</h3>
+        <p>Tell us where to send our free guide, and a counselor will follow up within one business day.</p>
+        <div class="form-row">
+          <div class="field">
+            <label for="pp-name">Full Name</label>
+            <input id="pp-name" name="name" type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="pp-phone">Phone</label>
+            <input id="pp-phone" name="phone" type="tel" placeholder="(313) 555-0100">
+          </div>
+        </div>
+        <div class="field">
+          <label for="pp-email">Email</label>
+          <input id="pp-email" name="email" type="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="pp-interest">I am interested in</label>
+          <select id="pp-interest" name="interest">
+            <option>Pre-planning for myself</option>
+            <option>Pre-planning for a parent or spouse</option>
+            <option>Comparing burial and cremation costs</option>
+            <option>Veterans benefits information</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pp-notes">Anything we should know</label>
+          <textarea id="pp-notes" name="notes" placeholder="Questions, preferences, or a good time to call"></textarea>
+        </div>
+        <button class="btn btn-gold" type="submit">Send My Free Guide</button>
+        <p class="fine">Prefer to talk? Call (313) 555-0173, Monday through Friday, 9:00 a.m. to 5:00 p.m. Your information stays with us and is never sold.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="obituaries">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Obituaries</p>
+      <h2>Services this week</h2>
+      <div class="gold-rule"></div>
+      <p>Please join us in remembering the neighbors, parents, and friends we are honored to serve. Service details are listed below, and flowers can be sent directly to the service.</p>
+    </div>
+    <div class="obit-grid">
+      <article class="obit-card">
+        <div class="monogram">ML</div>
+        <h3>Margaret E. Lawson</h3>
+        <p class="years">1941 to 2026</p>
+        <p>A retired Detroit public school teacher of 38 years, beloved mother of three and grandmother of seven. She never missed a Sunday service or a grandchild's recital.</p>
+        <p class="service-line"><strong>Visitation:</strong> Friday, December 4, 2026, 4:00 p.m. to 8:00 p.m.<br><strong>Service:</strong> Saturday, December 5, 2026 at 11:00 a.m.</p>
+        <a class="btn btn-navy btn-small" href="#flowers">Send Flowers</a>
+      </article>
+      <article class="obit-card">
+        <div class="monogram">JW</div>
+        <h3>James R. Whitfield</h3>
+        <p class="years">1955 to 2026</p>
+        <p>A proud U.S. Army veteran and retired skilled tradesman who mentored young apprentices across the city. He is survived by his wife of 44 years, Carol.</p>
+        <p class="service-line"><strong>Service:</strong> Friday, December 4, 2026 at 10:00 a.m.<br><strong>Interment:</strong> Great Lakes National Cemetery, with military honors</p>
+        <a class="btn btn-navy btn-small" href="#flowers">Send Flowers</a>
+      </article>
+      <article class="obit-card">
+        <div class="monogram">DC</div>
+        <h3>Dorothy A. Coleman</h3>
+        <p class="years">1938 to 2026</p>
+        <p>A founding member of her neighborhood block club and a fixture at the Eastern Market flower stalls every spring. Her sweet potato pie won ribbons for fifty years.</p>
+        <p class="service-line"><strong>Visitation:</strong> Sunday, December 6, 2026, 2:00 p.m. to 6:00 p.m.<br><strong>Service:</strong> Monday, December 7, 2026 at 1:00 p.m.</p>
+        <a class="btn btn-navy btn-small" href="#flowers">Send Flowers</a>
+      </article>
+      <article class="obit-card">
+        <div class="monogram">RH</div>
+        <h3>Robert L. Harris</h3>
+        <p class="years">1960 to 2026</p>
+        <p>A lifelong Detroiter, youth baseball coach, and devoted father of two. His teams at the neighborhood rec center called him Coach Bob for three decades.</p>
+        <p class="service-line"><strong>Service:</strong> Wednesday, December 9, 2026 at 11:00 a.m.<br><strong>Reception:</strong> Garden Room, immediately following</p>
+        <a class="btn btn-navy btn-small" href="#flowers">Send Flowers</a>
+      </article>
+    </div>
+    <p class="obit-note">To share a memory or leave condolences for a family, call us at <a href="tel:+13135550173">(313) 555-0173</a> and we will pass your message along with care.</p>
+  </div>
+</section>
+
+<section class="flowers" id="flowers">
+  <div class="wrap">
+    <div class="flowers-grid">
+      <div class="flowers-imgs">
+        <img src="images/flowers-bouquet.jpg" alt="Soft pink and cream roses arranged in a bouquet">
+        <img src="images/flowers-lilies.jpg" alt="Pink calla lilies with deep green leaves">
+      </div>
+      <div class="flowers-text">
+        <p class="eyebrow">Flowers and Gifts</p>
+        <h2>Send flowers to the service</h2>
+        <div class="gold-rule"></div>
+        <p>Our arrangements are made fresh by a local Detroit florist and delivered to the chapel before visitation begins. Every order includes a handwritten card with your message, and we will confirm delivery to you by phone.</p>
+        <p>Order by 12:00 noon for same day delivery to any service at Serenity Gardens. Call <a href="tel:+13135550173">(313) 555-0173</a> to place an order.</p>
+      </div>
+    </div>
+    <div class="gift-grid">
+      <article class="gift-card">
+        <h3>Serenity Lily Basket</h3>
+        <p class="price">$65</p>
+        <p>White lilies and soft greenery in a woven basket. A classic expression of peace and sympathy.</p>
+      </article>
+      <article class="gift-card">
+        <h3>Garden Rose Arrangement</h3>
+        <p class="price">$85</p>
+        <p>Cream and blush garden roses with seasonal accents, arranged in a ceramic keepsake vase.</p>
+      </article>
+      <article class="gift-card">
+        <h3>Peaceful Garden Planter</h3>
+        <p class="price">$55</p>
+        <p>A living planter of green and flowering plants the family can keep and tend at home.</p>
+      </article>
+      <article class="gift-card">
+        <h3>Candle and Card Set</h3>
+        <p class="price">$35</p>
+        <p>A hand poured remembrance candle with your personal card, delivered to the family at the service.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <img src="images/garden-tree.jpg" alt="Sunlight shining through the branches of a large old tree">
+    <div class="about-text">
+      <p class="eyebrow">Our Story</p>
+      <h2>Three generations of one Detroit family</h2>
+      <div class="gold-rule"></div>
+      <p>Serenity Gardens was founded in 1962 by Harold and Evelyn Whitmore in a converted brick home on Livernois Avenue. Harold believed a funeral home should feel like a neighbor's front room, warm, unhurried, and honest. Evelyn kept a garden behind the chapel where families could sit quietly between services. That garden still blooms every spring.</p>
+      <p>Today their grandchildren run the funeral home with the same promise: treat every family like our own, explain every cost in plain language, and never rush a goodbye.</p>
+      <div class="directors">
+        <div class="director">
+          <p class="dname">Marcus Whitmore</p>
+          <p class="drole">Licensed Funeral Director</p>
+          <p>Marcus has served Detroit families for 22 years and oversees every service held at Serenity Gardens.</p>
+        </div>
+        <div class="director">
+          <p class="dname">Danielle Whitmore Carter</p>
+          <p class="drole">Funeral Director and Pre-Planning Counselor</p>
+          <p>Danielle leads our pre-planning and aftercare programs, including the monthly grief support circle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Kind Words</p>
+      <h2>What families tell us</h2>
+      <div class="gold-rule"></div>
+      <p>The truest measure of our work is the families who trust us again when they need us most.</p>
+    </div>
+    <div class="testi-grid">
+      <article class="testi-card">
+        <p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>"They treated my mother like their own. Every detail was handled before I even thought to ask, and the garden room gave us space to just be together."</blockquote>
+        <p class="who">Denise, daughter</p>
+      </article>
+      <article class="testi-card">
+        <p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>"Marcus sat with us for two hours and explained every cost line by line. No pressure, no surprises. That honesty meant everything that week."</blockquote>
+        <p class="who">Walter, son</p>
+      </article>
+      <article class="testi-card">
+        <p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>"We pre-planned my father's service together last spring. When the day came, all we had to do was show up and remember him. What a gift that was."</blockquote>
+        <p class="who">Tonya, daughter</p>
+      </article>
+      <article class="testi-card">
+        <p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>"The grief circle carried me through the first year after my wife passed. These are good people who stay with you long after the service ends."</blockquote>
+        <p class="who">Gregory, husband</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <img class="band-img" src="images/chapel-wide.jpg" alt="Rows of wooden pews in a sunlit chapel, seen from above">
+    <div class="section-head center">
+      <p class="eyebrow">Aftercare</p>
+      <h2>Grief resources, free to every family</h2>
+      <div class="gold-rule"></div>
+      <p>Our care does not end at the cemetery gate. These programs are open to anyone in the community, whether we served your family or not.</p>
+    </div>
+    <div class="grief-grid">
+      <article class="grief-card">
+        <h3>Monthly Grief Support Circle</h3>
+        <p class="when">First Tuesday of Each Month, 6:30 p.m.</p>
+        <p>A gentle, guided conversation in our garden room for anyone grieving a loss. Coffee and tea are served. No registration needed, just come as you are.</p>
+      </article>
+      <article class="grief-card">
+        <h3>Grief Companion Visits</h3>
+        <p class="when">By Appointment</p>
+        <p>One-on-one time with a trained grief companion for those who prefer a quieter setting. Visits are free and can be held at our office or by phone.</p>
+      </article>
+      <article class="grief-card">
+        <h3>Children and Grief Booklet</h3>
+        <p class="when">Free, Just Ask</p>
+        <p>A plain language guide for parents and grandparents on helping children understand loss, with age by age suggestions and local resources.</p>
+      </article>
+      <article class="grief-card">
+        <h3>Holiday Remembrance Service</h3>
+        <p class="when">Second Sunday of December, 3:00 p.m.</p>
+        <p>An annual candle lighting service honoring loved ones lost during the year. Families receive a keepsake ornament with their loved one's name.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Questions</p>
+      <h2>Common questions, answered plainly</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What should we do first when a loved one passes?</h3>
+        <p>Call us at (313) 555-0173, any hour. If the death occurs at home, call 911 first so it can be officially pronounced, then call us. If it occurs in a hospital or hospice, the staff will ask which funeral home to contact. Give them our name, and we will take it from there.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How much does a funeral cost?</h3>
+        <p>It depends on the choices you make, and we will show you every price before you decide. Direct cremation starts at $1,295, cremation with a service at $2,495, and a traditional funeral at $4,995. You will receive a written, itemized statement, and you may choose only the items you want.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can we personalize the service?</h3>
+        <p>Yes, and we encourage it. Families have brought in photo displays, favorite music, a beloved quilt, even a motorcycle parked by the chapel door. If it tells your loved one's story, we will find a way to include it.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you serve all faiths and traditions?</h3>
+        <p>Yes. We regularly serve Christian, Muslim, Jewish, and non-religious families, and we work closely with clergy and cultural leaders across Detroit. Tell us what your tradition requires, and we will honor it.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the difference between pre-planning and pre-paying?</h3>
+        <p>Pre-planning means recording your wishes with us, which costs nothing. Pre-paying means funding those wishes in advance, which locks in today's prices. Many families pre-plan first and decide about pre-paying later. Either way, your plan can be changed at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap visit-grid">
+    <img src="images/garden-path.jpg" alt="A quiet garden path lined with trees">
+    <div class="visit-text">
+      <p class="eyebrow">Visit Us</p>
+      <h2>Our doors are open</h2>
+      <div class="gold-rule"></div>
+      <p>Stop by for a tour of the chapel and garden room, pick up a pre-planning guide, or simply sit in the garden Evelyn planted in 1962. You will find us at 15600 Livernois Ave in Detroit, with free parking behind the building.</p>
+      <div class="hours">
+        <div class="row"><span class="day">Monday to Friday</span><span>9:00 a.m. to 5:00 p.m.</span></div>
+        <div class="row"><span class="day">Saturday</span><span>9:00 a.m. to 1:00 p.m.</span></div>
+        <div class="row"><span class="day">Sunday</span><span>By appointment</span></div>
+        <div class="row"><span class="day">Phone, every day</span><span>24 hours</span></div>
+      </div>
+      <div class="visit-callout">
+        When a death occurs, call <a href="tel:+13135550173">(313) 555-0173</a> first. <strong>A licensed director answers our phone 24 hours a day, every day of the year,</strong> including holidays.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="fname">Serenity Gardens</p>
+        <p class="fsub">Funeral Home</p>
+        <p>Family owned and operated in Detroit since 1962. We serve families across Detroit, Highland Park, Hamtramck, and the surrounding suburbs.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p>15600 Livernois Ave<br>Detroit, MI 48238<br><br>Free parking behind the building, with step free entry at the garden door.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+13135550173">(313) 555-0173</a> (24 hours)</li>
+          <li><a href="mailto:care@serenitygardensdetroit.com">care@serenitygardensdetroit.com</a></li>
+          <li>Office: Mon to Fri, 9 to 5</li>
+          <li>Sat, 9 to 1</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services and Prices</a></li>
+          <li><a href="#preplanning">Pre-Planning</a></li>
+          <li><a href="#obituaries">Obituaries</a></li>
+          <li><a href="#flowers">Send Flowers</a></li>
+          <li><a href="#about">Our Story</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Serenity Gardens Funeral Home. All rights reserved.</span>
+      <span>Designed by <a href="https://lexissapphirestudio.com/">Lexis Sapphire Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

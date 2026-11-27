@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Torque &amp; Tread Auto Care is a family owned auto repair and tire shop on East Jefferson Ave in Detroit. Brakes, tires, oil changes, diagnostics, alignments and more, backed by a 24 month / 24,000 mile warranty.">
+<link rel="icon" href="data:,">
+<title>Torque &amp; Tread Auto Care | Auto Repair &amp; Tires in Detroit, MI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#1b1e23;
+  --char-2:#23262c;
+  --char-3:#2c2f36;
+  --orange:#ff6a00;
+  --orange-dark:#e05a00;
+  --paper:#f4f1ea;
+  --paper-2:#ece7db;
+  --ink:#17191c;
+  --ink-soft:#4a4d52;
+  --line:#d8d2c4;
+  --line-dark:#3a3d44;
+  --white:#ffffff;
+  --green:#1f7a3d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Barlow",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.cond{font-family:"Barlow Condensed","Barlow",sans-serif;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:"Barlow Condensed",sans-serif;font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:13px;color:var(--orange-dark)}
+.kicker::before{content:"";width:26px;height:3px;background:var(--orange);display:inline-block}
+.sec{padding:64px 0}
+.sec-head{max-width:720px;margin-bottom:34px}
+.sec-head h2{font-size:clamp(30px,4.5vw,44px);margin:10px 0 10px}
+.sec-head p{color:var(--ink-soft);font-size:17px;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:13px 24px;font-family:"Barlow Condensed",sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:16px;text-decoration:none;border:2px solid var(--char);cursor:pointer;border-radius:3px}
+.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+.btn-orange:hover{background:var(--orange-dark);border-color:var(--orange-dark)}
+.btn-dark{background:var(--char);color:var(--paper)}
+.btn-dark:hover{background:var(--char-3)}
+.btn-ghost{background:transparent;color:var(--paper);border-color:rgba(244,241,234,.55)}
+.btn-ghost:hover{border-color:var(--paper)}
+.hazard{height:12px;background:repeating-linear-gradient(45deg,var(--orange) 0 16px,var(--char) 16px 32px)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:60;background:var(--char);color:var(--paper);border-bottom:3px solid var(--orange)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:66px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand-badge{width:44px;height:44px;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;border-radius:3px;flex-shrink:0;line-height:1}
+.brand-text{line-height:1}
+.brand-text strong{font-family:"Barlow Condensed",sans-serif;font-size:21px;letter-spacing:.04em;display:block;text-transform:uppercase;white-space:nowrap}
+.brand-text span{font-family:"Barlow Condensed",sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);font-weight:600}
+.nav-links{display:flex;gap:2px;align-items:center}
+.nav-links a{font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:15px;text-decoration:none;padding:10px 12px;min-height:44px;display:inline-flex;align-items:center}
+.nav-links a:hover{color:var(--orange)}
+.nav-phone{background:var(--orange);color:#fff!important;border-radius:3px;padding:10px 16px!important}
+.nav-phone:hover{background:var(--orange-dark);color:#fff!important}
+@media(max-width:860px){.nav-links a:not(.nav-phone){display:none}.brand-text strong{font-size:17px}.brand-badge{width:38px;height:38px;font-size:16px}.nav-phone{font-size:13px;padding:9px 12px!important}}
+
+/* Hero */
+.hero{background:var(--char);color:var(--paper)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:0;align-items:stretch}
+.hero-copy{padding:56px 20px 52px 0;display:flex;flex-direction:column;justify-content:center}
+.hero-copy .kicker{color:var(--orange)}
+.hero-copy h1{font-size:clamp(40px,6vw,68px);margin:16px 0 16px}
+.hero-copy h1 .hl{color:var(--orange)}
+.hero-copy p.lead{font-size:18px;color:#d9d4c7;max-width:540px;margin:0 0 26px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.trust-chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line-dark);background:var(--char-2);padding:9px 14px;font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13.5px;display:inline-flex;gap:8px;align-items:center;border-radius:3px}
+.chip b{color:var(--orange)}
+.hero-photo{position:relative;min-height:420px}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--char) 0%,transparent 26%)}
+.hero-card{position:absolute;left:18px;bottom:18px;z-index:2;background:var(--paper);color:var(--ink);padding:14px 16px;border-left:5px solid var(--orange);max-width:300px;border-radius:3px}
+.hero-card .stars{color:var(--orange);letter-spacing:2px;font-size:15px}
+.hero-card strong{display:block;font-family:"Barlow Condensed",sans-serif;font-size:17px;text-transform:uppercase;letter-spacing:.04em;margin:2px 0}
+.hero-card span{font-size:13.5px;color:var(--ink-soft);line-height:1.4;display:block}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-copy{padding:40px 0 34px}.hero-photo{min-height:320px}.hero-photo::after{background:linear-gradient(180deg,var(--char) 0%,transparent 30%)}}
+
+/* Trust bar */
+.trustbar{background:var(--char-2);color:var(--paper);border-top:1px solid var(--line-dark)}
+.trustbar-inner{max-width:1180px;margin:0 auto;padding:16px 20px;display:flex;gap:14px 34px;flex-wrap:wrap;justify-content:space-between;font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:14px;font-weight:600}
+.trustbar-inner span{display:inline-flex;gap:9px;align-items:center}
+.trustbar-inner b{color:var(--orange)}
+
+/* Services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--char);padding:20px 20px 18px;border-radius:3px;display:flex;flex-direction:column}
+.svc:hover{border-top-color:var(--orange)}
+.svc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+.svc h3{font-size:21px;margin:0}
+.svc .price{font-family:"Barlow Condensed",sans-serif;font-weight:700;color:var(--orange-dark);font-size:19px;white-space:nowrap;text-align:right;line-height:1.1}
+.svc .price small{display:block;font-size:11px;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase;font-weight:600}
+.svc p{color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;flex:1}
+.svc .meta{font-family:"Barlow Condensed",sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:10px;display:flex;justify-content:space-between;gap:8px}
+.svc .meta b{color:var(--ink)}
+.svc-note{margin-top:18px;background:var(--paper-2);border:1px solid var(--line);padding:14px 18px;font-size:14.5px;color:var(--ink-soft);border-radius:3px}
+.svc-note b{color:var(--ink)}
+@media(max-width:960px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+
+/* Feature split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.split-photo{position:relative}
+.split-photo img{width:100%;height:100%;min-height:340px;object-fit:cover;border-radius:3px}
+.split-photo .tag{position:absolute;top:16px;left:16px;background:var(--orange);color:#fff;font-family:"Barlow Condensed",sans-serif;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:13px;padding:7px 12px;border-radius:3px}
+.check-list{list-style:none;margin:18px 0 24px;padding:0}
+.check-list li{display:flex;gap:12px;margin-bottom:13px;font-size:16px}
+.check-list li::before{content:"✓";color:#fff;background:var(--orange);width:24px;height:24px;flex-shrink:0;display:grid;place-items:center;font-size:14px;font-weight:700;border-radius:3px;margin-top:1px}
+.check-list b{display:block}
+.check-list span{color:var(--ink-soft);font-size:14.5px}
+@media(max-width:900px){.split{grid-template-columns:1fr}.split-photo img{min-height:260px}}
+
+/* Tires */
+.tires{background:var(--char);color:var(--paper)}
+.tires .sec-head p{color:#c9c3b4}
+.tire-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+.tire-card{background:var(--char-2);border:1px solid var(--line-dark);border-top:4px solid var(--orange);padding:20px;border-radius:3px}
+.tire-card .tier{font-family:"Barlow Condensed",sans-serif;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;color:var(--orange)}
+.tire-card h3{font-size:23px;margin:6px 0 4px}
+.tire-card .fit{font-size:13.5px;color:#c9c3b4;margin-bottom:12px}
+.tire-card .tprice{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:700;line-height:1}
+.tire-card .tprice small{font-size:13px;color:#c9c3b4;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.tire-card ul{list-style:none;margin:14px 0 0;padding:12px 0 0;border-top:1px dashed var(--line-dark);font-size:14px;color:#e3ded2}
+.tire-card ul li{margin-bottom:7px;display:flex;gap:8px}
+.tire-card ul li::before{content:"▸";color:var(--orange);font-weight:700}
+.tire-photo{margin-bottom:26px;border-radius:3px;overflow:hidden;position:relative}
+.tire-photo img{width:100%;height:300px;object-fit:cover}
+.tire-photo .cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(27,30,35,.88));color:var(--paper);padding:34px 18px 14px;font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:15px}
+.tire-perks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.perk{border:1px solid var(--line-dark);background:var(--char-2);padding:18px;border-radius:3px}
+.perk h3{font-size:19px;margin:0 0 6px;color:var(--orange)}
+.perk p{margin:0;font-size:14.5px;color:#e3ded2}
+@media(max-width:960px){.tire-grid{grid-template-columns:repeat(2,1fr)}.tire-perks{grid-template-columns:1fr}}
+@media(max-width:560px){.tire-grid{grid-template-columns:1fr}}
+
+/* Warranty */
+.warranty-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.warranty-photo img{width:100%;min-height:320px;object-fit:cover;border-radius:3px}
+.warr-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.warr-item{background:var(--white);border:1px solid var(--line);padding:16px;border-radius:3px}
+.warr-item h3{font-size:18px;margin:0 0 5px}
+.warr-item p{margin:0;font-size:14px;color:var(--ink-soft)}
+@media(max-width:900px){.warranty-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.warr-list{grid-template-columns:1fr}}
+
+/* About */
+.about{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:38px;align-items:start}
+.about-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.about-photos img{width:100%;height:100%;object-fit:cover;border-radius:3px}
+.about-photos .tall{grid-row:span 2;min-height:420px}
+.about-photos .short{min-height:204px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.stat{background:var(--char);color:var(--paper);padding:16px;text-align:center;border-radius:3px}
+.stat b{font-family:"Barlow Condensed",sans-serif;font-size:30px;color:var(--orange);display:block;line-height:1}
+.stat span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#c9c3b4;font-family:"Barlow Condensed",sans-serif;font-weight:600}
+.owner-line{display:flex;gap:14px;align-items:center;background:var(--white);border:1px solid var(--line);padding:14px 16px;border-radius:3px}
+.owner-line .who b{font-family:"Barlow Condensed",sans-serif;font-size:18px;text-transform:uppercase;letter-spacing:.04em;display:block;line-height:1.15}
+.owner-line .who span{font-size:13.5px;color:var(--ink-soft)}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}.about-photos .tall{min-height:320px}}
+
+/* Reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{background:var(--white);border:1px solid var(--line);padding:20px;border-radius:3px;display:flex;flex-direction:column}
+.rev .stars{color:var(--orange);letter-spacing:2px;font-size:15px;margin-bottom:8px}
+.rev p{margin:0 0 14px;font-size:15px;flex:1}
+.rev .who{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:15px}
+.rev .who span{display:block;font-family:"Barlow",sans-serif;font-weight:500;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink-soft)}
+.rev .svc-done{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-soft)}
+.rev .svc-done b{color:var(--orange-dark)}
+@media(max-width:960px){.rev-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.rev-grid{grid-template-columns:1fr}}
+
+/* Appointment + hours */
+.appt{background:var(--char);color:var(--paper)}
+.appt .sec-head p{color:#c9c3b4}
+.appt-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:start}
+.form-card{background:var(--char-2);border:1px solid var(--line-dark);padding:26px;border-radius:3px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:#e3ded2}
+.field input,.field select,.field textarea{background:var(--char);border:1.5px solid var(--line-dark);color:var(--paper);padding:12px;font-family:"Barlow",sans-serif;font-size:15px;border-radius:3px;min-height:48px;width:100%}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:var(--orange)}
+.form-card .btn{width:100%;margin-top:16px}
+.form-note{font-size:13px;color:#c9c3b4;margin:12px 0 0;text-align:center}
+.hours-card{background:var(--char-2);border:1px solid var(--line-dark);padding:26px;border-radius:3px}
+.hours-card h3{font-size:22px;margin:0 0 14px}
+.hours-table{width:100%;border-collapse:collapse;font-size:15px}
+.hours-table td{padding:9px 0;border-bottom:1px dashed var(--line-dark)}
+.hours-table td:last-child{text-align:right;font-weight:600}
+.hours-table tr.today td{color:var(--orange);font-weight:700}
+.hours-card .addr{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-dark);font-size:15px}
+.hours-card .addr b{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:16px}
+.hours-card .addr a{color:var(--orange);font-weight:700;text-decoration:none}
+@media(max-width:900px){.appt-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-list{max-width:840px}
+details{background:var(--white);border:1px solid var(--line);margin-bottom:12px;border-radius:3px}
+summary{cursor:pointer;padding:18px 20px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.03em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:56px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;color:var(--orange);font-weight:700;line-height:1;flex-shrink:0}
+details[open] summary::after{content:"-"}
+details .ans{padding:0 20px 18px;color:var(--ink-soft);font-size:15.5px;margin:0}
+
+/* Financing */
+.financing{background:var(--orange);color:#fff}
+.fin-inner{max-width:1180px;margin:0 auto;padding:34px 20px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.fin-inner h2{font-size:clamp(26px,3.5vw,36px);margin:0 0 6px}
+.fin-inner p{margin:0;max-width:620px;font-size:16px}
+.fin-inner .btn{background:var(--char);color:var(--paper);border-color:var(--char)}
+.fin-inner .btn:hover{background:var(--char-3)}
+
+/* Footer */
+footer{background:var(--char);color:#c9c3b4;border-top:3px solid var(--orange)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px;padding:48px 0 30px}
+.foot-brand .brand-text strong{color:var(--paper)}
+.foot-brand p{font-size:14.5px;max-width:340px;margin:14px 0 0}
+footer h3{color:var(--paper);font-size:18px;margin:0 0 14px}
+.foot-links{list-style:none;margin:0;padding:0;font-size:15px}
+.foot-links li{margin-bottom:9px}
+.foot-links a{text-decoration:none}
+.foot-links a:hover{color:var(--orange)}
+.foot-contact{font-size:15px}
+.foot-contact a{color:var(--orange);font-weight:700;text-decoration:none}
+.foot-bottom{border-top:1px solid var(--line-dark);padding:18px 0 26px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;font-size:13.5px}
+.foot-bottom a{color:var(--orange);text-decoration:none;font-weight:600}
+.foot-bottom a:hover{text-decoration:underline}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-badge">T&amp;T</span>
+      <span class="brand-text"><strong>Torque &amp; Tread</strong><span>Auto Care</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#tires">Tires</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-phone" href="tel:+13135550162">Call (313) 555-0162</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="kicker">Family Owned in Detroit Since 1998</span>
+        <h1>Honest repairs. <span class="hl">Fair prices.</span> Done right the first time.</h1>
+        <p class="lead">From a quick oil change to a full brake job, our ASE certified techs treat your car like it is our own. You get a written estimate before we touch a wrench, photos of everything we find, and a warranty that follows you nationwide.</p>
+        <div class="hero-actions">
+          <a class="btn btn-orange" href="#appointment">Request an Appointment</a>
+          <a class="btn btn-ghost" href="tel:+13135550162">Call (313) 555-0162</a>
+        </div>
+        <div class="trust-chips">
+          <span class="chip"><b>ASE</b> Certified Techs</span>
+          <span class="chip"><b>24/24</b> Nationwide Warranty</span>
+          <span class="chip"><b>Free</b> 21-Point Inspection</span>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/shop-hero.jpg" alt="Cars on lifts inside the Torque and Tread Auto Care shop in Detroit">
+        <div class="hero-card">
+          <span class="stars">★★★★★</span>
+          <strong>4.9 from 640+ neighbors</strong>
+          <span>"They showed me the old parts, explained every line on the bill, and had me back on the road the same day." Darnell W.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="trustbar">
+  <div class="trustbar-inner">
+    <span><b>Same day</b> service on most repairs</span>
+    <span><b>Free</b> shuttle within 5 miles</span>
+    <span><b>All makes</b> and models welcome</span>
+    <span><b>Written estimate</b> before any work starts</span>
+  </div>
+</div>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">What We Do</span>
+      <h2>Services and Starting Prices</h2>
+      <p>Every job starts with a free 21-point courtesy inspection. Prices below are starting points for most cars and light trucks. Your final quote is confirmed in writing before work begins, no surprises at pickup.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-top"><h3>Full Synthetic Oil Change</h3><div class="price">$69.99<small>starting at</small></div></div>
+        <p>Up to 5 quarts of full synthetic oil, new filter, fluid top-off, tire pressure check and a full 21-point inspection.</p>
+        <div class="meta"><span>Time</span><b>45 min</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Conventional Oil Change</h3><div class="price">$44.99<small>starting at</small></div></div>
+        <p>Up to 5 quarts of conventional oil, new filter and the same courtesy inspection. A smart pick for higher mileage engines.</p>
+        <div class="meta"><span>Time</span><b>45 min</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Brake Pads and Rotors</h3><div class="price">$189<small>per axle, from</small></div></div>
+        <p>Premium ceramic pads, new or resurfaced rotors, hardware kit, brake fluid check and a road test before you leave.</p>
+        <div class="meta"><span>Time</span><b>2 to 3 hrs</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Check Engine Diagnostics</h3><div class="price">$79.99<small>free with repair</small></div></div>
+        <p>Full computer scan, live data review and a written report with photos. The diagnostic fee is waived when we do the repair.</p>
+        <div class="meta"><span>Time</span><b>1 hr</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Wheel Alignment</h3><div class="price">$99.99<small>starting at</small></div></div>
+        <p>Computerized 4-wheel alignment with before and after printout. Protects your tires and keeps the steering wheel straight.</p>
+        <div class="meta"><span>Time</span><b>1 hr</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Tire Rotation and Balance</h3><div class="price">$29.99<small>starting at</small></div></div>
+        <p>Rotation, computer balance, valve stem check and pressure set to spec. Free for the life of any tire bought from us.</p>
+        <div class="meta"><span>Time</span><b>45 min</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>AC Service and Repair</h3><div class="price">$129.99<small>starting at</small></div></div>
+        <p>Performance test, leak check, refrigerant recharge and cabin filter inspection. Compressors and condensers quoted in writing.</p>
+        <div class="meta"><span>Time</span><b>1 to 2 hrs</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Battery Test and Replacement</h3><div class="price">$159.99<small>installed, from</small></div></div>
+        <p>Free battery and charging system test. Replacement includes terminal cleaning, memory saver and a 3-year free replacement warranty.</p>
+        <div class="meta"><span>Time</span><b>30 min</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Pre-Purchase Inspection</h3><div class="price">$119.99<small>flat rate</small></div></div>
+        <p>Buying a used car? We put it on the lift and check 90+ points, scan every module and give you a photo report before you sign.</p>
+        <div class="meta"><span>Time</span><b>1.5 hrs</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Transmission Service</h3><div class="price">$179.99<small>starting at</small></div></div>
+        <p>Fluid exchange, pan gasket and filter where applicable, plus a shift quality road test. Recommended every 30,000 to 60,000 miles.</p>
+        <div class="meta"><span>Time</span><b>2 hrs</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Suspension and Steering</h3><div class="price">$149.99<small>starting at</small></div></div>
+        <p>Shocks, struts, ball joints, tie rods and wheel bearings. We measure play on the lift and show you exactly what is worn.</p>
+        <div class="meta"><span>Time</span><b>Half day</b></div>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Starter and Alternator</h3><div class="price">$249.99<small>starting at</small></div></div>
+        <p>Charging and starting system diagnosis first, so you never pay for a part you do not need. Most jobs done the same day.</p>
+        <div class="meta"><span>Time</span><b>2 to 4 hrs</b></div>
+      </div>
+    </div>
+    <p class="svc-note"><b>Not sure what your car needs?</b> Bring it in for the free 21-point inspection. We check brakes, tires, fluids, belts, battery and lights, then send you photos and a prioritized list. You decide what gets fixed and when. Call <b>(313) 555-0162</b> or request a time below.</p>
+  </div>
+</section>
+
+<div class="hazard"></div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-photo">
+        <img src="images/diagnostics.jpg" alt="Technician inspecting an engine bay with a flashlight">
+        <span class="tag">Digital Inspections</span>
+      </div>
+      <div>
+        <span class="kicker">No Guesswork</span>
+        <h2 style="font-size:clamp(28px,4vw,40px);margin:10px 0 12px">See what we see, before you spend a dime</h2>
+        <p style="color:var(--ink-soft);font-size:16.5px;margin:0">Every car that rolls into our bays gets a digital inspection with photos sent straight to your phone. Green means good, yellow means plan ahead, red means fix it now. You approve each item from your couch, your desk or our waiting room.</p>
+        <ul class="check-list">
+          <li><div><b>Photos of every finding</b><span>Worn pads, cracked belts, leaking hoses. If we say it needs work, you see why.</span></div></li>
+          <li><div><b>Written estimate first</b><span>Parts and labor broken out line by line. The price we quote is the price you pay.</span></div></li>
+          <li><div><b>Old parts back in a box</b><span>We return every part we replace, so you can see exactly what came off your car.</span></div></li>
+          <li><div><b>Factory level scan tools</b><span>We read the same modules the dealer reads, on domestic, import and hybrid vehicles.</span></div></li>
+        </ul>
+        <a class="btn btn-dark" href="#appointment">Book My Free Inspection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tires" id="tires">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Tire Shop</span>
+      <h2>Tires for Every Budget</h2>
+      <p>Four honest tiers, mounted and balanced by our own techs. Every set includes free rotation and balance for the life of the tire, plus a free alignment check at install.</p>
+    </div>
+    <div class="tire-photo">
+      <img src="images/tire-service.jpg" alt="Technician mounting a tire in the Torque and Tread tire bay">
+      <div class="cap">Mounted, balanced and torqued to spec, right here in our own bays</div>
+    </div>
+    <div class="tire-grid">
+      <div class="tire-card">
+        <span class="tier">Value</span>
+        <h3>RoadHawk Touring</h3>
+        <p class="fit">Best for commuters and second cars. 40,000 mile treadwear warranty.</p>
+        <div class="tprice">$79<small> per tire</small></div>
+        <ul>
+          <li>Quiet highway ride</li>
+          <li>Free rotation for life</li>
+          <li>Road hazard plan available</li>
+        </ul>
+      </div>
+      <div class="tire-card">
+        <span class="tier">All-Season</span>
+        <h3>GripMaster A/S</h3>
+        <p class="fit">Our most popular pick for Michigan weather. 65,000 mile treadwear warranty.</p>
+        <div class="tprice">$119<small> per tire</small></div>
+        <ul>
+          <li>Strong wet and light snow grip</li>
+          <li>Free rotation for life</li>
+          <li>Free flat repair for 2 years</li>
+        </ul>
+      </div>
+      <div class="tire-card">
+        <span class="tier">Performance</span>
+        <h3>Velocity Sport</h3>
+        <p class="fit">For drivers who want sharper handling. 45,000 mile treadwear warranty.</p>
+        <div class="tprice">$159<small> per tire</small></div>
+        <ul>
+          <li>Responsive cornering and braking</li>
+          <li>Free rotation for life</li>
+          <li>Free flat repair for 2 years</li>
+        </ul>
+      </div>
+      <div class="tire-card">
+        <span class="tier">Truck and SUV</span>
+        <h3>TrailBoss AT</h3>
+        <p class="fit">All-terrain grip for trucks and SUVs. 55,000 mile treadwear warranty.</p>
+        <div class="tprice">$189<small> per tire</small></div>
+        <ul>
+          <li>Built for gravel, snow and towing</li>
+          <li>Free rotation for life</li>
+          <li>Load range options in stock</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tire-perks">
+      <div class="perk">
+        <h3>Winter Changeover</h3>
+        <p>Swap to your winter set for $59.99, including balance and pressure reset. We store your off-season set in our rack for $49 per season.</p>
+      </div>
+      <div class="perk">
+        <h3>Flat Repair</h3>
+        <p>Plug and patch done the right way, from the inside, for $24.99. If the tire cannot be saved, we show you why before we quote a new one.</p>
+      </div>
+      <div class="perk">
+        <h3>Price Match Promise</h3>
+        <p>Find the same tire advertised locally for less within 30 days and we refund the difference. Bring the ad, we handle the rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="warranty-grid">
+      <div>
+        <span class="kicker">Our Warranty</span>
+        <h2 style="font-size:clamp(28px,4vw,40px);margin:10px 0 12px">24 months. 24,000 miles. Nationwide.</h2>
+        <p style="color:var(--ink-soft);font-size:16.5px;margin:0">Every repair we do is covered for 24 months or 24,000 miles, parts and labor, honored at more than 17,000 partner shops across the country. If something we fixed fails on a road trip, you are covered wherever you are.</p>
+        <div class="warr-list">
+          <div class="warr-item">
+            <h3>Free Shuttle</h3>
+            <p>Drop your car and we will get you home or to work within 5 miles, then pick you up when it is ready.</p>
+          </div>
+          <div class="warr-item">
+            <h3>Loaner Cars</h3>
+            <p>Two clean loaners available for repairs that run past one day. Reserve yours when you book.</p>
+          </div>
+          <div class="warr-item">
+            <h3>Early Bird Drop-Off</h3>
+            <p>Key drop box by the front door. Leave your car before we open and we will call you by 9 AM with findings.</p>
+          </div>
+          <div class="warr-item">
+            <h3>Text Updates</h3>
+            <p>Photos, estimates and ready-for-pickup alerts by text. No phone tag, no guessing when your car is done.</p>
+          </div>
+        </div>
+      </div>
+      <div class="warranty-photo">
+        <img src="images/brake-service.jpg" alt="Technician servicing brakes and suspension under a vehicle on a lift">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photos">
+        <img class="tall" src="images/undercarriage.jpg" alt="Technician inspecting the underside of a vehicle on a lift">
+        <img class="short" src="images/engine-work.jpg" alt="Technician working on an engine in the shop">
+        <img class="short" src="images/engine-stand.jpg" alt="Engine block mounted on a stand during a rebuild">
+      </div>
+      <div>
+        <span class="kicker">Our Story</span>
+        <h2 style="font-size:clamp(28px,4vw,40px);margin:10px 0 12px">Three generations on East Jefferson</h2>
+        <p style="font-size:16.5px">Torque &amp; Tread opened in 1998 in a two-bay garage on East Jefferson Ave, started by Marcus Delgado with a toolbox, a borrowed lift and one rule: never sell a repair the car does not need. Word traveled the way it does in Detroit, one honest brake job at a time.</p>
+        <p style="font-size:16.5px">Today the shop runs six bays with a crew of nine, including Marcus, his daughter Elena who runs the front counter, and two master techs who have been with us for more than a decade. We still road test every car, still hand back the old parts, and still answer the phone with a person, not a menu.</p>
+        <div class="stat-row">
+          <div class="stat"><b>1998</b><span>Family owned since</span></div>
+          <div class="stat"><b>6</b><span>Service bays</span></div>
+          <div class="stat"><b>9</b><span>Techs and staff</span></div>
+        </div>
+        <div class="owner-line">
+          <img src="images/owner-portrait.jpg" alt="Shop owner Marcus Delgado holding wrenches" style="width:64px;height:64px;object-fit:cover;border-radius:50%;border:3px solid var(--orange)">
+          <div class="who">
+            <b>Marcus Delgado</b>
+            <span>Owner and Master Technician, ASE Certified since 1994</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Neighborhood Reviews</span>
+      <h2>What Detroit Drivers Say</h2>
+      <p>Most of our new customers come from a neighbor, a coworker or a family member who trusts us with their keys. Here is why.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"My brakes were grinding on the way to work. They got me in the same morning, sent photos of the worn pads, and the final bill matched the quote to the penny."</p>
+        <div class="who">Darnell W.<span>East English Village</span></div>
+        <div class="svc-done">Service: <b>Brake pads and rotors</b></div>
+      </div>
+      <div class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"Another shop quoted me $900 for an AC repair. Torque and Tread found a cracked hose, fixed it for under $250, and my air has been ice cold all summer."</p>
+        <div class="who">Keisha M.<span>Jefferson Chalmers</span></div>
+        <div class="svc-done">Service: <b>AC repair</b></div>
+      </div>
+      <div class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"I bought four tires during their fall sale. Free rotations ever since, and when I picked up a nail they patched it free. That is how you keep a customer for life."</p>
+        <div class="who">Tom R.<span>Grosse Pointe Park</span></div>
+        <div class="svc-done">Service: <b>Tires and rotation</b></div>
+      </div>
+      <div class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"They did a pre-purchase inspection on a used SUV I was about to buy. Found frame rust the seller never mentioned. Saved me from a very expensive mistake."</p>
+        <div class="who">Maria G.<span>Indian Village</span></div>
+        <div class="svc-done">Service: <b>Pre-purchase inspection</b></div>
+      </div>
+      <div class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"Check engine light came on Friday afternoon. They scanned it, showed me the sensor readings, and had the part in and tested by Saturday at noon."</p>
+        <div class="who">Jerome T.<span>Morningside</span></div>
+        <div class="svc-done">Service: <b>Diagnostics</b></div>
+      </div>
+      <div class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"As a single mom I used to dread car repairs. Elena at the counter explains everything in plain language and never pressures me. I will not take my car anywhere else."</p>
+        <div class="who">Alicia P.<span>East Jefferson</span></div>
+        <div class="svc-done">Service: <b>Oil change and inspection</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard"></div>
+
+<section class="sec appt" id="appointment">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Book Service</span>
+      <h2>Request an Appointment</h2>
+      <p>Tell us what your car needs and pick a time that works for you. We confirm every request by text or phone within one business hour.</p>
+    </div>
+    <div class="appt-grid">
+      <div class="form-card">
+        <form action="#" method="get" onsubmit="return false">
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-name">Full Name</label>
+              <input id="f-name" name="name" type="text" placeholder="Your name" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone Number</label>
+              <input id="f-phone" name="phone" type="tel" placeholder="(313) 555-0000" autocomplete="tel">
+            </div>
+            <div class="field full">
+              <label for="f-email">Email Address</label>
+              <input id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="f-year">Vehicle Year</label>
+              <input id="f-year" name="year" type="text" inputmode="numeric" placeholder="2019">
+            </div>
+            <div class="field">
+              <label for="f-make">Make and Model</label>
+              <input id="f-make" name="make" type="text" placeholder="Ford Escape">
+            </div>
+            <div class="field full">
+              <label for="f-service">Service Needed</label>
+              <select id="f-service" name="service">
+                <option>Full synthetic oil change</option>
+                <option>Conventional oil change</option>
+                <option>Brake service</option>
+                <option>New tires or tire repair</option>
+                <option>Wheel alignment</option>
+                <option>Check engine light or diagnostics</option>
+                <option>AC service</option>
+                <option>Battery replacement</option>
+                <option>Pre-purchase inspection</option>
+                <option>Something else, not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-date">Preferred Date</label>
+              <input id="f-date" name="date" type="date">
+            </div>
+            <div class="field">
+              <label for="f-time">Preferred Time</label>
+              <select id="f-time" name="time">
+                <option>Morning, 7:30 AM to 10:00 AM</option>
+                <option>Midday, 10:00 AM to 1:00 PM</option>
+                <option>Afternoon, 1:00 PM to 4:00 PM</option>
+                <option>Late afternoon, 4:00 PM to 6:00 PM</option>
+                <option>Early bird drop-off</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="f-notes">Anything We Should Know</label>
+              <textarea id="f-notes" name="notes" placeholder="Noises, warning lights, when the problem started, anything at all."></textarea>
+            </div>
+          </div>
+          <button class="btn btn-orange" type="submit">Request My Appointment</button>
+          <p class="form-note">Prefer to talk? Call us at (313) 555-0162 during shop hours.</p>
+        </form>
+      </div>
+      <div class="hours-card">
+        <h3>Shop Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>7:30 AM to 6:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>7:30 AM to 6:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>7:30 AM to 6:00 PM</td></tr>
+          <tr><td>Thursday</td><td>7:30 AM to 6:00 PM</td></tr>
+          <tr><td>Friday</td><td>7:30 AM to 6:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:00 AM to 4:00 PM</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <div class="addr">
+          <b>Torque &amp; Tread Auto Care</b><br>
+          11230 E Jefferson Ave<br>
+          Detroit, MI 48214<br>
+          <a href="tel:+13135550162">(313) 555-0162</a><br>
+          <span style="color:#c9c3b4;font-size:13.5px">Early bird key drop available 24 hours by the front door.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Good Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Do I need an appointment, or can I just walk in?</summary>
+        <p class="ans">Walk-ins are welcome for oil changes, tire repairs and battery tests, and we will fit you in the same day whenever a bay is open. For brakes, diagnostics and bigger jobs, an appointment guarantees your spot and lets us have parts ready before you arrive.</p>
+      </details>
+      <details>
+        <summary>How long does a brake job usually take?</summary>
+        <p class="ans">Most pad and rotor jobs take 2 to 3 hours once the car is in the bay. If we find a caliper or hose issue during the inspection, we call you with photos and a price before adding anything. Same day pickup is the norm.</p>
+      </details>
+      <details>
+        <summary>What does the 24 month / 24,000 mile warranty cover?</summary>
+        <p class="ans">Parts and labor on every repair we perform, honored at more than 17,000 partner shops nationwide. If a part we installed fails within the window, the repair is free. Tires carry their own manufacturer treadwear warranties, listed on each tier above.</p>
+      </details>
+      <details>
+        <summary>Do you work on hybrids and electric vehicles?</summary>
+        <p class="ans">Yes. Our techs are trained and equipped for hybrid and EV service, including brakes, tires, suspension, 12-volt batteries and cooling systems. For high-voltage battery work we will tell you honestly whether it is a job for us or for the dealer.</p>
+      </details>
+      <details>
+        <summary>Can I get a ride home while my car is in the shop?</summary>
+        <p class="ans">Absolutely. Our free shuttle runs within 5 miles of the shop, and we will pick you up when your car is ready. For repairs that run past one day, ask about a loaner when you book. We keep two on hand and they go fast on Mondays.</p>
+      </details>
+      <details>
+        <summary>Will you tell me if a repair can wait?</summary>
+        <p class="ans">That is the whole point of our inspection report. Every item is marked green, yellow or red. Yellow items come with a mileage or time estimate, so you can budget and plan instead of getting surprised at your next oil change.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="financing">
+  <div class="fin-inner">
+    <div>
+      <h2>Big repair? Pay over time.</h2>
+      <p>With TorquePay financing, repairs over $199 can be split into monthly payments with 6 months of no interest for qualified customers. Apply at the counter in about five minutes, most approvals are instant.</p>
+    </div>
+    <a class="btn" href="#appointment">Ask About Financing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <span class="brand-badge">T&amp;T</span>
+          <span class="brand-text"><strong>Torque &amp; Tread</strong><span>Auto Care</span></span>
+        </a>
+        <p>Family owned auto repair and tire shop serving Detroit drivers since 1998. Honest estimates, photo inspections and a nationwide warranty on every repair.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul class="foot-links">
+          <li><a href="#services">Services and Prices</a></li>
+          <li><a href="#tires">Tires</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#appointment">Request an Appointment</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact">
+        <h3>Visit the Shop</h3>
+        <p style="margin:0 0 10px">11230 E Jefferson Ave<br>Detroit, MI 48214</p>
+        <p style="margin:0 0 10px"><a href="tel:+13135550162">(313) 555-0162</a></p>
+        <p style="margin:0">Mon to Fri: 7:30 AM to 6:00 PM<br>Sat: 8:00 AM to 4:00 PM<br>Sun: Closed</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Torque &amp; Tread Auto Care. All rights reserved.</span>
+      <span>Designed by <a href="https://lexissapphirestudio.com/">Lexis Sapphire Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:,
+">
+<title>Maple &amp; Main Coffee Co. - Detroit Coffee Shop and Bakery</title>
+<meta name="description" content="Maple and Main Coffee Co. is a cozy neighborhood coffee shop and bakery in Detroit. Fresh espresso drinks, scratch baked pastries, free Wi-Fi, open mic nights, and a loyalty program that rewards regulars.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF3E4;
+  --cream-2:#F3E7CF;
+  --paper:#FFFDF7;
+  --maple:#8A5A2B;
+  --maple-dark:#5E3B17;
+  --maple-deep:#3E2710;
+  --sage:#7D8F69;
+  --sage-dark:#5C6E4C;
+  --sage-soft:#E4EAD9;
+  --ink:#33241A;
+  --ink-soft:#6B5847;
+  --line:#E2D3B8;
+  --gold:#D9A441;
+  --card:#FFFFFF;
+  --shadow:0 10px 30px rgba(62,39,16,.14);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Nunito",system-ui,-apple-system,sans-serif;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;display:block}
+button,[role="button"]{min-height:44px}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.15;margin:0}
+p{margin:0}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+.section{padding:64px 0}
+.eyebrow{font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:10px}
+.section-head{max-width:640px;margin-bottom:34px}
+.section-head h2{font-size:clamp(1.7rem,4.5vw,2.4rem);color:var(--maple-deep)}
+.section-head p{margin-top:10px;color:var(--ink-soft)}
+
+/* demo strip */
+.demo-strip{position:sticky;top:0;z-index:101;min-height:34px;display:flex;align-items:center;justify-content:center;gap:10px;background:#14100C;color:#FFF6E8;font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 5vw;text-align:center}
+.demo-strip .demo-strip-sub{font-weight:500;letter-spacing:1px;text-transform:none;opacity:.9}
+@media (max-width:560px){.demo-strip .demo-strip-sub{display:none}}
+
+/* nav */
+nav.site-nav{position:sticky;top:34px;z-index:100;background:rgba(251,243,228,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:42px;height:42px;border-radius:50%;background:var(--maple);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-weight:700;font-size:1.05rem;flex:none}
+.brand-name{font-family:"Fraunces",serif;font-weight:700;font-size:1.08rem;color:var(--maple-deep);line-height:1.1}
+.brand-sub{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-dark)}
+.nav-links{display:none;gap:22px;font-weight:700;font-size:.95rem}
+.nav-links a{text-decoration:none;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--maple-dark)}
+.nav-cta{display:inline-flex;align-items:center;background:var(--sage-dark);color:#fff;text-decoration:none;font-weight:800;padding:10px 18px;border-radius:999px;font-size:.92rem;white-space:nowrap}
+@media (min-width:860px){.nav-links{display:flex}}
+
+/* hero */
+.hero{position:relative;background:var(--maple-deep);color:var(--cream);overflow:hidden}
+.hero-grid{display:grid;gap:0}
+.hero-copy{padding:56px 0 40px}
+.hero h1{font-size:clamp(2.2rem,7vw,3.6rem);font-weight:700}
+.hero h1 .accent{color:var(--gold)}
+.hero-sub{margin-top:16px;font-size:1.08rem;color:#F0E2C8;max-width:520px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.badge{background:rgba(251,243,228,.12);border:1px solid rgba(251,243,228,.3);border-radius:999px;padding:7px 14px;font-size:.85rem;font-weight:700}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;border-radius:999px;padding:13px 24px;font-size:1rem;border:2px solid transparent}
+.btn-gold{background:var(--gold);color:var(--maple-deep)}
+.btn-outline{border-color:var(--cream);color:var(--cream)}
+.hero-photo{min-height:300px}
+.hero-photo img{width:100%;height:100%;object-fit:cover;min-height:300px}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:1.05fr .95fr;align-items:stretch}
+  .hero-copy{padding:72px 4vw 72px 0;display:flex;flex-direction:column;justify-content:center}
+  .hero-photo img{min-height:100%}
+}
+
+/* info bar */
+.info-bar{background:var(--sage-soft);border-bottom:1px solid var(--line)}
+.info-grid{display:grid;gap:14px;padding:20px 0}
+.info-item{display:flex;gap:12px;align-items:flex-start}
+.info-ico{width:38px;height:38px;flex:none;border-radius:12px;background:var(--sage-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.info-item strong{display:block;font-size:.95rem;color:var(--maple-deep)}
+.info-item span{font-size:.9rem;color:var(--ink-soft)}
+@media (min-width:760px){.info-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* menu */
+.menu-tabs{display:grid;gap:22px}
+.menu-group{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow)}
+.menu-group h3{font-size:1.3rem;color:var(--maple-dark);margin-bottom:4px}
+.menu-group .group-note{font-size:.9rem;color:var(--ink-soft);margin-bottom:16px}
+.menu-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.menu-list li{display:flex;justify-content:space-between;gap:14px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.menu-list li:last-child{border-bottom:none;padding-bottom:0}
+.item-name{font-weight:800}
+.item-desc{display:block;font-weight:400;font-size:.88rem;color:var(--ink-soft);margin-top:2px}
+.item-price{font-family:"Fraunces",serif;font-weight:700;color:var(--maple);white-space:nowrap}
+.tag{display:inline-block;background:var(--sage-soft);color:var(--sage-dark);font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+@media (min-width:900px){.menu-tabs{grid-template-columns:1fr 1fr}}
+
+/* bakery + specials */
+.split{display:grid;gap:28px;align-items:start}
+.photo-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.photo-card img{width:100%;height:320px;object-fit:cover}
+.photo-cap{background:var(--card);padding:16px 20px;font-size:.92rem;color:var(--ink-soft)}
+.photo-cap strong{color:var(--maple-deep)}
+@media (min-width:900px){.split{grid-template-columns:1fr 1fr}}
+.specials{background:var(--maple-deep);color:var(--cream)}
+.specials .section-head h2{color:var(--cream)}
+.specials .section-head p{color:#EADFC6}
+.special-grid{display:grid;gap:18px}
+.special-card{background:rgba(251,243,228,.07);border:1px solid rgba(251,243,228,.22);border-radius:var(--radius);padding:24px}
+.special-card h3{font-size:1.2rem;color:var(--gold)}
+.special-card p{margin-top:8px;color:#F0E2C8;font-size:.95rem}
+.special-price{margin-top:12px;font-family:"Fraunces",serif;font-weight:700;font-size:1.15rem}
+@media (min-width:820px){.special-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* events */
+.event-grid{display:grid;gap:18px}
+.event-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.event-date{display:inline-flex;align-items:center;gap:8px;background:var(--sage-soft);color:var(--sage-dark);font-weight:800;font-size:.85rem;border-radius:999px;padding:5px 12px;align-self:flex-start}
+.event-card h3{font-size:1.25rem;color:var(--maple-deep)}
+.event-card p{color:var(--ink-soft);font-size:.95rem}
+.event-meta{margin-top:auto;padding-top:10px;font-weight:800;color:var(--maple-dark);font-size:.92rem}
+@media (min-width:820px){.event-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* loyalty */
+.loyalty{background:var(--sage-soft)}
+.loyalty-grid{display:grid;gap:28px;align-items:center}
+.loyalty-steps{display:grid;gap:14px;margin-top:22px}
+.step{display:flex;gap:14px;background:var(--card);border-radius:14px;padding:16px 18px;border:1px solid var(--line)}
+.step-num{width:36px;height:36px;flex:none;border-radius:50%;background:var(--maple);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step strong{display:block;color:var(--maple-deep)}
+.step span{font-size:.92rem;color:var(--ink-soft)}
+@media (min-width:900px){.loyalty-grid{grid-template-columns:1.1fr .9fr}}
+
+/* hours + visit */
+.visit-grid{display:grid;gap:22px}
+.hours-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow)}
+.hours-card h3{font-size:1.25rem;color:var(--maple-deep);margin-bottom:14px}
+.hours-list{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.97rem}
+.hours-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.hours-list li:last-child{border-bottom:none}
+.hours-list .day{font-weight:800}
+.hours-list .today{color:var(--sage-dark)}
+.note-box{background:var(--cream-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:.93rem;color:var(--ink-soft);margin-top:16px}
+.note-box strong{color:var(--maple-deep)}
+@media (min-width:900px){.visit-grid{grid-template-columns:1fr 1fr}}
+
+/* about */
+.about-grid{display:grid;gap:28px;align-items:center}
+.about-grid .photo-card img{height:380px}
+.about-copy p{color:var(--ink-soft);margin-top:14px}
+.owner-line{display:flex;align-items:center;gap:14px;margin-top:22px}
+.owner-initial{width:52px;height:52px;border-radius:50%;background:var(--sage-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-weight:700;font-size:1.2rem;flex:none}
+.owner-line strong{display:block;color:var(--maple-deep)}
+.owner-line span{font-size:.9rem;color:var(--ink-soft)}
+@media (min-width:900px){.about-grid{grid-template-columns:.95fr 1.05fr}}
+
+/* reviews */
+.review-grid{display:grid;gap:18px}
+.review-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:1rem}
+.review-card p{margin-top:10px;color:var(--ink);font-size:.97rem}
+.review-who{margin-top:14px;font-weight:800;color:var(--maple-dark);font-size:.9rem}
+.review-who span{display:block;font-weight:600;color:var(--ink-soft);font-size:.82rem}
+@media (min-width:820px){.review-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.gallery-grid img{width:100%;height:200px;object-fit:cover;border-radius:14px}
+@media (min-width:820px){.gallery-grid{grid-template-columns:repeat(4,1fr)}.gallery-grid img{height:230px}}
+
+/* faq */
+.faq-list{display:grid;gap:12px;max-width:780px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.faq-item h3{font-size:1.05rem;color:var(--maple-deep);font-family:"Nunito",sans-serif;font-weight:800}
+.faq-item p{margin-top:6px;color:var(--ink-soft);font-size:.95rem}
+
+/* footer */
+footer{background:var(--maple-deep);color:#EADFC6;padding:52px 0 34px}
+.footer-grid{display:grid;gap:28px}
+.footer-grid h3{color:var(--cream);font-size:1.15rem;margin-bottom:10px}
+.footer-grid p,.footer-grid li{font-size:.93rem}
+.footer-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.footer-grid a{text-decoration:none}
+.footer-grid a:hover{text-decoration:underline}
+.footer-bottom{border-top:1px solid rgba(234,223,198,.25);margin-top:34px;padding-top:20px;font-size:.85rem;display:grid;gap:8px}
+.footer-bottom a{color:var(--gold);text-decoration:none;font-weight:700}
+@media (min-width:820px){.footer-grid{grid-template-columns:1.3fr 1fr 1fr}}
+</style>
+</head>
+<body>
+
+
+<nav class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">M&amp;M</span>
+      <span>
+        <span class="brand-name">Maple &amp; Main Coffee Co.</span><br>
+        <span class="brand-sub">Detroit, Michigan</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#bakery">Bakery</a>
+      <a href="#events">Events</a>
+      <a href="#loyalty">Loyalty</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a class="nav-cta" href="tel:+13135550119">Call (313) 555-0119</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>Good coffee, warm pastries, <span class="accent">your corner table.</span></h1>
+      <p class="hero-sub">Maple and Main is the neighborhood coffee shop and bakery on West McNichols, pouring fresh espresso drinks and pulling croissants out of the oven every morning since 2019.</p>
+      <div class="hero-badges">
+        <span class="badge">Baked fresh daily</span>
+        <span class="badge">Free Wi-Fi</span>
+        <span class="badge">Locally roasted beans</span>
+        <span class="badge">Dog friendly patio</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#menu">See the menu</a>
+        <a class="btn btn-outline" href="#visit">Hours and directions</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="images/cafe-counter.jpg" alt="Barista pouring a latte at the Maple and Main counter">
+    </div>
+  </div>
+</header>
+
+<div class="info-bar">
+  <div class="wrap info-grid">
+    <div class="info-item">
+      <span class="info-ico">📍</span>
+      <div><strong>7421 W McNichols Rd</strong><span>Detroit, MI 48221, near the corner of Livernois</span></div>
+    </div>
+    <div class="info-item">
+      <span class="info-ico">🕐</span>
+      <div><strong>Open 7 days a week</strong><span>Weekdays from 6:30 a.m., weekends from 7:30 a.m.</span></div>
+    </div>
+    <div class="info-item">
+      <span class="info-ico">📶</span>
+      <div><strong>Free Wi-Fi and outlets</strong><span>Work friendly tables, no time limit, refills on drip coffee</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Drink Menu</p>
+      <h2>Poured fresh, priced fair</h2>
+      <p>Every drink can be made with oat, almond, or soy milk for 75 cents more. Decaf is always available. Ask about our rotating single origin beans at the counter.</p>
+    </div>
+    <div class="menu-tabs">
+      <div class="menu-group">
+        <h3>Espresso Drinks</h3>
+        <p class="group-note">Double shot standard. Sizes 12 oz and 16 oz.</p>
+        <ul class="menu-list">
+          <li><span><span class="item-name">Espresso</span><span class="item-desc">A straight double shot of our Maple Blend.</span></span><span class="item-price">$3.25</span></li>
+          <li><span><span class="item-name">Cortado</span><span class="item-desc">Equal parts espresso and warm steamed milk.</span></span><span class="item-price">$4.25</span></li>
+          <li><span><span class="item-name">Cappuccino</span><span class="item-desc">Classic thirds with a dusting of cocoa.</span></span><span class="item-price">$4.75</span></li>
+          <li><span><span class="item-name">Caffe Latte</span><span class="item-desc">Smooth and mellow, with latte art if you ask nicely.</span></span><span class="item-price">$5.25</span></li>
+          <li><span><span class="item-name">Maple Latte</span><span class="tag">House Favorite</span><span class="item-desc">Real Michigan maple syrup and a pinch of sea salt.</span></span><span class="item-price">$5.95</span></li>
+          <li><span><span class="item-name">Honey Lavender Latte</span><span class="item-desc">House lavender syrup sweetened with local honey.</span></span><span class="item-price">$5.95</span></li>
+          <li><span><span class="item-name">Mocha</span><span class="item-desc">Espresso, steamed milk, and dark chocolate.</span></span><span class="item-price">$5.75</span></li>
+          <li><span><span class="item-name">Americano</span><span class="item-desc">Bold and clean, hot or over ice.</span></span><span class="item-price">$4.25</span></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <h3>Brewed Coffee</h3>
+        <p class="group-note">Free refill on drip when you stay with us.</p>
+        <ul class="menu-list">
+          <li><span><span class="item-name">House Drip Coffee</span><span class="item-desc">Our Maple Blend, brewed fresh every hour.</span></span><span class="item-price">$2.95</span></li>
+          <li><span><span class="item-name">Pour Over</span><span class="item-desc">Rotating single origin, brewed to order.</span></span><span class="item-price">$4.50</span></li>
+          <li><span><span class="item-name">French Press for Two</span><span class="item-desc">A full press to share at the table.</span></span><span class="item-price">$8.50</span></li>
+          <li><span><span class="item-name">Cafe au Lait</span><span class="item-desc">Half drip coffee, half steamed milk.</span></span><span class="item-price">$4.25</span></li>
+          <li><span><span class="item-name">Coffee To Go Box</span><span class="item-desc">96 oz of drip with cups and fixings. Serves 8 to 10.</span></span><span class="item-price">$22.00</span></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <h3>Cold Drinks</h3>
+        <p class="group-note">Cold brew is steeped 18 hours in house.</p>
+        <ul class="menu-list">
+          <li><span><span class="item-name">Cold Brew</span><span class="item-desc">Smooth, chocolatey, and strong.</span></span><span class="item-price">$4.75</span></li>
+          <li><span><span class="item-name">Nitro Cold Brew</span><span class="item-desc">Creamy cascade, no ice needed.</span></span><span class="item-price">$5.50</span></li>
+          <li><span><span class="item-name">Iced Maple Latte</span><span class="item-desc">Our signature maple latte over ice.</span></span><span class="item-price">$5.95</span></li>
+          <li><span><span class="item-name">Iced Caramel Macchiato</span><span class="item-desc">Vanilla milk, espresso float, caramel drizzle.</span></span><span class="item-price">$5.95</span></li>
+          <li><span><span class="item-name">Espresso Tonic</span><span class="item-desc">Bright and bubbly with a twist of orange.</span></span><span class="item-price">$5.50</span></li>
+          <li><span><span class="item-name">Cold Brew Lemonade</span><span class="tag">Summer Only</span><span class="item-desc">Half cold brew, half house lemonade.</span></span><span class="item-price">$5.25</span></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <h3>Teas and More</h3>
+        <p class="group-note">Loose leaf teas from a Michigan tea blender.</p>
+        <ul class="menu-list">
+          <li><span><span class="item-name">Hot Tea</span><span class="item-desc">Earl Grey, green sencha, chamomile, or peppermint.</span></span><span class="item-price">$3.50</span></li>
+          <li><span><span class="item-name">Chai Latte</span><span class="item-desc">Spiced black tea with steamed milk.</span></span><span class="item-price">$5.25</span></li>
+          <li><span><span class="item-name">Matcha Latte</span><span class="item-desc">Ceremonial grade matcha, lightly sweetened.</span></span><span class="item-price">$5.75</span></li>
+          <li><span><span class="item-name">Hot Chocolate</span><span class="item-desc">Made with real chocolate and topped with whipped cream.</span></span><span class="item-price">$4.50</span></li>
+          <li><span><span class="item-name">Golden Milk</span><span class="item-desc">Turmeric, ginger, and cinnamon in steamed milk.</span></span><span class="item-price">$5.25</span></li>
+          <li><span><span class="item-name">Kids Steamer</span><span class="item-desc">Warm milk with vanilla or chocolate, sized for small hands.</span></span><span class="item-price">$3.00</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bakery" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">From the Bakery Case</p>
+      <h2>Baked here, every single morning</h2>
+      <p>Our bakers come in at 4:30 a.m. so the case is full by the time the doors open. When it is gone, it is gone, so come early for the almond croissants.</p>
+    </div>
+    <div class="split">
+      <div class="menu-group">
+        <h3>Pastries and Sweets</h3>
+        <p class="group-note">Baked in house daily. Day old pastries are half price after 5 p.m.</p>
+        <ul class="menu-list">
+          <li><span><span class="item-name">Butter Croissant</span><span class="item-desc">Flaky, golden, and made with real butter.</span></span><span class="item-price">$4.25</span></li>
+          <li><span><span class="item-name">Almond Croissant</span><span class="tag">Sells Out</span><span class="item-desc">Filled with almond cream and dusted with powdered sugar.</span></span><span class="item-price">$5.25</span></li>
+          <li><span><span class="item-name">Blueberry Muffin</span><span class="item-desc">Bursting with Michigan blueberries.</span></span><span class="item-price">$3.95</span></li>
+          <li><span><span class="item-name">Banana Walnut Bread</span><span class="item-desc">A thick slice, toasted with butter if you like.</span></span><span class="item-price">$3.75</span></li>
+          <li><span><span class="item-name">Cinnamon Roll</span><span class="item-desc">Warm from the oven with cream cheese icing.</span></span><span class="item-price">$4.95</span></li>
+          <li><span><span class="item-name">Chocolate Chip Cookie</span><span class="item-desc">Crisp edges, soft middle, flaky sea salt on top.</span></span><span class="item-price">$3.25</span></li>
+          <li><span><span class="item-name">Lemon Bar</span><span class="item-desc">Tart, bright, and buttery.</span></span><span class="item-price">$3.95</span></li>
+          <li><span><span class="item-name">Gluten Free Brownie</span><span class="item-desc">Rich and fudgy, baked in a separate pan.</span></span><span class="item-price">$4.25</span></li>
+        </ul>
+        <h3 style="margin-top:24px">Savory and Light</h3>
+        <p class="group-note">For when coffee alone will not do it.</p>
+        <ul class="menu-list">
+          <li><span><span class="item-name">Spinach and Feta Hand Pie</span><span class="item-desc">Flaky pastry with spinach, feta, and herbs.</span></span><span class="item-price">$5.50</span></li>
+          <li><span><span class="item-name">Egg and Cheese Croissant</span><span class="item-desc">Scrambled egg and sharp cheddar on a butter croissant.</span></span><span class="item-price">$7.25</span></li>
+          <li><span><span class="item-name">Overnight Oats</span><span class="item-desc">Oats, yogurt, berries, and honey. Ready to grab and go.</span></span><span class="item-price">$5.95</span></li>
+          <li><span><span class="item-name">Yogurt Parfait</span><span class="item-desc">Greek yogurt layered with granola and seasonal fruit.</span></span><span class="item-price">$5.50</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="photo-card">
+          <img src="images/pastry-case.jpg" alt="Fresh pastries arranged in the bakery case">
+          <div class="photo-cap"><strong>The morning case.</strong> Croissants, muffins, and cinnamon rolls come out of the oven starting at 6:00 a.m. Call ahead and we will set a box aside for you.</div>
+        </div>
+        <div class="photo-card" style="margin-top:18px">
+          <img src="images/croissants.jpg" alt="Golden croissants cooling on a tray">
+          <div class="photo-cap"><strong>Whole cakes and pastry boxes.</strong> Need a dozen croissants for the office or a birthday cake for Saturday? Order 48 hours ahead at (313) 555-0119.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section specials" id="specials">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" style="color:var(--gold)">Seasonal Specials</p>
+      <h2>Winter warmers, here through February</h2>
+      <p>Our seasonal menu leans into Michigan winter: maple, spice, and everything warm. Available while supplies last.</p>
+    </div>
+    <div class="special-grid">
+      <div class="special-card">
+        <h3>Gingerbread Latte</h3>
+        <p>Espresso, steamed milk, gingerbread spice, and a molasses drizzle. Tastes like the cookie, drinks like a latte.</p>
+        <p class="special-price">$6.25</p>
+      </div>
+      <div class="special-card">
+        <h3>Maple Pecan Cold Brew</h3>
+        <p>Our 18 hour cold brew sweetened with maple syrup and topped with pecan cold foam.</p>
+        <p class="special-price">$5.95</p>
+      </div>
+      <div class="special-card">
+        <h3>Peppermint Mocha</h3>
+        <p>Dark chocolate, peppermint, and whipped cream with crushed candy cane on top. A December classic.</p>
+        <p class="special-price">$6.25</p>
+      </div>
+      <div class="special-card">
+        <h3>Cranberry Orange Scone</h3>
+        <p>Tart cranberries and orange zest in a tender scone, glazed while warm. Baked fresh on weekends.</p>
+        <p class="special-price">$4.50</p>
+      </div>
+      <div class="special-card">
+        <h3>Spiced Apple Cider</h3>
+        <p>Michigan apple cider simmered with cinnamon, cloves, and orange peel. Caffeine free and kid approved.</p>
+        <p class="special-price">$4.75</p>
+      </div>
+      <div class="special-card">
+        <h3>Holiday Pastry Box</h3>
+        <p>Twelve assorted pastries in a gift box with a ribbon, ready for teachers, coworkers, and neighbors.</p>
+        <p class="special-price">$38.00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Community Events</p>
+      <h2>More than a coffee shop</h2>
+      <p>We host the neighborhood. Most events are free, and the coffee is always on. Sign up at the counter or call (313) 555-0119 to save your seat.</p>
+    </div>
+    <div class="event-grid">
+      <div class="event-card">
+        <span class="event-date">Every Friday, 6:30 p.m. to 9:00 p.m.</span>
+        <h3>Open Mic Night</h3>
+        <p>Singers, poets, comedians, and first timers all welcome. Sign up sheet opens at 6:00 p.m. and spots fill fast. All ages, family friendly until 8:30 p.m.</p>
+        <p class="event-meta">Free entry. Performers get a free drink.</p>
+      </div>
+      <div class="event-card">
+        <span class="event-date">Tuesday, December 8, 2026, 6:00 p.m.</span>
+        <h3>Maple Street Book Club</h3>
+        <p>This month we are reading a Detroit mystery novel and meeting by the fireplace corner. New readers are welcome even if you only finished half the book.</p>
+        <p class="event-meta">Free with any drink purchase.</p>
+      </div>
+      <div class="event-card">
+        <span class="event-date">Saturday, December 12, 2026, 10:00 a.m.</span>
+        <h3>Latte Art Class</h3>
+        <p>Learn to steam silky milk and pour your first heart and rosetta with our head barista. Includes two drinks to practice with and a bag of Maple Blend beans to take home.</p>
+        <p class="event-meta">$35 per person. Limited to 8 seats.</p>
+      </div>
+      <div class="event-card">
+        <span class="event-date">Sunday, December 20, 2026, 2:00 p.m.</span>
+        <h3>Kids Cookie Decorating</h3>
+        <p>We bake the sugar cookies, your kids bring the creativity. Aprons, sprinkles, and hot chocolate included. Best for ages 4 to 12.</p>
+        <p class="event-meta">$12 per child. Adults free.</p>
+      </div>
+      <div class="event-card">
+        <span class="event-date">First Saturday monthly, 9:00 a.m.</span>
+        <h3>Community Coffee Hour</h3>
+        <p>Free drip coffee for neighbors, hosted with the McNichols neighborhood association. Come meet the block and hear what is happening on the avenue.</p>
+        <p class="event-meta">Free. No sign up needed.</p>
+      </div>
+      <div class="event-card">
+        <span class="event-date">By reservation</span>
+        <h3>Private Room Rentals</h3>
+        <p>Our back room seats 20 and is perfect for baby showers, study groups, and small meetings. Includes coffee service for the group.</p>
+        <p class="event-meta">From $75 for two hours. Call to book.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section loyalty" id="loyalty">
+  <div class="wrap loyalty-grid">
+    <div>
+      <p class="eyebrow">Maple Rewards</p>
+      <h2 style="font-size:clamp(1.7rem,4.5vw,2.4rem);color:var(--maple-deep)">Regulars drink free around here</h2>
+      <p style="margin-top:12px;color:var(--ink-soft)">Join Maple Rewards with just your phone number at the register. No app to download and no card to carry. We keep track, you just keep coming back.</p>
+      <div class="loyalty-steps">
+        <div class="step"><span class="step-num">1</span><div><strong>Earn 1 point per dollar</strong><span>Every drink, pastry, and bag of beans earns points automatically.</span></div></div>
+        <div class="step"><span class="step-num">2</span><div><strong>Free drink after 10 visits</strong><span>Buy 10 drinks and your 11th is on us, any size, any drink on the menu.</span></div></div>
+        <div class="step"><span class="step-num">3</span><div><strong>Double point Tuesdays</strong><span>Earn twice the points every Tuesday, all day long.</span></div></div>
+        <div class="step"><span class="step-num">4</span><div><strong>Birthday treat</strong><span>A free pastry and drink during your birthday week, because of course.</span></div></div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="images/latte-art.jpg" alt="Latte with heart art in a ceramic cup">
+      <div class="photo-cap"><strong>Your 11th drink is on us.</strong> Points never expire, and members get first taste of new seasonal drinks at our preview nights.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Visit Us</p>
+      <h2>Hours, parking, and a place to land</h2>
+      <p>Find us on West McNichols near Livernois, with free parking in the lot behind the building and a bus stop right out front.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3>Opening Hours</h3>
+        <ul class="hours-list">
+          <li><span class="day">Monday</span><span>6:30 a.m. to 7:00 p.m.</span></li>
+          <li><span class="day">Tuesday</span><span>6:30 a.m. to 7:00 p.m.</span></li>
+          <li><span class="day">Wednesday</span><span>6:30 a.m. to 7:00 p.m.</span></li>
+          <li><span class="day">Thursday</span><span>6:30 a.m. to 8:00 p.m.</span></li>
+          <li><span class="day">Friday</span><span>6:30 a.m. to 9:00 p.m.</span></li>
+          <li><span class="day">Saturday</span><span>7:30 a.m. to 8:00 p.m.</span></li>
+          <li><span class="day">Sunday</span><span>7:30 a.m. to 5:00 p.m.</span></li>
+        </ul>
+        <div class="note-box"><strong>Holiday hours:</strong> We close early at 3:00 p.m. on Christmas Eve and New Year Eve, and we are closed on Christmas Day and New Year Day so our team can be with family.</div>
+      </div>
+      <div class="hours-card">
+        <h3>Good to Know</h3>
+        <ul class="hours-list">
+          <li><span class="day">Address</span><span>7421 W McNichols Rd, Detroit, MI 48221</span></li>
+          <li><span class="day">Phone</span><span>(313) 555-0119</span></li>
+          <li><span class="day">Parking</span><span>Free lot behind the building, entrance on Hartwell St</span></li>
+          <li><span class="day">Bus</span><span>Route 32 stops at McNichols and Livernois</span></li>
+          <li><span class="day">Wi-Fi</span><span>Free, password on the chalkboard by the register</span></li>
+          <li><span class="day">Workspace</span><span>Outlets at most tables, quiet corner upstairs</span></li>
+          <li><span class="day">Dogs</span><span>Welcome on the patio, water bowl by the door</span></li>
+        </ul>
+        <div class="note-box"><strong>Working from here?</strong> Settle in. Drip coffee refills are free while you stay, and our back room can be reserved for study groups of 4 or more at no charge on weekday afternoons.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about" style="padding-top:0">
+  <div class="wrap about-grid">
+    <div class="photo-card">
+      <img src="images/barista-pour.jpg" alt="Barista pouring steamed milk into a cup at the espresso bar">
+    </div>
+    <div class="about-copy">
+      <p class="eyebrow">Our Story</p>
+      <h2 style="font-size:clamp(1.7rem,4.5vw,2.4rem);color:var(--maple-deep)">Started at a kitchen table in 2019</h2>
+      <p>Maple and Main started the way a lot of good Detroit things start: at a kitchen table, with a notebook full of recipes and a stubborn belief that this neighborhood deserved a coffee shop of its own. Our founder spent six years baking for family, friends, and every church bake sale on the block before signing the lease on this corner.</p>
+      <p>We named the shop for the two things that hold the place together: the maple syrup in our signature latte, tapped right here in Michigan, and the main street energy of West McNichols, where everybody still waves from the sidewalk.</p>
+      <p>Today our little team of eleven baristas and bakers roasts with a Detroit roaster, bakes everything in house, and knows most of our regulars by name and by order. If it is your first visit, do not worry. By your third, we will know yours too.</p>
+      <div class="owner-line">
+        <span class="owner-initial">D</span>
+        <div><strong>Denise Carter</strong><span>Founder and head baker, Maple and Main Coffee Co.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Neighborhood Love</p>
+      <h2>What the regulars say</h2>
+      <p>We are a small shop with a big heart, and our customers say it better than we ever could.</p>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"The maple latte is the best coffee drink in the city, full stop. I drive past three other coffee shops to get here every morning."</p>
+        <p class="review-who">Marcus T.<span>Regular since 2020</span></p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"I wrote most of my thesis at the corner table upstairs. Free refills, kind staff, and nobody ever rushed me out. This place carried me through grad school."</p>
+        <p class="review-who">Priya S.<span>Wayne State student</span></p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Almond croissants sell out by 9 for a reason. I call ahead on Saturdays and they always have my box waiting with my name on it."</p>
+        <p class="review-who">Keisha W.<span>Saturday regular</span></p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Open mic night is the highlight of my week. My daughter performed her first song here and the whole room cheered like family."</p>
+        <p class="review-who">Jordan M.<span>Friday night regular</span></p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Booked the back room for my mom's 70th birthday. Coffee service, pastry trays, zero stress. She still talks about it."</p>
+        <p class="review-who">Tanya R.<span>Booked a private party</span></p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Great coffee, great people, and the loyalty program actually pays off. My free drink days are my favorite days. Only wish they stayed open later on Sundays."</p>
+        <p class="review-who">Tom H.<span>Maple Rewards member</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Inside the Shop</p>
+      <h2>A look around</h2>
+    </div>
+    <div class="gallery-grid">
+      <img src="images/latte-cup.jpg" alt="Latte in a ceramic cup on a wooden table">
+      <img src="images/coffee-pastry.jpg" alt="Coffee and a pastry served together">
+      <img src="images/cafe-friends.jpg" alt="Friends laughing over coffee at a table">
+      <img src="images/cafe-window.jpg" alt="Sunlight coming through the cafe window seats">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Questions</p>
+      <h2>Good questions, straight answers</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Do you have Wi-Fi, and can I work here all day?</h3>
+        <p>Yes and yes. Wi-Fi is free, outlets are at most tables, and drip coffee refills are on us while you stay. The upstairs corner is our quiet zone for laptops and studying.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you offer dairy free and gluten free options?</h3>
+        <p>Every drink can be made with oat, almond, or soy milk. In the bakery case we always have at least two gluten free items, and our bakers keep a separate pan and utensils for them.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I order pastries or coffee for my office or event?</h3>
+        <p>Absolutely. Pastry boxes, whole cakes, and coffee to go boxes can be ordered 48 hours ahead by calling (313) 555-0119. We deliver within 5 miles for orders over $50.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does Maple Rewards work?</h3>
+        <p>Give us your phone number at the register and you earn 1 point per dollar. After 10 drink purchases, your next drink is free. Points never expire, and Tuesdays earn double.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is the shop kid friendly and dog friendly?</h3>
+        <p>Both. Kids get their own steamer drinks and a small play corner near the register. Dogs are welcome on the patio, and there is always a water bowl by the door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Maple &amp; Main Coffee Co.</h3>
+        <p>Your neighborhood coffee shop and bakery on West McNichols. Fresh espresso, scratch pastries, and a table with your name on it.</p>
+      </div>
+      <div>
+        <h3>Visit</h3>
+        <ul>
+          <li>7421 W McNichols Rd</li>
+          <li>Detroit, MI 48221</li>
+          <li><a href="tel:+13135550119">(313) 555-0119</a></li>
+          <li><a href="mailto:hello@mapleandmaincoffee.example">hello@mapleandmaincoffee.example</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#menu">Drink menu</a></li>
+          <li><a href="#bakery">Bakery case</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#loyalty">Maple Rewards</a></li>
+          <li><a href="#visit">Hours and parking</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Designed by <a href="https://lexissapphirestudio.com/">Lexis Sapphire Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
