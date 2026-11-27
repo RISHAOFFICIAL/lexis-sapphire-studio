@@ -27,9 +27,9 @@
 
 <!-- SEASONAL BANNER -->
 <div class="seasonal-banner">
-  <span class="seasonal-leaf">&#127809;</span>
-  <p>Happy Thanksgiving from Lexis Sapphire Studio! We are grateful for every Detroit business we get to build for.</p>
-  <span class="seasonal-leaf">&#127809;</span>
+  <span class="seasonal-leaf">&#127876;</span>
+  <p>Merry Christmas from Lexis Sapphire Studio! Wishing you joy, peace, and a brand new website under the tree.</p>
+  <span class="seasonal-leaf">&#127876;</span>
 </div>
 
 <!-- HERO -->
@@ -117,7 +117,7 @@
     { id: "labor-day", emoji: "\uD83D\uDCAA", banner: "Happy Labor Day from Lexis Sapphire Studio! Honoring every worker, builder, and dreamer.", gradient: "linear-gradient(90deg, #2e4a1e 0%, #4a6b2e 25%, #6b8e3e 50%, #4a6b2e 75%, #2e4a1e 100%)", falling: ["\uD83D\uDCAA", "\u2B50", "\u2728"], window: function (y) { var ld = nthWeekdayOfMonth(y, 8, 1, 1); return { start: daysBefore(ld, 7), end: new Date(ld.getFullYear(), ld.getMonth(), ld.getDate(), 23, 59, 59) }; } },
     { id: "halloween", emoji: "\uD83C\uDF83", banner: "Happy Halloween from Lexis Sapphire Studio! No tricks, just treats. A website so good it is scary.", gradient: "linear-gradient(90deg, #1a0a2e 0%, #2e1a4a 25%, #e65100 50%, #2e1a4a 75%, #1a0a2e 100%)", falling: ["\uD83C\uDF83", "\uD83D\uDC7B", "\uD83E\uDD87"], window: function (y) { return { start: new Date(y, 9, 15), end: new Date(y, 9, 31, 23, 59, 59) }; } },
     { id: "veterans-day", emoji: "\uD83C\uDF96\uFE0F", banner: "Happy Veterans Day from Lexis Sapphire Studio! Thank you to every veteran who served.", gradient: "linear-gradient(90deg, #1a1a3e 0%, #2c3e6b 25%, #8b1a1a 50%, #2c3e6b 75%, #1a1a3e 100%)", falling: ["\uD83C\uDF96\uFE0F", "\u2B50", "\u2728"], window: function (y) { return { start: new Date(y, 10, 4), end: new Date(y, 10, 11, 23, 59, 59) }; } },
-    { id: "thanksgiving", emoji: "\uD83C\uDF42", banner: "Happy Thanksgiving from Lexis Sapphire Studio! We are grateful for every Detroit business we get to build for.", gradient: "linear-gradient(90deg, #5c2e0e 0%, #8b4513 25%, #b5651d 50%, #8b4513 75%, #5c2e0e 100%)", falling: ["\uD83C\uDF42", "\uD83C\uDF41", "\uD83C\uDF43"], window: function (y) { var tg = nthWeekdayOfMonth(y, 10, 4, 4); return { start: new Date(y, 10, 12), end: new Date(tg.getFullYear(), tg.getMonth(), tg.getDate(), 23, 59, 59) }; } },
+    { id: "thanksgiving", emoji: "\uD83C\uDF42", banner: "Merry Christmas from Lexis Sapphire Studio! Wishing you joy, peace, and a brand new website under the tree.", gradient: "linear-gradient(90deg, #5c2e0e 0%, #8b4513 25%, #b5651d 50%, #8b4513 75%, #5c2e0e 100%)", falling: ["\uD83C\uDF42", "\uD83C\uDF41", "\uD83C\uDF43"], window: function (y) { var tg = nthWeekdayOfMonth(y, 10, 4, 4); return { start: new Date(y, 10, 12), end: new Date(tg.getFullYear(), tg.getMonth(), tg.getDate(), 23, 59, 59) }; } },
     { id: "christmas", emoji: "\uD83C\uDF84", banner: "Merry Christmas from Lexis Sapphire Studio! Wishing you joy, peace, and a brand new website under the tree.", gradient: "linear-gradient(90deg, #0b3d1e 0%, #145a32 25%, #8b1a1a 50%, #145a32 75%, #0b3d1e 100%)", falling: ["\u2744\uFE0F", "\u26C4", "\uD83C\uDF84"], window: function (y) { return { start: new Date(y, 10, 27), end: new Date(y, 11, 25, 23, 59, 59) }; } }
   ];
   function startFalling(h) {
