@@ -214,7 +214,7 @@
       gradient: "linear-gradient(90deg, #0b3d1e 0%, #145a32 25%, #8b1a1a 50%, #145a32 75%, #0b3d1e 100%)",
       glow: "rgba(20, 90, 50, 0.15)",
       window: function (y) {
-        return { start: new Date(y, 10, 27), end: new Date(y, 11, 25, 23, 59, 59) };
+        return { start: new Date(y, 10, 26), end: new Date(y, 11, 25, 23, 59, 59) };
       }
     }
   ];
@@ -224,13 +224,18 @@
     var year = now.getFullYear();
     // Check this year and last year (New Year window spans Dec-Jan)
     var years = [year - 1, year];
+    var best = null;
+    var bestStart = null;
     for (var i = 0; i < years.length; i++) {
       for (var j = 0; j < HOLIDAYS.length; j++) {
         var w = HOLIDAYS[j].window(years[i]);
-        if (now >= w.start && now <= w.end) return HOLIDAYS[j];
+        if (now >= w.start && now <= w.end) {
+          // Most recently started holiday wins (Christmas over Thanksgiving on Nov 26)
+          if (!best || w.start > bestStart) { best = HOLIDAYS[j]; bestStart = w.start; }
+        }
       }
     }
-    return null;
+    return best;
   }
 
   // --- Falling seasonal elements (leaves, snow, etc.) ---
