@@ -6,6 +6,7 @@
 |---|------|-------|-----|-------|
 | 1 | 2026-11-23 | Why Your Detroit Braider Business Needs a Real Website (Not Just a Booking Link) | https://lexissapphirestudio.com/blog/detroit-braider-website.html | 980 |
 | 2 | 2026-11-25 | 5 Signs Your Small Business Website Is Costing You Customers | https://lexissapphirestudio.com/blog/signs-your-website-is-costing-you-customers.html | 1032 |
+| 3 | 2026-11-27 | How Much Does a Website Cost in Detroit? (2026 Guide) | https://lexissapphirestudio.com/blog/how-much-does-a-website-cost-detroit.html | 1332 |
 
 ## Queued (pre-built)
 
