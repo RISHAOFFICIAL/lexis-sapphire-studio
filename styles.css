@@ -169,6 +169,12 @@ h1, h2, h3, .founder-name {
   font-size: 13px; color: var(--muted); text-transform: uppercase;
   letter-spacing: 0.06em; margin-top: 4px;
 }
+.hero-audit-note { font-size: 15px; color: var(--muted); max-width: 560px; margin-top: 16px; line-height: 1.5; }
+
+/* ---------- Proof strip ---------- */
+.proof-strip { padding: 20px 22px 4px; }
+.proof-strip-inner { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 1024px; margin: 0 auto; }
+.proof-strip .credential-badge { margin: 0; }
 
 /* ---------- Buttons and links ---------- */
 .btn {
@@ -209,6 +215,8 @@ h1, h2, h3, .founder-name {
 .agencies-note { text-align: center; color: var(--muted); font-size: 15px; margin-top: 22px; }
 .agencies-examples { margin: 28px auto 24px; }
 .agencies-examples .service-example img { object-position: top; }
+.agencies-strip { padding: 4px 22px 28px; text-align: center; }
+.agencies-strip p { font-size: 16px; color: var(--muted); margin: 0; }
 
 /* ---------- Services: Apple product showcase ---------- */
 /* ---------- Black Friday Sale ---------- */
